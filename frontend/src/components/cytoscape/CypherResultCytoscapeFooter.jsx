@@ -90,6 +90,7 @@ const CypherResultCytoscapeFooter = ({
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
+            aria-label="Expand Footer"
             onClick={() => setFooterExpanded(!footerExpanded)}
           >
             <FontAwesomeIcon
@@ -167,6 +168,7 @@ const CypherResultCytoscapeFooter = ({
             type="button"
             className={`btn sizeSelector node ${footerData.data.size >= nodeSize ? ' selectedSize ' : ''}`}
             style={{ width: `${size}px`, height: `${size}px` }}
+            aria-label="Size selector"
           >
             &nbsp;
           </button>
@@ -183,6 +185,7 @@ const CypherResultCytoscapeFooter = ({
             type="button"
             className={`btn sizeSelector edge ${footerData.data.size >= edgeSize ? ' selectedSize ' : ''}`}
             style={{ width: `${size + 18}px`, height: `${size}px` }}
+            aria-label="Change edge size"
           >
             &nbsp;
           </button>
@@ -209,6 +212,7 @@ const CypherResultCytoscapeFooter = ({
               type="button"
               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
               style={{ backgroundColor: color.color }}
+              aria-label="Change node label color"
             >
               &nbsp;
             </button>
@@ -224,6 +228,7 @@ const CypherResultCytoscapeFooter = ({
               type="button"
               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
               style={{ backgroundColor: color.color }}
+              aria-label="Change edge label color"
             >
               &nbsp;
             </button>
@@ -289,6 +294,7 @@ const CypherResultCytoscapeFooter = ({
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
+            aria-label="expand footer"
             onClick={() => setFooterExpanded(!footerExpanded)}
           >
             <FontAwesomeIcon
