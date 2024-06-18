@@ -172,7 +172,7 @@ export const slides = [
       <table className="table">
         <thead>
           <tr>
-            <th scope="col"> </th>
+            <th scope="col">Table Header</th>
             <th scope="col">데이터셋</th>
             <th scope="col">방식</th>
             <th scope="col">비교</th>

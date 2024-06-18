@@ -352,6 +352,7 @@ const SidebarHome = ({
           <button
             className="frame-head-button btn btn-link"
             type="button"
+            aria-label="Refresh home sidebar"
             onClick={() => refreshSidebarHome()}
           >
             <i className="icon-refresh" />
@@ -369,6 +370,7 @@ const SidebarHome = ({
           <button
             className="frame-head-button btn btn-link"
             type="button"
+            aria-label="Disconnect"
             onClick={() => confirm({
               title: 'Are you sure you want to close this window?',
               onOk() {

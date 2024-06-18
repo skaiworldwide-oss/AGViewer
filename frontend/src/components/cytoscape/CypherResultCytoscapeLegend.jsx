@@ -177,6 +177,7 @@ class CypherResultCytoscapeLegend extends Component {
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
+            aria-label="Expand node legend"
             onClick={() => this.setState({ nodeLegendExpanded: !nodeLegendExpanded })}
           >
             <FontAwesomeIcon
@@ -192,6 +193,7 @@ class CypherResultCytoscapeLegend extends Component {
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
+            aria-label="Expand edge legend"
             onClick={() => this.setState({ edgeLegendExpanded: !edgeLegendExpanded })}
           >
             <FontAwesomeIcon
