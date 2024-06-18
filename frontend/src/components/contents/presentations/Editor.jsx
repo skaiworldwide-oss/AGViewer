@@ -143,12 +143,13 @@ const Editor = ({
                   size="lg"
                 />
               </button> */}
-              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" onClick={() => clearCommand()}>
+              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" aria-label="Clear" onClick={() => clearCommand()}>
                 <i className="icon-eraser" />
               </button>
               <button
                 className="frame-head-button btn btn-link"
                 type="button"
+                aria-label="Run Query"
                 onClick={() => onClick()}
                 title="Run Query"
               >
@@ -157,6 +158,7 @@ const Editor = ({
               <button
                 className="frame-head-button btn btn-link"
                 type="button"
+                aria-label="Toggle menu"
                 onClick={() => {
                   toggleMenu('home');
                   if (!isActive) {
