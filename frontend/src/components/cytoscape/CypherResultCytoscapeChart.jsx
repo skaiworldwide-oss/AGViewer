@@ -15,6 +15,8 @@
  */
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { Modal, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap styles are imported
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
 import COSEBilkent from 'cytoscape-cose-bilkent';
@@ -53,6 +55,10 @@ const CypherResultCytoscapeCharts = ({
 }) => {
   const [cytoscapeMenu, setCytoscapeMenu] = useState(null);
   const [initialized, setInitialized] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  const handleClose = () => setShowModal(false);
 
   const addEventOnElements = (targetElements) => {
     targetElements.bind('mouseover', (e) => {
@@ -111,7 +117,9 @@ const CypherResultCytoscapeCharts = ({
   const addElements = (centerId, d) => {
     const generatedData = generateCytoscapeElement(d.rows, maxDataOfGraph, true);
     if (generatedData.elements.nodes.length === 0) {
-      alert('No data to extend.');
+      setModalMessage('No data to extend.');
+      setShowModal(true);
+      // alert('No data to extend.');
       return;
     }
 
@@ -236,13 +244,26 @@ const CypherResultCytoscapeCharts = ({
   [cytoscapeObject]);
 
   return (
-    <CytoscapeComponent
-      elements={CytoscapeComponent.normalizeElements(elements)}
-      stylesheet={stylesheet}
-      cy={cyCallback}
-      className={styles.NormalChart}
-      wheelSensitivity={0.3}
-    />
+    <div>
+      <CytoscapeComponent
+        elements={CytoscapeComponent.normalizeElements(elements)}
+        stylesheet={stylesheet}
+        cy={cyCallback}
+        className={styles.NormalChart}
+        wheelSensitivity={0.3}
+      />
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Notification</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   );
 };
 
