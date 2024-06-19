@@ -1,5 +1,5 @@
 {
-    "name": "ag-viewer-backend",
+    "name": "agensgraphviewer-backend",
     "version": "0.4.0",
     "private": true,
     "scripts": {
