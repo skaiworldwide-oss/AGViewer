@@ -1,41 +1,55 @@
-# Deprecated !!
+# AgViewer
+ 
+Web-based user interface that provides visualization of graph data stored in an AgensGraph database. 
 
-## AGViewer repository has been moved to [Apache AGE Viewer](https://github.com/apache/age-viewer)
+This is a sub-project of [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph)
 
-Bitnine donated AGViewer project to Apache Foundation.
-Subsequent developments moved to https://github.com/apache/age-viewer 
+# Recommended Node Version & install module
 
+- Node version - 14.16.0
+- Node Module - pm2 
 
-<!-- [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-# Goal of AGViewer
+Install latest **pm2** with :
 
-AGViewer is graph visualisation tool, for AgensGraph or Apache AGE.
-
-# Recommend Node Version & install module
-- node js 14.16.0
-- npm install pm2
-
-# How to use this image
-```
-docker run \
-    --publish=3001:3001 \
-    --name=agviewer \
-    bitnine/agviewer:latest
+```bash
+npm i pm2
 ```
 
-# How to run using command
-```
+> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode, and hence is optional for getting started with setting up development environment for AgViewer 
+
+# Installing AgViewer
+
+- Install the required node modules using  :  
+
+```bash
 npm run setup
+```
+
+# Running AgViewer
+
+- Run AgViewer using : 
+
+```bash
 npm run start
 ```
-# How to build using command
-```
-npm run setup-backend
-npm run build-front
-pm2 stop ag-viewer-develop
-pm2 delete ag-viewer-develop
-pm2 start ecosystem.config.js
-```
 
-# License
-AGViewer is licensed under the Apache License, Version 2.0. See LICENSE for the full license text. -->
+>This will start AgViewer on http://localhost:3000 if port 3000 is free.
+
+---
+
+# How to start using AgViewer
+
+AgViewer is a graphical user interface for AgensGraph, so it needs an AgensGraph server running on the background. 
+
+For the other settings or usage instructions, please follow [AgensGraph's documentation](https://www.skaiworldwide.com/en-US/resources?filterKey=manual).
+	
+---
+
+### Connect AgViewer to AgensGraph Database
+
+**Standard Connection Settings**
+
+- Database type: AgensGraph
+- Connect URL:  127.0.0.1
+- Connect Port: 5432
+
