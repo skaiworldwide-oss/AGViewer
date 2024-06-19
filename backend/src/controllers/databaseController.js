@@ -16,7 +16,7 @@
 const sessionService = require('../services/sessionService');
 const winston = require('winston');
 
-class DatabseController {
+class DatabaseController {
 
     async connectDatabase(req, res, next) {
         let databaseService = sessionService.get(req.sessionID);
@@ -88,4 +88,4 @@ class DatabseController {
     }
 }
 
-module.exports = DatabseController;
+module.exports = DatabaseController;
