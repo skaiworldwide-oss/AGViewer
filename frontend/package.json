@@ -1,5 +1,5 @@
 {
-  "name": "agensgraph-viewer",
+  "name": "ag-viewer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

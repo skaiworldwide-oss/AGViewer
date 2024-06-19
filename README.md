@@ -25,6 +25,19 @@ npm i pm2
 npm run setup
 ```
 
+
+# How to start using AgViewer
+
+AgViewer is a graphical user interface for AgensGraph, so it needs an AgensGraph server running on the background. 
+
+Tipically, this is done with the command 
+
+```
+ag_ctl start [-D /path/created/by/initdb]
+```
+
+For the other settings or usage instructions, please follow [AgensGraph's documentation](https://www.skaiworldwide.com/en-US/resources?filterKey=manual).
+
 # Running AgViewer
 
 - Run AgViewer using : 
@@ -34,16 +47,6 @@ npm run start
 ```
 
 >This will start AgViewer on http://localhost:3000 if port 3000 is free.
-
----
-
-# How to start using AgViewer
-
-AgViewer is a graphical user interface for AgensGraph, so it needs an AgensGraph server running on the background. 
-
-For the other settings or usage instructions, please follow [AgensGraph's documentation](https://www.skaiworldwide.com/en-US/resources?filterKey=manual).
-	
----
 
 ### Connect AgViewer to AgensGraph Database
 
