@@ -16,6 +16,8 @@
 
 import React, { createRef, useEffect, useState } from 'react';
 import uuid from 'react-uuid';
+import { Modal, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { saveAs } from 'file-saver';
 import { Parser } from 'json2csv';
 import PropTypes from 'prop-types';
@@ -44,6 +46,16 @@ const CypherResultFrame = ({
   const [globalThickness, setGlobalThickness] = useState(null);
 
   const [chartLegend, setChartLegend] = useState({ edgeLegend: {}, nodeLegend: {} });
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
+  const handleClose = () => setShowModal(false);
+
+  const showModalWithMessage = (message) => {
+    setModalMessage(message);
+    setShowModal(true);
+  };
 
   useEffect(() => {
     if (chartAreaRef.current && filterModalVisible) {
@@ -91,7 +103,7 @@ const CypherResultFrame = ({
   const downloadPng = () => {
     const eleJson = chartAreaRef.current.getCy().elements().jsons();
     if (eleJson.length === 0) {
-      alert('No data to download!');
+      showModalWithMessage('No data to download!');
       return;
     }
 
@@ -107,7 +119,7 @@ const CypherResultFrame = ({
   const downloadJson = () => {
     const eleJson = chartAreaRef.current.getCy().elements().jsons();
     if (eleJson.length === 0) {
-      alert('No data to download!');
+      showModalWithMessage('No data to download!');
       return;
     }
     saveAs(new Blob([JSON.stringify(eleJson.map((ele) => ({
@@ -122,7 +134,7 @@ const CypherResultFrame = ({
   const downloadCsv = () => {
     const eleJson = chartAreaRef.current.getCy().elements().jsons();
     if (eleJson.length === 0) {
-      alert('No data to download!');
+      showModalWithMessage('No data to download!');
       return;
     }
 
@@ -138,12 +150,12 @@ const CypherResultFrame = ({
       const json2csvParser = new Parser();
       saveAs(new Blob([`\uFEFF${json2csvParser.parse(dataJson)}`], { type: 'text/csv;charset=utf-8' }), `${reqString.replace(/ /g, '_')}.csv`);
     } catch (err) {
-      alert('Unknown Error.');
+      showModalWithMessage('Unknown Error.');
     }
   };
 
   return (
-    <>
+    <div>
       <Frame
         bodyNoPadding
         onSearch={() => setFilterModalVisible(true)}
@@ -198,7 +210,18 @@ const CypherResultFrame = ({
         properties={filterProperties}
         globalFilter={globalFilter}
       />
-    </>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Notification</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
 
   );
 };
