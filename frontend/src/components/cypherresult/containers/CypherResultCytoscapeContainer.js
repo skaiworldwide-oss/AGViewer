@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
       );
     } catch (e) {
       // TODO need tracing error
-      console.error(e);
+      // console.error(e);
     }
     return {
       legend: {
