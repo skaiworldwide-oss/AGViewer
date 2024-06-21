@@ -331,19 +331,19 @@ const SidebarHome = ({
     <div className="sidebar-home">
       <div className="sidebar sidebar-body">
         <div className="form-group sidebar-item">
-          <b>Node Label</b>
+          <b>Find nodes with label:</b>
           <br />
           <NodeList nodes={nodes} setCommand={setCommand} />
         </div>
         <VerticalLine />
         <div className="form-group sidebar-item">
-          <b>Edge Label</b>
+          <b>Find edges with label:</b>
           <br />
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
         <VerticalLine />
         <div className="form-group sidebar-item">
-          <b>Properties</b>
+          <b>Find itens with properties:</b>
           <br />
           <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
         </div>
