@@ -15,7 +15,7 @@ Install latest **pm2** with :
 npm i pm2
 ```
 
-> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode, and hence is optional for getting started with setting up development environment for AgViewer 
+> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode.
 
 # Installing AgViewer
 
@@ -40,13 +40,20 @@ For the other settings or usage instructions, please follow [AgensGraph's docume
 
 # Running AgViewer
 
-- Run AgViewer using : 
+- Run AgViewer in production environment using : 
 
 ```bash
-npm run start
+pm2 start ecosystem.config.js --env release                                                                                                                      ─╯
 ```
 
->This will start AgViewer on http://localhost:3000 if port 3000 is free.
+To stop the process use the commands:
+
+```bash
+pm2 stop ag-viewer-release 
+pm2 delete ag-viewer-release
+```
+
+>This will start AgViewer on http://localhost:4000 if port 4000 is free.
 
 ### Connect AgViewer to AgensGraph Database
 
