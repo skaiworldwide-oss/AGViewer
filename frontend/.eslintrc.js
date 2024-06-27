@@ -17,6 +17,6 @@ module.exports = {
   },
   plugins: ['babel', 'react', 'import', 'react-hooks'],
   rules: {
-    'linebreak-style': 0, // fow winodw user
+    'linebreak-style': 0, // fow windows users
   },
 };

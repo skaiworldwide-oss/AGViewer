@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Modal, Button } from 'antd';
 
-import { Modal } from 'antd';
 import uuid from 'react-uuid';
 import { connect, useDispatch } from 'react-redux';
+
 import { VerticalLine, SubLabelLeft, SubLabelRight } from './SidebarComponents';
+import { NewNodeModal } from '../../modals/presentations/NewNodeModal';
 
 const genLabelQuery = (eleType, labelName, database) => {
   function age() {
@@ -85,8 +87,10 @@ const genPropQuery = (eleType, propertyName) => {
 };
 
 const NodeList = ({ nodes, setCommand }) => {
+  const [open, setOpen] = useState(false);
+
   let list;
-  if (nodes) {
+  if (nodes && nodes.length > 0) {
     list = nodes.map((item) => (
       <NodeItems
         key={uuid()}
@@ -96,16 +100,31 @@ const NodeList = ({ nodes, setCommand }) => {
       />
     ));
     return (
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        height: '80px',
-        overflowY: 'auto',
-        marginTop: '12px',
-      }}
-      >
-        {list}
-      </div>
+      <>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          height: '80px',
+          overflowY: 'auto',
+          marginTop: '12px',
+        }}
+        >
+          {list}
+        </div>
+
+        <Button
+          className="node-item"
+          type="Button"
+          onClick={() => setOpen(true)}
+        >
+          Add New Node (+)
+        </Button>
+        <NewNodeModal
+          open={open}
+          setOpen={setOpen}
+          setCommand={setCommand}
+        />
+      </>
     );
   }
 
@@ -256,7 +275,7 @@ PropertyItems.propTypes = {
   setCommand: PropTypes.func.isRequired,
 };
 
-const ConnectedText = ({ userName, roleName }) => (
+const ConnectionConfirmation = ({ userName, roleName }) => (
   <div>
     <h6>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -271,7 +290,7 @@ const ConnectedText = ({ userName, roleName }) => (
   </div>
 );
 
-ConnectedText.propTypes = {
+ConnectionConfirmation.propTypes = {
   userName: PropTypes.string.isRequired,
   roleName: PropTypes.string.isRequired,
 };
