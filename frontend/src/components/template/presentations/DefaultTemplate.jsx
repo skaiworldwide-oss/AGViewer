@@ -17,10 +17,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Layout } from 'antd';
+
 import EditorContainer from '../../contents/containers/Editor';
 import Sidebar from '../../sidebar/containers/Sidebar';
 import Contents from '../../contents/containers/Contents';
 import { loadFromCookie, saveToCookie } from '../../../features/cookie/CookieUtil';
+
+const { Content, Sider } = Layout;
 
 const DefaultTemplate = ({
   theme,
@@ -70,32 +74,31 @@ const DefaultTemplate = ({
   });
 
   return (
-    <div className="default-template">
-      <input
-        type="radio"
-        className="theme-switch"
-        name="theme-switch"
-        id="default-theme"
-        checked={theme === 'default'}
-        readOnly
-      />
-      <input
-        type="radio"
-        className="theme-switch"
-        name="theme-switch"
-        id="dark-theme"
-        checked={theme === 'dark'}
-        readOnly
-      />
-      <div className="editor-divison">
-        <EditorContainer />
-        <Sidebar />
-      </div>
-      <div className="wrapper-extension-padding" id="wrapper">
-        <Contents />
-      </div>
+    <Layout>
+      <Sider
+        width="33vw" // Use vw to occupy 33% of the viewport width
+        style={{
+          overflow: 'initial',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+        }}
+      >
+        <div
+          className="editor-division"
+          style={{ height: '100vh', minWidth: '33vw', padding: '10px 0 0 0' }}
+        >
+          <EditorContainer />
+          <Sidebar />
+        </div>
+      </Sider>
+      <Layout style={{ marginLeft: '33vw', height: '100vh' }}>
+        <Content style={{ height: '100vh', margin: '0', overflow: 'initial' }}>
+          <Contents />
+        </Content>
+      </Layout>
+    </Layout>
 
-    </div>
   );
 };
 

@@ -20,7 +20,6 @@ import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import AlertContainers from '../../alert/containers/AlertContainers';
 import CodeMirror from '../../editor/containers/CodeMirrorWapperContainer';
-import SideBarToggle from '../../editor/containers/SideBarMenuToggleContainer';
 import { setting } from '../../../conf/config';
 
 const Editor = ({
@@ -30,11 +29,9 @@ const Editor = ({
   trimFrame,
   addAlert,
   alertList,
-  isActive,
   database,
   executeCypherQuery,
   addCommandHistory,
-  toggleMenu,
   // addCommandFavorites,
 }) => {
   const dispatch = useDispatch();
@@ -155,24 +152,6 @@ const Editor = ({
               >
                 <i className="icon-play" />
               </button>
-              <button
-                className="frame-head-button btn btn-link"
-                type="button"
-                aria-label="Toggle menu"
-                onClick={() => {
-                  toggleMenu('home');
-                  if (!isActive) {
-                    document.getElementById('wrapper').classList.remove('wrapper');
-                    document.getElementById('wrapper').classList.add('wrapper-extension-padding');
-                  } else {
-                    document.getElementById('wrapper').classList.remove('wrapper-extension-padding');
-                    document.getElementById('wrapper').classList.add('wrapper');
-                  }
-                }}
-                title={(isActive) ? 'Hide' : 'Show'}
-              >
-                <SideBarToggle isActive={isActive} />
-              </button>
             </div>
           </div>
         </div>
@@ -196,14 +175,12 @@ Editor.propTypes = {
       errorMessage: PropTypes.string.isRequired,
     }),
   })).isRequired,
-  isActive: PropTypes.bool.isRequired,
   database: PropTypes.shape({
     status: PropTypes.string.isRequired,
     host: PropTypes.string.isRequired,
   }).isRequired,
   executeCypherQuery: PropTypes.func.isRequired,
   addCommandHistory: PropTypes.func.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
   // addCommandFavorites: PropTypes.func.isRequired,
 };
 

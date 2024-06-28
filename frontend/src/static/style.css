@@ -280,7 +280,7 @@ a[data-toggle="collapse"] {
     color: #ffffff;
 }
 
-.propertie-item {
+.property-item {
     height: 35px;
     background: #DEDEDE 0% 0% no-repeat padding-box;
     border: 1px solid #DEDEDE;
@@ -289,7 +289,7 @@ a[data-toggle="collapse"] {
     color: #142B80;
     margin: 0px 4px 4px 4px;
 }
-.propertie-item:hover {
+.property-item:hover {
     background-color: #2756FF;
     background: #2756FF 0% 0% no-repeat padding-box;
     border-radius: 5px;
