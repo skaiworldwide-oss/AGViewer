@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Col, Row } from 'antd';
-import MetadataCytoscapeChart from '../../cytoscape/MetadataCytoscapeChart';
+// import MetadataCytoscapeChart from '../../cytoscape/MetadataCytoscapeChart';
 import Frame from '../Frame';
 import FrameStyles from '../Frame.module.scss';
 
@@ -68,15 +68,7 @@ const ServerStatusFrame = ({
             </Col>
           </Row>
 
-          <hr style={{
-            color: 'rgba(0,0,0,.125)',
-            backgroundColor: '#fff',
-            margin: '0px 10px 0px 10px',
-            height: '0.3px',
-          }}
-          />
-
-          <MetadataCytoscapeChart elements={elements} />
+          { /* <MetadataCytoscapeChart elements={elements} /> */ }
         </div>
       );
     }
