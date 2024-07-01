@@ -14,7 +14,7 @@ function genNewNodeQuery(jsonInput) {
   // Start building the Cypher query
   let query = `CREATE (n:${nodeLabel}`;
 
-  if (nodeProperties.length > 0) {
+  if (nodeProperties) {
     query += ' {';
 
     // Add properties to the query
