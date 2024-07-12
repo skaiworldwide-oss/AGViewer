@@ -182,7 +182,6 @@ const EdgeList = ({ edges, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find edges with label:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -193,19 +192,6 @@ const EdgeList = ({ edges, setCommand }) => {
         >
           {list}
         </div>
-        <Button
-          className="edge-item"
-          type="button"
-          onClick={() => setOpen(true)}
-          style={{ marginTop: '10px' }}
-        >
-          Add New Edge (+)
-        </Button>
-        <NewEdgeModal
-          open={open}
-          setOpen={setOpen}
-          setCommand={setCommand}
-        />
       </div>
     );
   }
@@ -258,7 +244,6 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find itens with properties:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
