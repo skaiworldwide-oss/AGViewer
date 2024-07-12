@@ -104,10 +104,9 @@ const NodeList = ({ nodes, setCommand }) => {
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
-          height: '80px',
+          height: 'auto',
           overflowY: 'auto',
           marginTop: '12px',
-          width: '100%',
         }}
         >
           {list}
@@ -179,15 +178,17 @@ const EdgeList = ({ edges, setCommand }) => {
       />
     ));
     return (
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        height: '80px',
-        overflowY: 'auto',
-        marginTop: '12px',
-      }}
-      >
-        {list}
+      <div style={{ width: '100%' }}>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          height: 'auto',
+          overflowY: 'auto',
+          marginTop: '12px',
+        }}
+        >
+          {list}
+        </div>
       </div>
     );
   }
@@ -239,16 +240,17 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
       />
     ));
     return (
-      <div
-        style={{
+      <div style={{ width: '100%' }}>
+        <div style={{
           display: 'flex',
           flexWrap: 'wrap',
-          height: '80px',
+          height: 'auto',
           overflowY: 'auto',
           marginTop: '12px',
         }}
-      >
-        {list}
+        >
+          {list}
+        </div>
       </div>
     );
   }
