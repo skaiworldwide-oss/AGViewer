@@ -236,7 +236,7 @@ a[data-toggle="collapse"] {
     display: none;
 }
 
-.contianer-frame-tab{
+.container-frame-tab{
     display: flex;
     flex-direction: row;
 }

@@ -359,7 +359,7 @@ const CypherResultCytoscape = forwardRef((props, ref) => {
 
   return (
     <div className="chart-frame-area">
-      <div className="contianer-frame-tab">
+      <div className="container-frame-tab">
         <CypherResultCytoscapeLegend
           onLabelClick={getFooterData}
           isReloading={isReloading}

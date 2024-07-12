@@ -75,7 +75,7 @@ const CypherResultTable = ({ data, ...props }) => {
   const { refKey } = props;
   return (
     <div className="legend-area">
-      <div className="contianer-frame-tab">
+      <div className="container-frame-tab">
         <div style={{ width: '80%', color: '#C4C4C4' }}>
           <div className="d-flex nodeLegend">Node:</div>
           <div className="d-flex edgeLegend">Edge:</div>
