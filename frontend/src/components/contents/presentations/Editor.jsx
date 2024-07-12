@@ -109,7 +109,7 @@ const Editor = ({
   return (
     <div className="container-fluid">
       <div className="editor">
-        <div className="container-fluid editor-area card-header">
+        <div className="container-fluid editor-area card-header" style={{ paddingRight: 0 }}>
           <div className="input-group input-style">
             <div style={{
               height: '60px',
@@ -119,11 +119,11 @@ const Editor = ({
               lineHeight: '30px',
             }}
             >
-              <spna>
+              <span>
                 Query
                 <br />
                 Editor
-              </spna>
+              </span>
             </div>
             <div className="form-control col-11 editor-code-wrapper">
               <CodeMirror
