@@ -46,14 +46,14 @@ For the other settings or usage instructions, please follow [AgensGraph's docume
 pm2 start ecosystem.config.js --env release
 ```
 
+>This will start AgensGraphViewer on http://localhost:4000 if port 4000 is free.
+
 To stop the process use the commands:
 
 ```bash
 pm2 stop ag-viewer-release 
 pm2 delete ag-viewer-release
 ```
-
->This will start AgViewer on http://localhost:4000 if port 4000 is free.
 
 ### Connect AgViewer to AgensGraph Database
 
