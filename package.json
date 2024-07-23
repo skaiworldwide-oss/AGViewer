@@ -1,6 +1,6 @@
 {
     "name": "ag-viewer",
-    "version": "0.0.1",
+    "version": "1.1.0",
     "private": true,
     "scripts": {
         "setup": "npm install && npm-run-all setup-front setup-backend",
@@ -8,8 +8,9 @@
         "setup-backend": "cd backend && npm install",
         "front": "cd frontend && npm run start",
         "build-front": "cd frontend  && npm install && npm run build",
+        "build-back": "cd backend && npm install && npm run build",
         "backend": "cd backend && npm run start",
-        "deploy": "npm-run-all build-front backend",
+        "deploy": "npm-run-all build-front build-back",
         "start": "npm-run-all --parallel backend front"
     },
     "dependencies": {

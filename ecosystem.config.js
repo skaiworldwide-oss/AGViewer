@@ -11,13 +11,13 @@ module.exports = {
     },
     env_release: {
       name: "ag-viewer-release",
-      PORT: 4000,
+      PORT: 3000,
       NODE_ENV: "release",
     }
   }],
   deploy: {
-    staging: {
-      'post-deploy': 'npm install && npm run setup && npm run build-front && pm2 reload ecosystem.config.js'
+    env_release: {
+      'post-deploy': 'npm deploy && pm2 reload ecosystem.config.js'
     }
   }
 }
