@@ -2,9 +2,9 @@ name: AGViewer build
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, testing-branch ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, testing-branch ]
 
 jobs:
   build:
