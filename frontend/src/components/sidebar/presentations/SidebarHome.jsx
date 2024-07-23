@@ -192,6 +192,19 @@ const EdgeList = ({ edges, setCommand }) => {
         >
           {list}
         </div>
+        <Button
+          className="edge-item"
+          type="button"
+          onClick={() => setOpen(true)}
+          style={{ marginTop: '10px' }}
+        >
+          Add New Edge (+)
+        </Button>
+        <NewEdgeModal
+          open={open}
+          setOpen={setOpen}
+          setCommand={setCommand}
+        />
       </div>
     );
   }
