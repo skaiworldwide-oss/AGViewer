@@ -23,6 +23,7 @@ import { connect, useDispatch } from 'react-redux';
 
 import { SubLabelLeft, SubLabelRight } from './SidebarComponents';
 import { NewNodeModal } from '../../modals/presentations/NewNodeModal';
+import { NewEdgeModal } from '../../modals/presentations/NewEdgeModal';
 
 const genLabelQuery = (eleType, labelName, database) => {
   function age() {
@@ -167,8 +168,9 @@ NodeItems.propTypes = {
 };
 
 const EdgeList = ({ edges, setCommand }) => {
+  const [open, setOpen] = useState(false);
   let list;
-  if (edges) {
+  if (edges && edges.length > 0) {
     list = edges.map((item) => (
       <EdgeItems
         key={uuid()}
@@ -189,6 +191,19 @@ const EdgeList = ({ edges, setCommand }) => {
         >
           {list}
         </div>
+        <Button
+          className="edge-item"
+          type="button"
+          onClick={() => setOpen(true)}
+          style={{ marginTop: '10px' }}
+        >
+          Add New Edge (+)
+        </Button>
+        <NewEdgeModal
+          open={open}
+          setOpen={setOpen}
+          setCommand={setCommand}
+        />
       </div>
     );
   }
