@@ -19,7 +19,11 @@ npm i pm2
 
 # Installing AgViewer
 
-- Install the required node modules using  :  
+Extract the release .zip or .tar.gz package into your desired directory.
+
+From the commandline, navigate to the directory agv-package.
+
+- Install the required node modules using:  
 
 ```bash
 npm run setup
@@ -62,4 +66,33 @@ pm2 delete ag-viewer-release
 - Database type: AgensGraph
 - Connect URL:  127.0.0.1
 - Connect Port: 5432
+
+# Using the Docker image:
+
+- Pulling the image:
+
+```bash
+docker pull markgomer/agensgraphviewer
+```
+
+- Run the container:
+
+```bash
+docker run --name agviewer -p 3000:3000 -d markgomer/agensgraphviewer:1.1.0
+```
+
+Then open the URL 127.0.0.1:3000 on your browser.
+
+> Tip: if your AgensGraph server is running on your host machine, the URL to connect to it should be "host.docker.internal".
+
+# For developers:
+
+Fork this repository, then clone your fork
+
+```bash
+## install node modules
+npm run setup
+## start the development environment
+npm run start
+```
 
