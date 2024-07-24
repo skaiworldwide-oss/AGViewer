@@ -110,6 +110,8 @@ const NodeList = ({ nodes, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find nodes with label:</b>
+          <br />
           {list}
         </div>
 
@@ -189,6 +191,8 @@ const EdgeList = ({ edges, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find edges with label:</b>
+          <br />
           {list}
         </div>
         <Button
@@ -245,7 +249,7 @@ EdgeItems.propTypes = {
 
 const PropertyList = ({ propertyKeys, setCommand }) => {
   let list;
-  if (propertyKeys) {
+  if (propertyKeys && propertyKeys.length > 0) {
     list = propertyKeys.map((item) => (
       <PropertyItems
         key={uuid()}
@@ -264,6 +268,8 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find itens with properties:</b>
+          <br />
           {list}
         </div>
       </div>
@@ -371,18 +377,12 @@ const SidebarHome = ({
       <div className="sidebar sidebar-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
         <div className="form-group sidebar-item" style={{ width: '100%', margin: 0, paddingLeft: '10px' }}>
-          <b>Find nodes with label:</b>
-          <br />
           <NodeList nodes={nodes} setCommand={setCommand} />
         </div>
         <div className="form-group sidebar-item" style={{ width: '100%', margin: 0, paddingLeft: '10px' }}>
-          <b>Find edges with label:</b>
-          <br />
           <EdgeList edges={edges} setCommand={setCommand} />
         </div>
         <div className="form-group sidebar-item" style={{ width: '100%', margin: 0, paddingLeft: '10px' }}>
-          <b>Find itens with properties:</b>
-          <br />
           <PropertyList propertyKeys={propertyKeys} setCommand={setCommand} />
         </div>
 
