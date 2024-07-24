@@ -102,6 +102,7 @@ const NodeList = ({ nodes, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
+        <b>Find nodes with label:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -110,8 +111,6 @@ const NodeList = ({ nodes, setCommand }) => {
           marginTop: '12px',
         }}
         >
-          <b>Find nodes with label:</b>
-          <br />
           {list}
         </div>
 
@@ -183,6 +182,7 @@ const EdgeList = ({ edges, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
+        <b>Find edges with label:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -191,8 +191,6 @@ const EdgeList = ({ edges, setCommand }) => {
           marginTop: '12px',
         }}
         >
-          <b>Find edges with label:</b>
-          <br />
           {list}
         </div>
         <Button
@@ -260,6 +258,7 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
+        <b>Find itens with properties:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -268,8 +267,6 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
           marginTop: '12px',
         }}
         >
-          <b>Find itens with properties:</b>
-          <br />
           {list}
         </div>
       </div>
