@@ -111,6 +111,8 @@ const NodeList = ({ nodes, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find nodes with label:</b>
+          <br />
           {list}
         </div>
 
@@ -190,6 +192,8 @@ const EdgeList = ({ edges, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find edges with label:</b>
+          <br />
           {list}
         </div>
         <Button
@@ -265,6 +269,8 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
           marginTop: '12px',
         }}
         >
+          <b>Find itens with properties:</b>
+          <br />
           {list}
         </div>
       </div>
