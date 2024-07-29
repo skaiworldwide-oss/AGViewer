@@ -42,7 +42,7 @@ const SidebarAbout = ({ releaseDate, version, license }) => (
         </div>
       </div>
       <div className="form-group pt-4">
-        <b>You Have Feedback for us?</b>
+        <b>Do you have feedback for us?</b>
         <ColoredLine />
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           <SubLabelLeft
@@ -52,7 +52,7 @@ const SidebarAbout = ({ releaseDate, version, license }) => (
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/bitnine-oss/AGViewer/issues"> Here!</a>
                 {' '}
                 <br />
-                Your feedback help us provide you better experience!
+                Your feedback help us provide you a better experience!
               </span>
 )}
             classes="py-1"

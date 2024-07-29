@@ -24,7 +24,9 @@ import Sidebar from '../../sidebar/containers/Sidebar';
 import Contents from '../../contents/containers/Contents';
 import { loadFromCookie, saveToCookie } from '../../../features/cookie/CookieUtil';
 
-const { Content, Sider } = Layout;
+const {
+  Sider, Header, Footer,
+} = Layout;
 
 const DefaultTemplate = ({
   theme,
@@ -74,9 +76,12 @@ const DefaultTemplate = ({
   });
 
   return (
-    <Layout>
+    // Main layout covering the entire viewport height
+    <Layout hasSider style={{ minHeight: '100vh' }}>
+
+      {/* SIDEBAR */}
       <Sider
-        width="33vw" // Use vw to occupy 33% of the viewport width
+        width="33vw"
         style={{
           overflow: 'initial',
           height: '100vh',
@@ -86,19 +91,56 @@ const DefaultTemplate = ({
       >
         <div
           className="editor-division"
-          style={{ height: '100vh', minWidth: '33vw', padding: '10px 0 0 0' }}
+          style={{ height: '100vh', minWidth: '33vw', padding: '0' }}
         >
+          <Header
+            style={{
+              padding: 0,
+            }}
+          />
           <EditorContainer />
           <Sidebar />
         </div>
       </Sider>
-      <Layout style={{ marginLeft: '33vw', height: '100vh' }}>
-        <Content style={{ height: '100vh', margin: '0', overflow: 'initial' }}>
-          <Contents />
-        </Content>
-      </Layout>
-    </Layout>
+      {/* END SIDEBAR */}
 
+      {/* CONTENTS */}
+      <Layout
+        style={{
+          marginLeft: '33vw',
+          // Ensure the content layout stretches to fill the available height
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        }}
+      >
+        <Contents style={{ flex: 1 }} />
+
+        <Footer
+          className="flex-end"
+          style={{
+            textAlign: 'center',
+            position: 'fixed',
+            bottom: 0,
+            width: 'calc(100% - 33vw)',
+            padding: '5px 5px',
+          }}
+        >
+          Copyright © 2024, Bitnine Inc. All Rights Reserved.
+          <br />
+          <a
+            href="https://www.skaiworldwide.com/en-US/resources?filterKey=manual"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check AgensGraph Documentation
+          </a>
+        </Footer>
+
+      </Layout>
+      {/* END CONTENTS */}
+
+    </Layout>
   );
 };
 
