@@ -23,6 +23,7 @@ import EditorContainer from '../../contents/containers/Editor';
 import Sidebar from '../../sidebar/containers/Sidebar';
 import Contents from '../../contents/containers/Contents';
 import { loadFromCookie, saveToCookie } from '../../../features/cookie/CookieUtil';
+import logoImage from './logo.png';
 
 const {
   Sider, Header, Footer,
@@ -95,9 +96,18 @@ const DefaultTemplate = ({
         >
           <Header
             style={{
-              padding: 0,
+              margin: '5px 10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-          />
+          >
+            <img
+              src={logoImage}
+              alt="AgensGraph Logo"
+              style={{ maxHeight: '100%', maxWidth: '100%', height: 'auto' }}
+            />
+          </Header>
           <EditorContainer />
           <Sidebar />
         </div>
