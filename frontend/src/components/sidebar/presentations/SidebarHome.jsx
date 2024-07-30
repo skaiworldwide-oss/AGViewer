@@ -386,9 +386,10 @@ const SidebarHome = ({
         <div className="form-group sidebar-item-disconnect">
           <div style={{
             display: 'flex',
-            justifyContent: 'space-between',
             alignItems: 'center',
-            width: '100%',
+            width: '30vw',
+            position: 'fixed',
+            bottom: 0,
           }}
           >
             <button

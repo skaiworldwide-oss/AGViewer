@@ -84,7 +84,6 @@ const DefaultTemplate = ({
       <Sider
         width="33vw"
         style={{
-          overflow: 'initial',
           height: '100vh',
           position: 'fixed',
           left: 0,
