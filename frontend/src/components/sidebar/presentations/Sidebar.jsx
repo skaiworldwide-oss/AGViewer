@@ -24,7 +24,7 @@ const Sidebar = ({ activeMenuName, isActive }) => (
   <div
     id="sidebar"
     className={isActive ? ' active ' : 'inactive'}
-    style={{ height: '100%' }}
+    style={{ height: '100%', margin: 0 }}
   >
     <div className="tab-content">
       <div className={`tab-pane fade${activeMenuName === 'home' ? ' active show ' : ''}`} role="tabpanel" aria-labelledby="side-home-tab">
