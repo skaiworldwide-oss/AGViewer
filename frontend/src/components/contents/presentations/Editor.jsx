@@ -37,10 +37,6 @@ const Editor = ({
   const dispatch = useDispatch();
   const [alerts, setAlerts] = useState([]);
 
-  // const favoritesCommand = () => {
-  //   dispatch(() => addCommandFavorites(command));
-  // };
-
   const clearCommand = () => {
     setCommand('');
   };
@@ -133,13 +129,6 @@ const Editor = ({
               />
             </div>
             <div className="input-group-append ml-auto editor-button-wrapper" id="editor-buttons">
-              {/* <button className="frame-head-button btn btn-link"
-               type="button" onClick={() => favoritesCommand()}>
-                <FontAwesomeIcon
-                  icon={faStar}
-                  size="lg"
-                />
-              </button> */}
               <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" aria-label="Clear" onClick={() => clearCommand()}>
                 <i className="icon-eraser" />
               </button>
