@@ -34,9 +34,8 @@ const CodeMirrorWrapper = ({
       options={{
         keyMap: 'sublime',
         mode: 'cypher',
-        tabSize: 4,
-        lineNumbers: true,
-        lineNumberFormatter: () => '$',
+        tabSize: 2,
+        lineNumbers: false,
         extraKeys: {
           'Shift-Enter': (editor) => {
             onClick();
@@ -89,12 +88,6 @@ const CodeMirrorWrapper = ({
       }}
       onChange={(editor) => {
         onChange(editor.getValue());
-        const lineCount = editor.lineCount();
-        if (lineCount <= 1) {
-          editor.setOption('lineNumberFormatter', () => '$');
-        } else {
-          editor.setOption('lineNumberFormatter', (number) => number);
-        }
         return true;
       }}
     />
