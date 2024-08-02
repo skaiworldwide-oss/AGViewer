@@ -121,7 +121,10 @@ const Editor = ({
                 Editor
               </span>
             </div>
-            <div className="form-control col-11 editor-code-wrapper">
+            <div
+              className="form-control col-11 editor-code-wrapper"
+              style={{ height: '100px' }}
+            >
               <CodeMirror
                 onClick={onClick}
                 value={command}
