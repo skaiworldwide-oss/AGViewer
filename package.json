@@ -7,7 +7,7 @@
         "setup-front": "cd frontend && npm install",
         "setup-backend": "cd backend && npm install",
         "front": "cd frontend && npm run start",
-        "build-front": "cd frontend  && npm install && npm run build",
+        "build-front": "cd frontend && npm install && npm run build",
         "build-back": "cd backend && npm install && npm run build",
         "backend": "cd backend && npm run start",
         "deploy": "npm-run-all build-front build-back",
