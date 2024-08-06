@@ -1,5 +1,10 @@
+# Node modules
+node_modules/
 frontend/node_modules/
 backend/node_modules/
+
+# Build files
+frontend/build/
 backend/build/
-node_modules/
-package-lock.json
+
+backend/logs/
