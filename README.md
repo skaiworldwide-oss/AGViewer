@@ -63,16 +63,16 @@ pm2 delete ag-viewer-release
 
 **Standard Connection Settings**
 
-- Database type: AgensGraph
-- Connect URL:  127.0.0.1
-- Connect Port: 5432
+- Database type: `AgensGraph`
+- Connect URL  : `127.0.0.1`
+- Connect Port :  `5432`
 
 # Using the Docker image:
 
 - Pulling the image:
 
 ```bash
-docker pull markgomer/agensgraphviewer
+docker pull markgomer/agensgraphviewer:1.1.0
 ```
 
 - Run the container:
