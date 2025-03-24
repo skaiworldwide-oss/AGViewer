@@ -49,7 +49,7 @@ const SidebarAbout = ({ releaseDate, version, license }) => (
             label={(
               <span>
                 Leave your feedback at
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/bitnine-oss/AGViewer/issues"> Here!</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/skaiworldwide-oss/AGViewer/issues"> Here!</a>
                 {' '}
                 <br />
                 Your feedback help us provide you a better experience!
