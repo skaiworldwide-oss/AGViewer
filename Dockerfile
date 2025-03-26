@@ -1,20 +1,24 @@
-# Use a base node image
-FROM node:14-slim
-
-# Install global dependencies
-RUN npm install -g pm2
-
-# Set the working directory
+# Stage 1: Build
+FROM node:14-alpine AS builder
 WORKDIR /agviewer
 
-# Copy the rest of the application files
+# Install dependencies and build
+COPY package*.json ./
+RUN npm install --only=production
 COPY . .
-
-# Build the source
 RUN npm run deploy
 
-# Start the application with pm2
-CMD ["pm2-runtime", "start", "ecosystem.config.js", "--env", "release"]
+# Stage 2: Run (Final Minimal Image)
+FROM node:14-alpine
+WORKDIR /agviewer
 
-# Expose the necessary port (assuming 3000, adjust if needed)
+# Add non-root user
+RUN adduser -D appuser
+
+# Copy only required files from builder stage
+COPY --chown=appuser:appuser --from=builder /agviewer .
+USER appuser
+
+# Expose port and run app
 EXPOSE 3000
+CMD ["npx", "pm2-runtime", "start", "ecosystem.config.js", "--env", "release"]
