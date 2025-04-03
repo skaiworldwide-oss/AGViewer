@@ -16,7 +16,6 @@
     "ajv-keywords": "^5.1.0",
     "antd": "^4.12.3",
     "ascii-table": "0.0.9",
-    "axios": "^1.7.3",
     "bootstrap": "^4.6.0",
     "codemirror": "^5.59.0",
     "cytoscape": "3.18.0",
