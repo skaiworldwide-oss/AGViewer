@@ -1,6 +1,6 @@
 {
     "name": "ag-viewer-backend",
-    "version": "0.4.0",
+    "version": "1.1.1",
     "private": true,
     "scripts": {
         "test": "mocha -r @babel/register --exit --timeout 100000",
