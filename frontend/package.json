@@ -43,7 +43,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.77.8",
-    "serve": "^14.2.3"
+    "serve": "^14.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
