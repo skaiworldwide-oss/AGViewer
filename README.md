@@ -72,13 +72,13 @@ pm2 delete ag-viewer-release
 - Pulling the image:
 
 ```bash
-docker pull markgomer/agensgraphviewer:1.1.0
+docker pull skaiworldwide/agviewer
 ```
 
 - Run the container:
 
 ```bash
-docker run --name agviewer -p 3000:3000 -d markgomer/agensgraphviewer:1.1.0
+docker run --name agviewer -p 3000:3000 -d skaiworldwide/agviewer
 ```
 
 Then open the URL 127.0.0.1:3000 on your browser.
