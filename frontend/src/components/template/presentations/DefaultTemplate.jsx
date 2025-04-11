@@ -135,7 +135,7 @@ const DefaultTemplate = ({
             padding: '5px 5px',
           }}
         >
-          Copyright © 2024, Bitnine Inc. All Rights Reserved.
+          Copyright © 2025 SKAI Worldwide Co., Ltd. All Rights Reserved.
           <br />
           <a
             href="https://www.skaiworldwide.com/en-US/resources?filterKey=manual"

@@ -9,13 +9,13 @@ const SidebarAbout = ({ releaseDate, version, license }) => (
     </div>
     <div className="sidebar sidebar-body">
       <div className="form-group">
-        <b>Made by Bitnine</b>
+        <b>Made by SKAI Worldwide</b>
         <ColoredLine />
         <SubLabelLeft
           label={(
             <span>
               Visit us at
-              <a target="_blank" rel="noopener noreferrer" href="http://bitnine.net"> Bitnine!</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.skaiworldwide.com"> SKAI Worldwide!</a>
             </span>
 )}
           classes="py-1"
