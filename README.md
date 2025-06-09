@@ -1,10 +1,40 @@
-# AgViewer
- 
-Web-based user interface that provides visualization of graph data stored in an AgensGraph database. 
+AGViewer
+========
+
+Web-based user interface that provides visualization of graph data stored in an AgensGraph database. It can render complex nodes, relationships, and properties in a clear and dynamic way. AGViewer helps developers, data analysts, and researchers gain deeper insights into graph data.
+
+## Features
+- **Web-Based Interface:** Accessible through any web browser.
+- **Graph Visualization:** Provides interactive visualization tools for graph data.
+- **User-Friendly:** Intuitive interface designed for ease of use.
+- **Real-Time Interaction:** Allows for real-time data updates and interaction with graph data.
+
 
 This is a sub-project of [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph)
 
-# Recommended Node Version & install module
+# AGViewer via Docker image
+
+- Pulling the image:
+
+```bash
+docker pull skaiworldwide/agviewer
+```
+
+- Run the container:
+
+```bash
+docker run --name agviewer -p 3000:3000 -d skaiworldwide/agviewer
+```
+
+Then open the URL [127.0.0.1:3000](http://127.0.0.1:3000) on your browser.
+
+> Tip: if your AgensGraph server is running on your host machine or difference container, the URL to connect to it should be "host.docker.internal".
+
+> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode.
+
+# AGViewer vai Source Code
+
+### Recommended Node Version & install module
 
 - Node version - 14.16.0
 - Node Module - pm2 
@@ -15,34 +45,19 @@ Install latest **pm2** with :
 npm i pm2
 ```
 
-> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode.
-
-# Installing AgViewer
-
+###  Get the source code
 Extract the release .zip or .tar.gz package into your desired directory.
 
 From the commandline, navigate to the directory agv-package.
 
-- Install the required node modules using:  
+### Install dependencies
+- Install the required node modules using following command:  
 
 ```bash
 npm run setup
 ```
 
-
-# How to start using AgViewer
-
-AgViewer is a graphical user interface for AgensGraph, so it needs an AgensGraph server running on the background. 
-
-Tipically, this is done with the command 
-
-```
-ag_ctl start [-D /path/created/by/initdb]
-```
-
-For the other settings or usage instructions, please follow [AgensGraph's documentation](https://www.skaiworldwide.com/en-US/resources?filterKey=manual).
-
-# Running AgViewer
+### Start/Stop AGViewer
 
 - Run AgViewer in production environment using : 
 
@@ -67,32 +82,16 @@ pm2 delete ag-viewer-release
 - Connect URL  : `127.0.0.1`
 - Connect Port :  `5432`
 
-# Using the Docker image:
+See [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph) ReadMe file or Manual to setup AgensGraph
 
-- Pulling the image:
-
-```bash
-docker pull skaiworldwide/agviewer
-```
-
-- Run the container:
-
-```bash
-docker run --name agviewer -p 3000:3000 -d skaiworldwide/agviewer
-```
-
-Then open the URL 127.0.0.1:3000 on your browser.
-
-> Tip: if your AgensGraph server is running on your host machine, the URL to connect to it should be "host.docker.internal".
-
-# For developers:
+## For developers:
 
 Fork this repository, then clone your fork
 
 ```bash
-## install node modules
+# install node modules
 npm run setup
-## start the development environment
+# start the development environment
 npm run start
 ```
 
