@@ -47,7 +47,7 @@
         "babel-plugin-polyfill-corejs2": "^0.2.0",
         "babel-plugin-polyfill-corejs3": "^0.2.0",
         "babel-plugin-polyfill-regenerator": "^0.2.0",
-        "mocha": "^8.2.1",
+        "mocha": "^11.1.0",
         "nodemon": "^2.0.7",
         "supertest": "^6.0.1",
         "supertest-session": "^4.1.0"
