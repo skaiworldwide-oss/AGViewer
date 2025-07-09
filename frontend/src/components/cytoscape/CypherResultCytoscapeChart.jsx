@@ -148,6 +148,32 @@ const CypherResultCytoscapeCharts = ({
     rerenderTargets.removeClass('new');
   };
 
+  // Define the zoom functions at the top of the component or in a utilities file
+  const handleZoomIn = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      cytoscapeObject.zoom({
+        level: currentZoom + 0.1,
+        renderedPosition: {
+          x: cytoscapeObject.width() / 2,
+          y: cytoscapeObject.height() / 2,
+        },
+      });
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      cytoscapeObject.zoom({
+        level: currentZoom - 0.1,
+        renderedPosition: {
+          x: cytoscapeObject.width() / 2,
+          y: cytoscapeObject.height() / 2,
+        },
+      });
+    }
+  };
   useEffect(() => {
     if (cytoscapeMenu === null && cytoscapeObject !== null) {
       const cxtMenuConf = {
@@ -263,6 +289,14 @@ const CypherResultCytoscapeCharts = ({
           </Button>
         </Modal.Footer>
       </Modal>
+      <div className={styles.zoomControls}>
+        <Button className={styles.zoomButton} onClick={handleZoomIn}>
+          +
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleZoomOut}>
+          -
+        </Button>
+      </div>
     </div>
   );
 };

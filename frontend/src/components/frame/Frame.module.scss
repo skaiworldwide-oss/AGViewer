@@ -114,3 +114,21 @@
 .FullScreen .FlexContentWrapper {
   height: 100% !important;
 }
+.zoomControls {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zoomButton {
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20%;
+  padding: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
