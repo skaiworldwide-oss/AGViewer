@@ -13,7 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap styles are imported
@@ -262,13 +267,20 @@ const CypherResultCytoscapeCharts = ({
       }
     }
   }, [cytoscapeObject, cytoscapeLayout]);
-
-  const cyCallback = useCallback((newCytoscapeObject) => {
-    if (cytoscapeObject) return;
-    setCytoscapeObject(newCytoscapeObject);
-  },
-  [cytoscapeObject]);
-
+  const cyRef = useRef(null);
+  const cyCallback = useCallback((cy) => {
+    if (!cyRef.current) {
+      cyRef.current = cy;
+    }
+    if (!cytoscapeObject) {
+      setCytoscapeObject(cy);
+    }
+  }, [cytoscapeObject]);
+  const handleFitView = () => {
+    if (cyRef.current) {
+      cyRef.current.fit(undefined, 50);
+    }
+  };
   return (
     <div>
       <CytoscapeComponent
@@ -290,6 +302,9 @@ const CypherResultCytoscapeCharts = ({
         </Modal.Footer>
       </Modal>
       <div className={styles.zoomControls}>
+        <Button className={styles.zoomButton} onClick={handleFitView}>
+          🎯
+        </Button>
         <Button className={styles.zoomButton} onClick={handleZoomIn}>
           +
         </Button>
