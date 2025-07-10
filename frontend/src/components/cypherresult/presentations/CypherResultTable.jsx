@@ -71,12 +71,11 @@ const CypherResultTable = ({ data, ...props }) => {
   } if (data.command === null) {
     return <div style={{ margin: '25px' }}><span style={{ whiteSpace: 'pre-line' }}>Query not entered!</span></div>;
   }
-
   const { refKey } = props;
   return (
     <div className="legend-area">
       <div className="container-frame-tab">
-        <div style={{ width: '80%', color: '#C4C4C4' }}>
+        <div style={{ width: '80%', color: 'var(--cypher-table-text-color)' }}>
           <div className="d-flex nodeLegend">Node:</div>
           <div className="d-flex edgeLegend">Edge:</div>
         </div>

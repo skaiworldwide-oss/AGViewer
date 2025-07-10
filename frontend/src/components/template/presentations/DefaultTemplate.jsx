@@ -133,6 +133,8 @@ const DefaultTemplate = ({
             bottom: 0,
             width: 'calc(100% - 33vw)',
             padding: '5px 5px',
+            color: 'var(--primary-color)',
+            backgroundColor: 'var(--footer-bg-color)',
           }}
         >
           Copyright © 2025 SKAI Worldwide Co., Ltd. All Rights Reserved.
