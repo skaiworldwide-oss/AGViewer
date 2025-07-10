@@ -153,30 +153,39 @@ const CypherResultCytoscapeCharts = ({
     rerenderTargets.removeClass('new');
   };
 
-  // Define the zoom functions at the top of the component or in a utilities file
   const handleZoomIn = () => {
     if (cytoscapeObject) {
       const currentZoom = cytoscapeObject.zoom();
-      cytoscapeObject.zoom({
-        level: currentZoom + 0.1,
-        renderedPosition: {
-          x: cytoscapeObject.width() / 2,
-          y: cytoscapeObject.height() / 2,
+      const newZoom = currentZoom * 1.3;
+
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
         },
-      });
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
     }
   };
 
   const handleZoomOut = () => {
     if (cytoscapeObject) {
       const currentZoom = cytoscapeObject.zoom();
-      cytoscapeObject.zoom({
-        level: currentZoom - 0.1,
-        renderedPosition: {
-          x: cytoscapeObject.width() / 2,
-          y: cytoscapeObject.height() / 2,
+      const newZoom = currentZoom * 0.7;
+
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
         },
-      });
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
     }
   };
   useEffect(() => {
