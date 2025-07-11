@@ -95,6 +95,7 @@ const CypherResultCytoscapeFooter = ({
           >
             <FontAwesomeIcon
               icon={footerExpanded ? faAngleUp : faAngleDown}
+              style={{ color: 'gray' }}
             />
           </button>
           Layout :&nbsp;
