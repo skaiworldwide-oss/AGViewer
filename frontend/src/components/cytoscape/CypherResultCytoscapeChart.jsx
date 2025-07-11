@@ -38,6 +38,7 @@ import {
   faLockOpen,
   faProjectDiagram,
   faWindowClose,
+  faDownload,
 } from '@fortawesome/free-solid-svg-icons';
 import cxtmenu from '../../lib/cytoscape-cxtmenu-bitnine';
 import { initLocation, seletableLayouts } from './CytoscapeLayouts';
@@ -153,41 +154,6 @@ const CypherResultCytoscapeCharts = ({
     rerenderTargets.removeClass('new');
   };
 
-  const handleZoomIn = () => {
-    if (cytoscapeObject) {
-      const currentZoom = cytoscapeObject.zoom();
-      const newZoom = currentZoom * 1.3;
-
-      cytoscapeObject.animate(
-        {
-          zoom: newZoom,
-          center: { eles: cytoscapeObject.elements() },
-        },
-        {
-          duration: 100,
-          easing: 'ease-in-out',
-        },
-      );
-    }
-  };
-
-  const handleZoomOut = () => {
-    if (cytoscapeObject) {
-      const currentZoom = cytoscapeObject.zoom();
-      const newZoom = currentZoom * 0.7;
-
-      cytoscapeObject.animate(
-        {
-          zoom: newZoom,
-          center: { eles: cytoscapeObject.elements() },
-        },
-        {
-          duration: 100,
-          easing: 'ease-in-out',
-        },
-      );
-    }
-  };
   useEffect(() => {
     if (cytoscapeMenu === null && cytoscapeObject !== null) {
       const cxtMenuConf = {
@@ -286,11 +252,28 @@ const CypherResultCytoscapeCharts = ({
       setCytoscapeObject(cy);
     }
   }, [cytoscapeObject]);
-  const handleFitView = () => {
-    if (cyRef.current) {
-      cyRef.current.fit(undefined, 50);
+  const handleExportGraph = () => {
+    const cy = cyRef.current;
+    if (cy) {
+      cy.fit();
+      setTimeout(() => {
+        const pngData = cy.png({
+          fit: true,
+          bg: '#ffffff', // background color used in exported image
+          scale: 2,
+          output: { width: 1000, height: 1000 },
+        });
+
+        const link = document.createElement('a');
+        link.href = pngData;
+        link.download = 'graph-export.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 100);
     }
   };
+
   return (
     <div>
       <CytoscapeComponent
@@ -312,14 +295,8 @@ const CypherResultCytoscapeCharts = ({
         </Modal.Footer>
       </Modal>
       <div className={styles.zoomControls}>
-        <Button className={styles.zoomButton} onClick={handleFitView}>
-          ⛶
-        </Button>
-        <Button className={styles.zoomButton} onClick={handleZoomIn}>
-          +
-        </Button>
-        <Button className={styles.zoomButton} onClick={handleZoomOut}>
-          -
+        <Button className={styles.zoomButton} onClick={handleExportGraph}>
+          <FontAwesomeIcon icon={faDownload} />
         </Button>
       </div>
     </div>
