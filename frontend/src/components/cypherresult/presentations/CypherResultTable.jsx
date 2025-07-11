@@ -38,7 +38,7 @@ const CypherResultTable = ({ data, ...props }) => {
         title: key,
         dataIndex: isKey ? randKeyName : key,
         key: isKey ? randKeyName : key,
-        render: (text) => <>{JSON.stringify(text)}</>,
+        render: (text) => <>{JSON.stringify(text, null, ' ')}</>,
       });
     });
     setLocalColumns(columnsForFTable);

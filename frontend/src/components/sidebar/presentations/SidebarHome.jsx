@@ -258,7 +258,7 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find itens with properties:</b>
+        <b>Find items with properties:</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
