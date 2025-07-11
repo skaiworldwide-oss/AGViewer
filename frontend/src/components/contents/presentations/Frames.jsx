@@ -25,6 +25,7 @@ import CypherGraphResult from '../../frame/containers/CypherGraphResultContainer
 import CypherResult from '../../frame/containers/CypherResultContainers';
 import CSV from '../../csv';
 import { setting } from '../../../conf/config';
+import styles from './Frames.module.scss';
 
 const Frames = ({
   database,
@@ -137,7 +138,7 @@ const Frames = ({
   }, [frameList]);
 
   return (
-    <div className="container-fluid frame-area pt-3">
+    <div className={`container-fluid frame-area pt-3 ${styles.frameScroll}`}>
       {frames}
     </div>
   );
