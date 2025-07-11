@@ -29,12 +29,12 @@ import { addFrame, trimFrame } from '../../../features/frame/FrameSlice';
 import { getMetaChartData, getMetaData } from '../../../features/database/MetadataSlice';
 
 const FormInitialValue = {
-  database: '',
-  flavor: null,
+  database: 'postgres',
+  flavor: 'AGENS',
   graph: '',
-  host: '',
+  host: '127.0.0.1',
   password: '',
-  port: null,
+  port: 5432,
   user: '',
 };
 
@@ -81,19 +81,18 @@ const ServerConnectFrame = ({
               layout="vertical"
               onFinish={(values) => connectToDatabase(values)}
             >
-              <Form.Item name="flavor" label="Database Type" rules={[{ required: true }]}>
+              <Form.Item name="flavor" label="Data Source Type" rules={[{ required: true }]}>
                 <Select
                   placeholder="Select a flavor of Database"
-                  allowClear
                 >
-                  <Select.Option value="AGE">Apache AGE</Select.Option>
                   <Select.Option value="AGENS">AgensGraph</Select.Option>
+                  <Select.Option value="AGE">Apache AGE</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item name="host" label="Connect URL" rules={[{ required: true }]}>
+              <Form.Item name="host" label="Connection URL" rules={[{ required: true }]}>
                 <Input placeholder="192.168.0.1" />
               </Form.Item>
-              <Form.Item name="port" label="Connect Port" rules={[{ required: true }]}>
+              <Form.Item name="port" label="Connection Port" rules={[{ required: true }]}>
                 <InputNumber placeholder="5432" className={styles.FullWidth} />
               </Form.Item>
               <Form.Item name="database" label="Database Name" rules={[{ required: true }]}>
@@ -105,7 +104,7 @@ const ServerConnectFrame = ({
               <Form.Item name="user" label="User Name" rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+              <Form.Item name="password" label="Password">
                 <Input.Password placeholder="postgres" />
               </Form.Item>
               <Form.Item>

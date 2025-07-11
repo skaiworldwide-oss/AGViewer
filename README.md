@@ -78,9 +78,9 @@ pm2 delete ag-viewer-release
 
 **Standard Connection Settings**
 
-- Database type: `AgensGraph`
-- Connect URL  : `127.0.0.1`
-- Connect Port :  `5432`
+- Data Source Type: `AgensGraph`
+- Connection URL  : `127.0.0.1`
+- Connection Port :  `5432`
 
 See [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph) ReadMe file or Manual to setup AgensGraph
 
