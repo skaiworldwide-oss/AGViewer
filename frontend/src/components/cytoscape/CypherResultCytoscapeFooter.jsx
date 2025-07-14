@@ -28,6 +28,7 @@ import {
   updateLabelColor,
   updateNodeLabelSize,
 } from '../../features/cypher/CypherUtil';
+import CytoscapeLayoutDropdown from './CytoscapeLayoutDropdown';
 
 const CypherResultCytoscapeFooter = ({
   footerData,
@@ -100,29 +101,13 @@ const CypherResultCytoscapeFooter = ({
               style={{ color: 'gray' }}
             />
           </button>
-          <span>
-            {t('footer.layout')}
-            :&nbsp;
-          </span>
-          <select
+          Layout :&nbsp;
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-2 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">{t('footer.layouts.random')}</option>
-            <option value="grid">{t('footer.layouts.grid')}</option>
-            <option value="breadthFirst">{t('footer.layouts.breadthFirst')}</option>
-            <option value="concentric">{t('footer.layouts.concentric')}</option>
-            <option value="cola">{t('footer.layouts.cola')}</option>
-            <option value="cose">{t('footer.layouts.cose')}</option>
-            <option value="coseBilkent">{t('footer.layouts.coseBilkent')}</option>
-            <option value="dagre">{t('footer.layouts.dagre')}</option>
-            <option value="klay">{t('footer.layouts.klay')}</option>
-            <option value="euler">{t('footer.layouts.euler')}</option>
-            <option value="avsdf">{t('footer.layouts.avsdf')}</option>
-            <option value="spread">{t('footer.layouts.spread')}</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
@@ -140,27 +125,13 @@ const CypherResultCytoscapeFooter = ({
             {' '}
             {t('footer.edges')}
           </div>
-          {t('footer.layout')}
-          :&nbsp;
-          <select
+          Layout :&nbsp;
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-2 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">{t('footer.layouts.random')}</option>
-            <option value="grid">{t('footer.layouts.grid')}</option>
-            <option value="breadthFirst">{t('footer.layouts.breadthFirst')}</option>
-            <option value="concentric">{t('footer.layouts.concentric')}</option>
-            <option value="cola">{t('footer.layouts.cola')}</option>
-            <option value="cose">{t('footer.layouts.cose')}</option>
-            <option value="coseBilkent">{t('footer.layouts.coseBilkent')}</option>
-            <option value="dagre">{t('footer.layouts.dagre')}</option>
-            <option value="klay">{t('footer.layouts.klay')}</option>
-            <option value="euler">{t('footer.layouts.euler')}</option>
-            <option value="avsdf">{t('footer.layouts.avsdf')}</option>
-            <option value="spread">{t('footer.layouts.spread')}</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
@@ -310,53 +281,26 @@ const CypherResultCytoscapeFooter = ({
               icon={footerExpanded ? faAngleUp : faAngleDown}
             />
           </button>
-          {t('footer.layout')}
-          :&nbsp;
-          <select
+          Layout :&nbsp;
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-2 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">{t('footer.layouts.random')}</option>
-            <option value="grid">{t('footer.layouts.grid')}</option>
-            <option value="breadthFirst">{t('footer.layouts.breadthFirst')}</option>
-            <option value="concentric">{t('footer.layouts.concentric')}</option>
-            <option value="cola">{t('footer.layouts.cola')}</option>
-            <option value="cose">{t('footer.layouts.cose')}</option>
-            <option value="coseBilkent">{t('footer.layouts.coseBilkent')}</option>
-            <option value="dagre">{t('footer.layouts.dagre')}</option>
-            <option value="klay">{t('footer.layouts.klay')}</option>
-            <option value="euler">{t('footer.layouts.euler')}</option>
-            <option value="avsdf">{t('footer.layouts.avsdf')}</option>
-            <option value="spread">{t('footer.layouts.spread')}</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
     return (
       <div className="d-flex pl-3">
         <div className="mr-auto label pl-3" />
-        <div className="px-1">{t('footer.layout')}</div>
-        <select
+        <div className="px-1">Layout : </div>
+        <CytoscapeLayoutDropdown
+          selectedLayout={cytoscapeLayout}
+          onChange={setCytoscapeLayout}
           id="selectLayout"
-          className="col-2 custom-select custom-select-sm layout-select"
-          defaultValue={cytoscapeLayout}
-          onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-        >
-          <option value="random">{t('footer.layouts.random')}</option>
-          <option value="grid">{t('footer.layouts.grid')}</option>
-          <option value="breadthFirst">{t('footer.layouts.breadthFirst')}</option>
-          <option value="concentric">{t('footer.layouts.concentric')}</option>
-          <option value="cola">{t('footer.layouts.cola')}</option>
-          <option value="cose">{t('footer.layouts.cose')}</option>
-          <option value="coseBilkent">{t('footer.layouts.coseBilkent')}</option>
-          <option value="dagre">{t('footer.layouts.dagre')}</option>
-          <option value="klay">{t('footer.layouts.klay')}</option>
-          <option value="euler">{t('footer.layouts.euler')}</option>
-          <option value="avsdf">{t('footer.layouts.avsdf')}</option>
-          <option value="spread">{t('footer.layouts.spread')}</option>
-        </select>
+          className="col-2"
+        />
       </div>
     );
   };
