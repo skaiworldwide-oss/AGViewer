@@ -312,7 +312,7 @@ const CypherResultCytoscapeCharts = ({
       </Modal>
       <div className={styles.zoomControls}>
         <Button className={styles.zoomButton} onClick={handleFitView}>
-          🎯
+          ⛶
         </Button>
         <Button className={styles.zoomButton} onClick={handleZoomIn}>
           +
