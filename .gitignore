@@ -8,3 +8,7 @@ frontend/build/
 backend/build/
 
 backend/logs/
+
+app/resources/backend/build/*
+
+app/resources/frontend/build/*
