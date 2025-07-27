@@ -18,6 +18,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
+import { withTranslation } from 'react-i18next';
 
 class CypherResultTab extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class CypherResultTab extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const activeTab = (refKey, tabType) => {
       if (tabType === 'graph') {
         document.getElementById(`${refKey}-${tabType}`).classList.add('selected-frame-tab');
@@ -54,7 +56,7 @@ class CypherResultTab extends Component {
         >
           <i className="icon-graph" style={{ fontSize: '25px' }} />
           <br />
-          <b style={{ fontSize: '14px;' }}>Graph</b>
+          <b style={{ fontSize: '14px' }}>{t('tabs.graph')}</b>
         </button>
         <div
           style={{
@@ -72,7 +74,7 @@ class CypherResultTab extends Component {
         >
           <FontAwesomeIcon icon={faTable} style={{ fontSize: '25px' }} />
           <br />
-          <b style={{ fontSize: '14px;' }}>Table</b>
+          <b style={{ fontSize: '14px' }}>{t('tabs.table')}</b>
         </button>
       </div>
     );
@@ -82,6 +84,7 @@ class CypherResultTab extends Component {
 CypherResultTab.propTypes = {
   refKey: PropTypes.string.isRequired,
   currentTab: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default CypherResultTab;
+export default withTranslation('cytoscape')(CypherResultTab);

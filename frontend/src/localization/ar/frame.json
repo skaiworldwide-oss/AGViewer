@@ -1,0 +1,12 @@
+{
+  "frame": {
+    "edgeWeight": "وزن الحافة",
+    "cancelSearch": "إلغاء البحث",
+    "filterSearch": "تصفية/بحث",
+    "expand": "توسيع",
+    "refresh": "تحديث",
+    "hide": "إخفاء",
+    "show": "عرض",
+    "closeWindow": "إغلاق النافذة"
+  }
+}

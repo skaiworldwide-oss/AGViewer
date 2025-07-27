@@ -1,0 +1,18 @@
+{
+  "applyEdgeWeight": {
+    "title": "Aplicar peso de la arista",
+    "selectEdge": "Seleccionar arista",
+    "selectProperty": "Seleccionar propiedad",
+    "minValue": "Valor mínimo",
+    "maxValue": "Valor máximo",
+    "reset": "Restablecer",
+    "apply": "Aplicar"
+  },
+  "filterModal": {
+    "title": "Filtrar en el gráfico",
+    "selectPlaceholder": "Seleccionar",
+    "error": {
+      "emptyProperty": "No se puede dejar la propiedad vacía."
+    }
+  }
+}

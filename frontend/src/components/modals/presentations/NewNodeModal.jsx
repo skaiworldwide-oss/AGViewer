@@ -6,6 +6,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import {
   Button, Form, Input, Modal, Space,
 } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 function genNewNodeQuery(jsonInput) {
   const nodeLabel = jsonInput['Node label'];
@@ -42,15 +43,15 @@ function onCreate(values, setOpen, setCommand) {
 export const NewNodeModal = ({ open, setOpen, setCommand }) => {
   const [form] = Form.useForm();
   const [formValues] = useState();
-
+  const { t } = useTranslation('modals');
   return (
     <>
       <pre>{JSON.stringify(formValues, null, 2)}</pre>
       <Modal
         open={open}
-        title="Create a new node"
-        okText="Submit query"
-        cancelText="Cancel"
+        title={t('newNodeModal.title')}
+        okText={t('newNodeModal.okText')}
+        cancelText={t('newNodeModal.cancelText')}
         okButtonProps={{
           autoFocus: true,
           htmlType: 'submit',
@@ -77,11 +78,11 @@ export const NewNodeModal = ({ open, setOpen, setCommand }) => {
           rules={[
             {
               required: true,
-              message: 'Missing node label',
+              message: t('newNodeModal.validation.missingNodeLabel'),
             },
           ]}
         >
-          <Input placeholder="Node label" />
+          <Input placeholder={t('newNodeModal.fields.nodeLabel')} />
         </Form.Item>
 
         <Form.List name="Node properties">
@@ -102,11 +103,11 @@ export const NewNodeModal = ({ open, setOpen, setCommand }) => {
                     rules={[
                       {
                         required: true,
-                        message: 'Missing property key',
+                        message: t('newNodeModal.validation.missingPropertyKey'),
                       },
                     ]}
                   >
-                    <Input placeholder="Property key" />
+                    <Input placeholder={t('newNodeModal.fields.propertyKey')} />
                   </Form.Item>
 
                   <Form.Item
@@ -115,11 +116,11 @@ export const NewNodeModal = ({ open, setOpen, setCommand }) => {
                     rules={[
                       {
                         required: true,
-                        message: 'Missing property value',
+                        message: t('newNodeModal.validation.missingPropertyValue'),
                       },
                     ]}
                   >
-                    <Input placeholder="Property value" />
+                    <Input placeholder={t('newNodeModal.fields.propertyValue')} />
                   </Form.Item>
 
                   <MinusCircleOutlined onClick={() => remove(name)} />
@@ -133,7 +134,7 @@ export const NewNodeModal = ({ open, setOpen, setCommand }) => {
                   block
                   icon={<PlusOutlined />}
                 >
-                  Add field
+                  {t('newNodeModal.fields.addField')}
                 </Button>
               </Form.Item>
 

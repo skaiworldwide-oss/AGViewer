@@ -1,0 +1,44 @@
+{
+  "footer": {
+    "expandFooter": "Expand Footer",
+    "layout": "Layout",
+    "displaying": "Displaying",
+    "nodes": "nodes",
+    "edges": "edges",
+    "color": "Color : ",
+    "size": "Size : ",
+    "caption": "Caption : ",
+    "layouts": {
+      "random": "Random",
+      "grid": "Grid",
+      "breadthFirst": "Breadth-First",
+      "concentric": "Concentric",
+      "cola": "Cola",
+      "cose": "Cose",
+      "coseBilkent": "Cose-Bilkent",
+      "dagre": "Dagre",
+      "klay": "Klay",
+      "euler": "Euler",
+      "avsdf": "Avsdf",
+      "spread": "Spread"
+    },
+    "aria": {
+      "nodeSizeSelector": "Size selector for node labels",
+      "edgeSizeSelector": "Change edge size",
+      "changeNodeLabelColor": "Change node label color",
+      "changeEdgeLabelColor": "Change edge label color"
+    }
+  },
+  "legend": {
+  "node": "Node:",
+  "edge": "Edge:",
+  "aria": {
+    "expandNodeLegend": "Expand node legend",
+    "expandEdgeLegend": "Expand edge legend"  
+  } 
+  },
+    "tabs": {
+    "graph": "Graph",
+    "table": "Table"
+  }
+}

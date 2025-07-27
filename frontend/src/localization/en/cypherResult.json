@@ -1,0 +1,18 @@
+{
+  "applyEdgeWeight": {
+    "title": "Apply Edge Weight",
+    "selectEdge": "Select Edge",
+    "selectProperty": "Select Property",
+    "minValue": "Min Value",
+    "maxValue": "Max Value",
+    "reset": "Reset",
+    "apply": "Apply"
+  },
+  "filterModal": {
+    "title": "Filter on Graph",
+    "selectPlaceholder": "Select",
+    "error": {
+      "emptyProperty": "Cannot leave with empty property."
+    }
+  }
+}

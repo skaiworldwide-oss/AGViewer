@@ -5,6 +5,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import {
   Button, Form, Input, Modal, Space,
 } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 function createCypherQuery(jsonInput) {
   const edgeLabel = jsonInput['Edge label'];
@@ -37,15 +38,16 @@ export const NewEdgeModal = (
 ) => {
   const [form] = Form.useForm();
   const [formValues] = useState();
+  const { t } = useTranslation('modals');
 
   return (
     <>
       <pre>{JSON.stringify(formValues, null, 2)}</pre>
       <Modal
         open={open}
-        title="Create a new edge"
-        okText="Submit query"
-        cancelText="Cancel"
+        title={t('newEdgeModal.title')}
+        okText={t('newEdgeModal.okText')}
+        cancelText={t('newEdgeModal.cancelText')}
         okButtonProps={{
           autoFocus: true,
           htmlType: 'submit',
@@ -70,11 +72,11 @@ export const NewEdgeModal = (
           rules={[
             {
               required: true,
-              message: 'Missing edge label',
+              message: t('newEdgeModal.validation.missingEdgeLabel'),
             },
           ]}
         >
-          <Input placeholder="Edge label" />
+          <Input plplaceholder={t('newEdgeModal.fields.edgeLabel')} />
         </Form.Item>
 
         <Space>
@@ -83,11 +85,11 @@ export const NewEdgeModal = (
             rules={[
               {
                 required: true,
-                message: 'Missing origin node ID',
+                message: t('newEdgeModal.validation.missingOriginId'),
               },
             ]}
           >
-            <Input placeholder="Origin node ID" />
+            <Input placeholder={t('newEdgeModal.fields.originId')} />
           </Form.Item>
 
           <Form.Item
@@ -95,11 +97,11 @@ export const NewEdgeModal = (
             rules={[
               {
                 required: true,
-                message: 'Missing destination node ID',
+                message: t('newEdgeModal.validation.missingTargetId'),
               },
             ]}
           >
-            <Input placeholder="Destination node ID" />
+            <Input placeholder={t('newEdgeModal.fields.targetId')} />
           </Form.Item>
         </Space>
 
@@ -121,11 +123,11 @@ export const NewEdgeModal = (
                     rules={[
                       {
                         required: true,
-                        message: 'Missing property key',
+                        message: t('newEdgeModal.validation.missingPropertyKey'),
                       },
                     ]}
                   >
-                    <Input placeholder="Property key" />
+                    <Input placeholder={t('newEdgeModal.fields.propertyKey')} />
                   </Form.Item>
 
                   <Form.Item
@@ -134,11 +136,11 @@ export const NewEdgeModal = (
                     rules={[
                       {
                         required: true,
-                        message: 'Missing property value',
+                        message: t('newEdgeModal.validation.missingPropertyValue'),
                       },
                     ]}
                   >
-                    <Input placeholder="Property value" />
+                    <Input placeholder={t('newEdgeModal.fields.propertyValue')} />
                   </Form.Item>
 
                   <MinusCircleOutlined onClick={() => remove(name)} />
@@ -152,7 +154,7 @@ export const NewEdgeModal = (
                   block
                   icon={<PlusOutlined />}
                 >
-                  Add field
+                  {t('newEdgeModal.fields.addField')}
                 </Button>
               </Form.Item>
 

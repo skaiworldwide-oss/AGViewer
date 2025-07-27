@@ -1,0 +1,39 @@
+{
+  "newEdgeModal": {
+    "title": "Create a new edge",
+    "okText": "Submit query",
+    "cancelText": "Cancel",
+    "fields": {
+      "edgeLabel": "Edge label",
+      "originId": "Origin node ID",
+      "targetId": "Destination node ID",
+      "propertyKey": "Property key",
+      "propertyValue": "Property value",
+      "addField": "Add field"
+    },
+    "validation": {
+      "missingEdgeLabel": "Missing edge label",
+      "missingOriginId": "Missing origin node ID",
+      "missingTargetId": "Missing destination node ID",
+      "missingPropertyKey": "Missing property key",
+      "missingPropertyValue": "Missing property value"
+    }
+  },
+  "newNodeModal": {
+    "title": "Create a new node",
+    "okText": "Submit query",
+    "cancelText": "Cancel",
+    "fields": {
+      "nodeLabel": "Node label",
+      "propertyKey": "Property key",
+      "propertyValue": "Property value",
+      "addField": "Add field"
+    },
+    "validation": {
+      "missingNodeLabel": "Missing node label",
+      "missingPropertyKey": "Missing property key",
+      "missingPropertyValue": "Missing property value"
+    }
+  }
+}
+

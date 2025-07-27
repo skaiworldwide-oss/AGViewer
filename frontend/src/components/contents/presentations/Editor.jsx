@@ -18,6 +18,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+
 import AlertContainers from '../../alert/containers/AlertContainers';
 import CodeMirror from '../../editor/containers/CodeMirrorWapperContainer';
 import { setting } from '../../../conf/config';
@@ -101,7 +103,7 @@ const Editor = ({
       )),
     );
   }, [alertList]);
-
+  const { t } = useTranslation();
   return (
     <div className="container-fluid" style={{ padding: 0 }}>
       <div className="editor">
@@ -116,9 +118,7 @@ const Editor = ({
             }}
             >
               <span>
-                Query
-                <br />
-                Editor
+                {t('queryEditor.label')}
               </span>
             </div>
             <div
@@ -132,15 +132,15 @@ const Editor = ({
               />
             </div>
             <div className="input-group-append ml-auto editor-button-wrapper" id="editor-buttons">
-              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" aria-label="Clear" onClick={() => clearCommand()}>
+              <button className={command ? 'btn show-eraser' : 'btn hide-eraser'} type="button" id="eraser" aria-label={t('queryEditor.clear')} onClick={() => clearCommand()}>
                 <i className="icon-eraser" />
               </button>
               <button
                 className="frame-head-button btn btn-link"
                 type="button"
-                aria-label="Run Query"
+                aria-label={t('queryEditor.run')}
+                title={t('queryEditor.run')}
                 onClick={() => onClick()}
-                title="Run Query"
               >
                 <i className="icon-play" />
               </button>

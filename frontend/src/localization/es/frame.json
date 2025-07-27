@@ -1,0 +1,12 @@
+{
+  "frame": {
+    "edgeWeight": "Peso de la arista",
+    "cancelSearch": "Cancelar búsqueda",
+    "filterSearch": "Filtrar/Búsqueda",
+    "expand": "Expandir",
+    "refresh": "Actualizar",
+    "hide": "Ocultar",
+    "show": "Mostrar",
+    "closeWindow": "Cerrar ventana"
+  }
+}

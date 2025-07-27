@@ -1,0 +1,44 @@
+{
+  "footer": {
+    "expandFooter": "توسيع التذييل",
+    "layout": "التخطيط",
+    "displaying": "عرض",
+    "nodes": "العقد",
+    "edges": "الحواف",
+    "color": "اللون: ",
+    "size": "الحجم: ",
+    "caption": "التسمية: ",
+    "layouts": {
+      "random": "عشوائي",
+      "grid": "شبكة",
+      "breadthFirst": "عرض أولاً",
+      "concentric": "متمركز",
+      "cola": "كولا",
+      "cose": "كوز",
+      "coseBilkent": "كوز-بيلكنت",
+      "dagre": "داغر",
+      "klay": "كلاي",
+      "euler": "أويلر",
+      "avsdf": "أفسدف",
+      "spread": "انتشار"
+    },
+    "aria": {
+      "nodeSizeSelector": "محدد حجم تسميات العقد",
+      "edgeSizeSelector": "تغيير حجم الحافة",
+      "changeNodeLabelColor": "تغيير لون تسمية العقدة",
+      "changeEdgeLabelColor": "تغيير لون تسمية الحافة"
+    }
+  },
+  "legend": {
+    "node": "العقدة:",
+    "edge": "الحافة:",
+    "aria": {
+      "expandNodeLegend": "توسيع مفتاح العقدة",
+      "expandEdgeLegend": "توسيع مفتاح الحافة"
+    }
+  },
+  "tabs": {
+    "graph": "الرسم البياني",
+    "table": "الجدول"
+  }
+}

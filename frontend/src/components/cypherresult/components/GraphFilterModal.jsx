@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import uuid from 'react-uuid';
+import { useTranslation } from 'react-i18next';
 
 const generateNewFilterObject = () => ({
   key: uuid(),
@@ -25,6 +26,7 @@ const GraphFilterModal = ({
     generateNewFilterObject(),
   ]);
   const [filterElements, setFilterElements] = useState(null);
+  const { t } = useTranslation('cypherResult');
 
   useEffect(() => {
     if (visible === true) {
@@ -60,9 +62,8 @@ const GraphFilterModal = ({
         property: JSON.parse(filterItem.property),
       };
     });
-
     if (failed) {
-      message.error('cannot leave with empty property.');
+      message.error(t('filterModal.error.emptyProperty'));
       return;
     }
 
@@ -109,7 +110,9 @@ const GraphFilterModal = ({
             }}
             style={{ minWidth: 300 }}
           >
-            <Select.Option value={null} disabled>Select</Select.Option>
+            <Select.Option value={null} disabled>
+              {t('filterModal.selectPlaceholder')}
+            </Select.Option>
             {propertyElements}
           </Select>
           <div style={{ width: '1px' }} />
@@ -135,7 +138,7 @@ const GraphFilterModal = ({
     );
   }, [propertyElements, filterList]);
   return (
-    <Modal title="Filter on Graph" visible={visible} onOk={onOk} onCancel={() => setVisible(false)} width={800}>
+    <Modal title={t('filterModal.title')} visible={visible} onOk={onOk} onCancel={() => setVisible(false)} width={800}>
       {
         filterElements
       }

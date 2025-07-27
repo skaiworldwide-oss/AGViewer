@@ -20,6 +20,7 @@ import { Badge } from 'react-bootstrap';
 import uuid from 'react-uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { withTranslation } from 'react-i18next';
 
 class CypherResultCytoscapeLegend extends Component {
   constructor(props) {
@@ -159,7 +160,7 @@ class CypherResultCytoscapeLegend extends Component {
   render() {
     const nodeLedgend = [];
     const edgeLedgend = [];
-
+    const { t } = this.props;
     const {
       nodeBadges, edgeBadges, nodeLegendExpanded, edgeLegendExpanded,
     } = this.state;
@@ -171,13 +172,13 @@ class CypherResultCytoscapeLegend extends Component {
       <div className="legend-area" style={{ width: '80%' }}>
         <div className="d-flex nodeLegend">
           <div className={`mr-auto legends legend ${nodeLegendExpanded ? 'expandedLegend' : ''}`}>
-            <span>Node: </span>
+            <span>{t('legend.node')}</span>
             {nodeLedgend}
           </div>
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
-            aria-label="Expand node legend"
+            aria-label={t('legend.aria.expandNodeLegend')}
             onClick={() => this.setState({ nodeLegendExpanded: !nodeLegendExpanded })}
           >
             <FontAwesomeIcon
@@ -187,13 +188,13 @@ class CypherResultCytoscapeLegend extends Component {
         </div>
         <div className="d-flex edgeLegend">
           <div className={`mr-auto legends legend ${edgeLegendExpanded ? 'expandedLegend' : ''}`}>
-            <span>Edge: </span>
+            <span>{t('legend.edge')}</span>
             {edgeLedgend}
           </div>
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
-            aria-label="Expand edge legend"
+            aria-label={t('legend.aria.expandEdgeLegend')}
             onClick={() => this.setState({ edgeLegendExpanded: !edgeLegendExpanded })}
           >
             <FontAwesomeIcon
@@ -216,6 +217,7 @@ CypherResultCytoscapeLegend.propTypes = {
   }).isRequired,
   isReloading: PropTypes.bool.isRequired,
   onLabelClick: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default CypherResultCytoscapeLegend;
+export default withTranslation('cytoscape')(CypherResultCytoscapeLegend);

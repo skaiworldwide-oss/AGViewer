@@ -1,0 +1,38 @@
+{
+  "newEdgeModal": {
+    "title": "새 엣지 생성",
+    "okText": "쿼리 제출",
+    "cancelText": "취소",
+    "fields": {
+      "edgeLabel": "엣지 라벨",
+      "originId": "출발 노드 ID",
+      "targetId": "목적지 노드 ID",
+      "propertyKey": "속성 키",
+      "propertyValue": "속성 값",
+      "addField": "필드 추가"
+    },
+    "validation": {
+      "missingEdgeLabel": "엣지 라벨 누락",
+      "missingOriginId": "출발 노드 ID 누락",
+      "missingTargetId": "목적지 노드 ID 누락",
+      "missingPropertyKey": "속성 키 누락",
+      "missingPropertyValue": "속성 값 누락"
+    }
+  },
+  "newNodeModal": {
+    "title": "새 노드 생성",
+    "okText": "쿼리 제출",
+    "cancelText": "취소",
+    "fields": {
+      "nodeLabel": "노드 라벨",
+      "propertyKey": "속성 키",
+      "propertyValue": "속성 값",
+      "addField": "필드 추가"
+    },
+    "validation": {
+      "missingNodeLabel": "노드 라벨 누락",
+      "missingPropertyKey": "속성 키 누락",
+      "missingPropertyValue": "속성 값 누락"
+    }
+  }
+}

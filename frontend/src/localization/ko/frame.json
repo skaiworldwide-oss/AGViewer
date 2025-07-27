@@ -1,0 +1,12 @@
+{
+  "frame": {
+    "edgeWeight": "엣지 가중치",
+    "cancelSearch": "검색 취소",
+    "filterSearch": "필터/검색",
+    "expand": "확대",
+    "refresh": "새로 고침",
+    "hide": "숨기기",
+    "show": "보이기",
+    "closeWindow": "창 닫기"
+  }
+}

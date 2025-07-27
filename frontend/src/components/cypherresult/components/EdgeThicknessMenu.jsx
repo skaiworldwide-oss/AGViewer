@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Modal, Select, Input, Button,
 } from 'antd';
+import { useTranslation } from 'react-i18next';
 import style from './popover.module.scss';
 
 const EdgeThicknessSettingModal = ({
@@ -64,10 +65,10 @@ const EdgeThicknessSettingModal = ({
     setMinValue('');
     setMaxValue('');
   };
-
+  const { t } = useTranslation('cypherResult');
   return (
     <div style={{ width: '370px' }}>
-      <p className={style.title}>Apply Edge Weight</p>
+      <p className={style.title}>{t('applyEdgeWeight.title')}</p>
       <select
         className={`${standardEdge === '' ? style.default : style.select}`}
         defaultValue={null}
@@ -75,7 +76,7 @@ const EdgeThicknessSettingModal = ({
         onChange={(e) => setStdEdge(e.target.value)}
         style={{ width: '95%' }}
       >
-        <option className={`${style.option}`} value="">Select Edge</option>
+        <option className={`${style.option}`} value="">{t('applyEdgeWeight.selectEdge')}</option>
         {selectionEdge()}
       </select>
       <select
@@ -85,7 +86,7 @@ const EdgeThicknessSettingModal = ({
         onChange={(e) => setStdProperty(e.target.value)}
         style={{ width: '95%' }}
       >
-        <option className={`${style.option}`} value="">Select Property</option>
+        <option className={`${style.option}`} value="">{t('applyEdgeWeight.selectProperty')}</option>
         {selectionPropertie()}
       </select>
       <input
@@ -94,7 +95,7 @@ const EdgeThicknessSettingModal = ({
         onChange={(e) => {
           if (Number(e.target.value) || e.target.value === '' || e.target.value === '0') setMinValue(Number(e.target.value));
         }}
-        placeholder="Min Value"
+        placeholder={t('applyEdgeWeight.minValue')}
       />
       <input
         className={style.input}
@@ -102,11 +103,11 @@ const EdgeThicknessSettingModal = ({
         onChange={(e) => {
           if (Number(e.target.value) || e.target.value === '' || e.target.value === '0') setMaxValue(Number(e.target.value));
         }}
-        placeholder="Max Value"
+        placeholder={t('applyEdgeWeight.maxValue')}
       />
       <div className={style.buttons}>
-        <button className={style.btn} type="button" onClick={() => reset()}>Reset</button>
-        <button className={style.btn} type="button" onClick={() => apply()}>Apply</button>
+        <button className={style.btn} type="button" onClick={() => reset()}>{t('applyEdgeWeight.reset')}</button>
+        <button className={style.btn} type="button" onClick={() => apply()}>{t('applyEdgeWeight.apply')}</button>
       </div>
     </div>
   );
