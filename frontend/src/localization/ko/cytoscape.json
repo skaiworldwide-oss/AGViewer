@@ -1,0 +1,44 @@
+{
+  "footer": {
+    "expandFooter": "바닥글 확장",
+    "layout": "레이아웃",
+    "displaying": "표시 중",
+    "nodes": "노드",
+    "edges": "엣지",
+    "color": "색상 : ",
+    "size": "크기 : ",
+    "caption": "캡션 : ",
+    "layouts": {
+      "random": "랜덤",
+      "grid": "그리드",
+      "breadthFirst": "너비 우선",
+      "concentric": "동심원",
+      "cola": "콜라",
+      "cose": "코스",
+      "coseBilkent": "코스-빌켄트",
+      "dagre": "대그레",
+      "klay": "클레이",
+      "euler": "오일러",
+      "avsdf": "AVSDF",
+      "spread": "스프레드"
+    },
+    "aria": {
+      "nodeSizeSelector": "노드 라벨 크기 선택기",
+      "edgeSizeSelector": "엣지 크기 변경",
+      "changeNodeLabelColor": "노드 라벨 색상 변경",
+      "changeEdgeLabelColor": "엣지 라벨 색상 변경"
+    }
+  },
+  "legend": {
+    "node": "노드:",
+    "edge": "엣지:",
+    "aria": {
+      "expandNodeLegend": "노드 범례 확장",
+      "expandEdgeLegend": "엣지 범례 확장"
+    }
+  },
+    "tabs": {
+    "graph": "그래프",
+    "table": "테이블"
+  }
+}

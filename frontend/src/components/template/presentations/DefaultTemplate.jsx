@@ -18,6 +18,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 // import { Layout } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import EditorContainer from '../../contents/containers/Editor';
 import Sidebar from '../../sidebar/containers/Sidebar';
@@ -95,7 +96,7 @@ const DefaultTemplate = ({
       dispatch(() => changeSettings(Object.assign(stateValues, cookieState)));
     }
   });
-
+  const { t } = useTranslation();
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       {/* Fixed Activity Bar */}
@@ -143,14 +144,14 @@ const DefaultTemplate = ({
         >
           <Contents style={{ flex: 1 }} />
           <footer className="flex-end" style={FooterStyles}>
-            Copyright © 2025 SKAI Worldwide Co., Ltd. All Rights Reserved.
+            {t('layout.footer.copyright')}
             <br />
             <a
               href="https://www.skaiworldwide.com/en-US/resources?filterKey=manual"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Check AgensGraph Documentation
+              {t('layout.footer.documentationLink')}
             </a>
           </footer>
         </div>

@@ -1,0 +1,38 @@
+{
+  "newEdgeModal": {
+    "title": "创建新边",
+    "okText": "提交查询",
+    "cancelText": "取消",
+    "fields": {
+      "edgeLabel": "边标签",
+      "originId": "起始节点 ID",
+      "targetId": "目标节点 ID",
+      "propertyKey": "属性键",
+      "propertyValue": "属性值",
+      "addField": "添加字段"
+    },
+    "validation": {
+      "missingEdgeLabel": "缺少边标签",
+      "missingOriginId": "缺少起始节点 ID",
+      "missingTargetId": "缺少目标节点 ID",
+      "missingPropertyKey": "缺少属性键",
+      "missingPropertyValue": "缺少属性值"
+    }
+  },
+  "newNodeModal": {
+    "title": "创建新节点",
+    "okText": "提交查询",
+    "cancelText": "取消",
+    "fields": {
+      "nodeLabel": "节点标签",
+      "propertyKey": "属性键",
+      "propertyValue": "属性值",
+      "addField": "添加字段"
+    },
+    "validation": {
+      "missingNodeLabel": "缺少节点标签",
+      "missingPropertyKey": "缺少属性键",
+      "missingPropertyValue": "缺少属性值"
+    }
+  }
+}

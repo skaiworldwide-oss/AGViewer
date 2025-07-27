@@ -1,0 +1,44 @@
+{
+  "footer": {
+    "expandFooter": "展开页脚",
+    "layout": "布局",
+    "displaying": "显示中",
+    "nodes": "节点",
+    "edges": "边",
+    "color": "颜色：",
+    "size": "大小：",
+    "caption": "标题：",
+    "layouts": {
+      "random": "随机",
+      "grid": "网格",
+      "breadthFirst": "广度优先",
+      "concentric": "同心",
+      "cola": "可乐",
+      "cose": "Cose",
+      "coseBilkent": "Cose-Bilkent",
+      "dagre": "Dagre",
+      "klay": "Klay",
+      "euler": "Euler",
+      "avsdf": "Avsdf",
+      "spread": "扩展"
+    },
+    "aria": {
+      "nodeSizeSelector": "节点标签大小选择器",
+      "edgeSizeSelector": "更改边的大小",
+      "changeNodeLabelColor": "更改节点标签颜色",
+      "changeEdgeLabelColor": "更改边标签颜色"
+    }
+  },
+  "legend": {
+    "node": "节点：",
+    "edge": "边：",
+    "aria": {
+      "expandNodeLegend": "展开节点图例",
+      "expandEdgeLegend": "展开边图例"
+    }
+  },
+  "tabs": {
+    "graph": "图表",
+    "table": "表格"
+  }
+}

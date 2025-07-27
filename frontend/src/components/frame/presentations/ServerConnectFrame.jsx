@@ -20,6 +20,7 @@ import {
   Button, Col, Form, Input, InputNumber, Row, Select,
 } from 'antd';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Frame from '../Frame';
 
 import styles from './ServerConnectFrame.module.scss';
@@ -62,7 +63,7 @@ const ServerConnectFrame = ({
       dispatch(addAlert('ErrorServerConnectFail', response.error.message));
     }
   });
-
+  const { t } = useTranslation();
   return (
     <Frame
       reqString={reqString}
@@ -71,8 +72,8 @@ const ServerConnectFrame = ({
     >
       <Row>
         <Col span={6}>
-          <h3>Connect to Database</h3>
-          <p>Database access might require and authenticated connection.</p>
+          <h3>{t('serverConnect.title')}</h3>
+          <p>{t('serverConnect.description')}</p>
         </Col>
         <Col span={18}>
           <div className={styles.FrameWrapper}>
@@ -108,7 +109,7 @@ const ServerConnectFrame = ({
                 <Input.Password placeholder="postgres" />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit">Connect</Button>
+                <Button type="primary" htmlType="submit">{t('serverConnect.connectButton')}</Button>
               </Form.Item>
             </Form>
           </div>

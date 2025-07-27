@@ -20,6 +20,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Alert } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const SingleAlert = ({
   alertKey,
@@ -49,7 +50,7 @@ const SingleAlert = ({
     }, 10000);
     return () => clearTimeout(timer);
   }, []);
-
+  const { t } = useTranslation();
   if (alertName === 'NoticeServerDisconnected') {
     return (
       <Alert
@@ -57,11 +58,11 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Database Disconnected"
+        message={t('alerts.noticeServerDisconnected.title')}
         description={(
           <p>
-            Database is Disconnected. You may use
-            {' '}
+            {t('alerts.noticeServerDisconnected.description').split('{command}')[0]}
+
             <button type="button" className="badge badge-light" onClick={(e) => setAlertConnect(e, ':server connect')}>
 
               <FontAwesomeIcon
@@ -70,9 +71,7 @@ const SingleAlert = ({
               />
               :server connect
             </button>
-            {' '}
-            to
-            establish connection. There&apos;s a graph waiting for you.
+            {t('alerts.noticeServerDisconnected.description').split('{command}')[1]}
           </p>
         )}
       />
@@ -85,11 +84,10 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Database Connected"
+        message={t('alerts.noticeServerConnected.title')}
         description={(
           <p>
-            Successfully database is connected. You may use
-            {' '}
+            {t('alerts.noticeServerConnected.description').split('{command}')[0]}
             <a href="/#" className="badge badge-light" onClick={(e) => setAlertConnect(e, ':server status')}>
               <FontAwesomeIcon
                 icon={faPlayCircle}
@@ -97,9 +95,7 @@ const SingleAlert = ({
               />
               :server status
             </a>
-            {' '}
-            to
-            confirm connected database information.
+            {t('alerts.noticeServerConnected.description').split('{command}')[1]}
           </p>
         )}
       />
@@ -112,12 +108,10 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Database Connection Failed"
+        message={t('alerts.errorServerConnectFail.title')}
         description={(
           <>
-            <p>
-              Failed to connect to the database. Are you sure the database is running on the server?
-            </p>
+            <p>{t('alerts.errorServerConnectFail.description')}</p>
             {errorMessage}
           </>
         )}
@@ -131,13 +125,12 @@ const SingleAlert = ({
         showIcon
         closable
         afterClose={() => clearAlert()}
-        message="No Database Connected"
+        message={t('alerts.ErrorNoDatabaseConnected.title')}
         description={
         (
           <>
             <p>
-              You haven&apos;t set database connection. You may use
-              {' '}
+              {t('alerts.ErrorNoDatabaseConnected.description').split('{command}')[0]}
               <a href="/#" className="badge badge-light" onClick={(e) => setAlertConnect(e, ':server connect')}>
                 <FontAwesomeIcon
                   icon={faPlayCircle}
@@ -145,9 +138,7 @@ const SingleAlert = ({
                 />
                 :server connect
               </a>
-              {' '}
-              to
-              establish connection. There&apos;s a graph waiting for you.
+              {t('alerts.ErrorNoDatabaseConnected.description').split('{command}')[1]}
             </p>
             {errorMessage}
           </>
@@ -161,12 +152,12 @@ const SingleAlert = ({
       <Alert
         type="error"
         afterClose={() => clearAlert()}
-        message="Metadata Load Error"
+        message={t('alerts.ErrorMetaFail.title')}
         showIcon
         closable
         description={(
           <p>
-            Unexpectedly error occurred while getting metadata.
+            {t('alerts.ErrorMetaFail.description')}
           </p>
         )}
       />
@@ -179,10 +170,10 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Query Error"
+        message={t('alerts.ErrorCypherQuery.title')}
         description={(
           <p>
-            Your query was not executed properly. Refer the below error message.
+            {t('alerts.ErrorCypherQuery.description')}
           </p>
         )}
       />
@@ -195,12 +186,11 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Failed to Load Play Target"
+        message={t('alerts.errorPlayLoadFail.title')}
         description={(
           <p>
-            &apos;
-            {errorMessage}
-            &apos; does not exists.
+            description=
+            {t('alerts.errorPlayLoadFail.description', { error: errorMessage })}
           </p>
         )}
       />
@@ -213,11 +203,10 @@ const SingleAlert = ({
         afterClose={() => clearAlert()}
         showIcon
         closable
-        message="Already Connected to Database"
+        message={t('alerts.noticeAlreadyConnected.title')}
         description={(
           <p>
-            You are currently connected to a database.
-            If you want to access to another database, you may execute
+            {t('alerts.noticeAlreadyConnected.description').split('{command}')[0]}
             <a
               href="/#"
               className="badge badge-light"
@@ -229,8 +218,7 @@ const SingleAlert = ({
               />
               :server disconnect
             </a>
-            {' '}
-            to disconnect from current database first.
+            {t('alerts.noticeAlreadyConnected.description').split('{command}')[1]}
           </p>
         )}
       />

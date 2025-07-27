@@ -1,0 +1,18 @@
+{
+  "applyEdgeWeight": {
+    "title": "에지 가중치 적용",
+    "selectEdge": "에지 선택",
+    "selectProperty": "속성 선택",
+    "minValue": "최소 값",
+    "maxValue": "최대 값",
+    "reset": "초기화",
+    "apply": "적용"
+  },
+  "filterModal": {
+    "title": "그래프 필터",
+    "selectPlaceholder": "선택",
+    "error": {
+      "emptyProperty": "속성을 비워둘 수 없습니다."
+    }
+  }
+}

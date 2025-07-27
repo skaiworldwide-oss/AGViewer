@@ -20,10 +20,12 @@ import { Modal, Button } from 'antd';
 
 import uuid from 'react-uuid';
 import { connect, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { SubLabelLeft, SubLabelRight } from './SidebarComponents';
 import { NewNodeModal } from '../../modals/presentations/NewNodeModal';
 import { NewEdgeModal } from '../../modals/presentations/NewEdgeModal';
+import LanguageSwitcher from '../../localization/LanguageSwitcher';
 
 const genLabelQuery = (eleType, labelName, database) => {
   function age() {
@@ -89,7 +91,7 @@ const genPropQuery = (eleType, propertyName) => {
 
 const NodeList = ({ nodes, setCommand }) => {
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation();
   let list;
   if (nodes && nodes.length > 0) {
     list = nodes.map((item) => (
@@ -102,7 +104,7 @@ const NodeList = ({ nodes, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find nodes with label:</b>
+        <b>{t('nodeList.heading')}</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -120,7 +122,7 @@ const NodeList = ({ nodes, setCommand }) => {
           onClick={() => setOpen(true)}
           style={{ marginTop: '10px' }}
         >
-          Add New Node (+)
+          {t('nodeList.addButton')}
         </Button>
         <NewNodeModal
           open={open}
@@ -171,6 +173,7 @@ NodeItems.propTypes = {
 const EdgeList = ({ edges, setCommand }) => {
   const [open, setOpen] = useState(false);
   let list;
+  const { t } = useTranslation();
   if (edges && edges.length > 0) {
     list = edges.map((item) => (
       <EdgeItems
@@ -182,7 +185,7 @@ const EdgeList = ({ edges, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find edges with label:</b>
+        <b>{t('edgeList.heading')}</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -199,7 +202,7 @@ const EdgeList = ({ edges, setCommand }) => {
           onClick={() => setOpen(true)}
           style={{ marginTop: '10px' }}
         >
-          Add New Edge (+)
+          {t('edgeList.addButton')}
         </Button>
         <NewEdgeModal
           open={open}
@@ -247,6 +250,7 @@ EdgeItems.propTypes = {
 
 const PropertyList = ({ propertyKeys, setCommand }) => {
   let list;
+  const { t } = useTranslation();
   if (propertyKeys && propertyKeys.length > 0) {
     list = propertyKeys.map((item) => (
       <PropertyItems
@@ -258,7 +262,7 @@ const PropertyList = ({ propertyKeys, setCommand }) => {
     ));
     return (
       <div style={{ width: '100%' }}>
-        <b>Find items with properties:</b>
+        <b>{t('propertyList.heading')}</b>
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -368,7 +372,7 @@ const SidebarHome = ({
   const refreshSidebarHome = () => {
     getMetaData();
   };
-
+  const { t } = useTranslation();
   return (
     <div className="sidebar-home">
       <div className="sidebar sidebar-body" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -403,13 +407,17 @@ const SidebarHome = ({
             >
               <i className="icon-refresh" />
             </button>
-            <b>Refresh</b>
+            <b>{t('serverConnect.refresh')}</b>
+            {/* Language Switcher */}
+            <div style={{ marginLeft: '1rem' }}>
+              <LanguageSwitcher />
+            </div>
             <button
               className="frame-head-button btn btn-link"
               type="button"
               aria-label="Disconnect"
               onClick={() => confirm({
-                title: 'Are you sure you want to close this window?',
+                title: t('modal.disconnectConfirmation.title'),
                 onOk() {
                   requestDisconnect();
                 },
@@ -420,7 +428,7 @@ const SidebarHome = ({
             >
               <i className="icon-close-session" />
             </button>
-            <b>Close Session</b>
+            <b>{t('serverConnect.closeSession')}</b>
           </div>
         </div>
       </div>
