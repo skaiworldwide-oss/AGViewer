@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '../contexts/ThemeContext';
 
 const ThemeToggleButton = ({ className, style }) => {
@@ -33,7 +35,7 @@ const ThemeToggleButton = ({ className, style }) => {
       aria-label={`Switch to ${isLight ? 'dark' : 'light'} theme`}
       title={`Switch to ${isLight ? 'dark' : 'light'} theme`}
     >
-      {isLight ? '🌙' : '☀️'}
+      <FontAwesomeIcon icon={isLight ? faMoon : faSun} />
     </Button>
   );
 };
