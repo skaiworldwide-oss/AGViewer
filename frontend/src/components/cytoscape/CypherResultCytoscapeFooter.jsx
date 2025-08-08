@@ -42,7 +42,6 @@ const CypherResultCytoscapeFooter = ({
   cytoscapeLayout,
 }) => {
   const [footerExpanded, setFooterExpanded] = useState(false);
-
   const extractData = (d) => {
     const extractedData = [];
     for (let i = 0; i < Object.entries(d).length; i += 1) {
@@ -101,7 +100,7 @@ const CypherResultCytoscapeFooter = ({
           Layout :&nbsp;
           <select
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
+            className="col-2 custom-select custom-select-sm layout-select"
             defaultValue={cytoscapeLayout}
             onChange={(e) => [setCytoscapeLayout(e.target.value)]}
           >
@@ -136,7 +135,7 @@ const CypherResultCytoscapeFooter = ({
           Layout :&nbsp;
           <select
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
+            className="col-2 custom-select custom-select-sm layout-select"
             defaultValue={cytoscapeLayout}
             onChange={(e) => [setCytoscapeLayout(e.target.value)]}
           >
@@ -305,7 +304,7 @@ const CypherResultCytoscapeFooter = ({
           Layout :&nbsp;
           <select
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
+            className="col-2 custom-select custom-select-sm layout-select"
             defaultValue={cytoscapeLayout}
             onChange={(e) => [setCytoscapeLayout(e.target.value)]}
           >
@@ -331,7 +330,7 @@ const CypherResultCytoscapeFooter = ({
         <div className="px-1">Layout : </div>
         <select
           id="selectLayout"
-          className="col-1 custom-select custom-select-sm layout-select"
+          className="col-2 custom-select custom-select-sm layout-select"
           defaultValue={cytoscapeLayout}
           onChange={(e) => [setCytoscapeLayout(e.target.value)]}
         >

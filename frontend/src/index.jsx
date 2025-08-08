@@ -21,11 +21,14 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 
 import App from './App';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );

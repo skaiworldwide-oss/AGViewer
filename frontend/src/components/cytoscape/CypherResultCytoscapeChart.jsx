@@ -242,17 +242,17 @@ const CypherResultCytoscapeCharts = ({
             },
           },
         ],
-        fillColor: 'rgba(210, 213, 218, 1)',
-        activeFillColor: 'rgba(166, 166, 166, 1)',
+        fillColor: 'var(--menu-bg)',
+        activeFillColor: 'var(--menu-active-bg)',
         activePadding: 0,
         indicatorSize: 0,
-        separatorWidth: 4,
+        separatorWidth: 4, /* might cause conflict in theme switcher */
         spotlightPadding: 3,
         minSpotlightRadius: 11,
         maxSpotlightRadius: 99,
         openMenuEvents: 'cxttap',
-        itemColor: '#2A2C34',
-        itemTextShadowColor: 'transparent',
+        itemColor: 'var(--menu-item-color)',
+        itemTextShadowColor: 'transparent', /* might cause conflict in theme switcher */
         zIndex: 9999,
         atMouse: false,
       };
@@ -276,6 +276,7 @@ const CypherResultCytoscapeCharts = ({
       }
     }
   }, [cytoscapeObject, cytoscapeLayout]);
+
   const cyRef = useRef(null);
   const cyCallback = useCallback((cy) => {
     if (!cyRef.current) {

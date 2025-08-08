@@ -4,9 +4,9 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: var(--frame-bg);
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid var(--frame-border);
   border-radius: .25rem;
   margin-top: 1rem;
   overflow-y: auto;
@@ -36,31 +36,32 @@
 .FrameHeader {
   height: auto;
   align-items: center;
-  background-color: rgba(0, 0, 0, .03);
+  background-color: var(--frame-header-bg);
   padding: 10px 10px 10px 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, .125);
+  border-bottom: 1px solid var(--frame-border);
   display: flex;
-  color: #6c757d;
+  color: var(--frame-header-color);
 }
 
 .FrameHeaderText {
   flex: 1;
 }
 
+
 .FrameButton {
-  color: gray;
+  color: var(--frame-button-color);
 }
 
 .FrameButton:focus {
-  color: gray;
+  color: var(--frame-button-color);
 }
 
 .FrameButton:hover {
-  color: black;
+  color: var(--frame-button-hover);
 }
 
 .FrameButton.activate {
-  color: black;
+  color: var(--frame-button-hover);
 }
 
 .ButtonArea {
@@ -94,6 +95,7 @@
 
 .NormalChart {
   @extend .Chart;
+  background-color: var(--canvas-bg); 
   height: 417px;
 }
 
@@ -131,25 +133,17 @@
   border-radius: 20%;
   padding: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  background-color: rgba(0, 0, 0, 0.03);
-  color: #6c757d;
+  background-color: var(--zoom-bg);
+  color: var(--zoom-color);
   border: none;
   transition: background-color 0.2s ease;
 }
-
 .zoomButton:hover {
-  color: black;
-  background-color: rgba(0, 0, 0, 0.07);
-  box-shadow: 0 0 0 .2rem rgba(130, 130, 130, 0.5);
+  background-color: var(--zoom-hover-bg);
+  color: var(--zoom-hover-color);
   cursor: pointer;
 }
 
 .zoomButton:active {
   transform: scale(0.95);
-}
-.zoomButton:focus:not(:hover) {
-  /* styles when button is focused but not hovered */
-  background-color: rgba(0, 0, 0, 0.07);
-  color:black;
-  box-shadow: 0 0 0 .2rem rgba(130, 130, 130, 0.5);
 }

@@ -49,7 +49,7 @@ class CypherResultTab extends Component {
         <button
           className="btn"
           type="button"
-          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'graph' ? '#142B80' : '#495057' }}
+          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'graph' ? 'var(--tab-active-color)' : 'var(--tab-color)' }}
           onClick={() => activeTab(this.refKey, 'graph')}
         >
           <i className="icon-graph" style={{ fontSize: '25px' }} />
@@ -67,7 +67,7 @@ class CypherResultTab extends Component {
         <button
           className="btn"
           type="button"
-          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'table' ? '#142B80' : '#495057' }}
+          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'table' ? 'var(--tab-active-color)' : 'var(--tab-color)' }}
           onClick={() => activeTab(this.refKey, 'table')}
         >
           <FontAwesomeIcon icon={faTable} style={{ fontSize: '25px' }} />
