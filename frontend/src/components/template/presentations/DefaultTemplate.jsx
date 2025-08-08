@@ -24,6 +24,7 @@ import Sidebar from '../../sidebar/containers/Sidebar';
 import Contents from '../../contents/containers/Contents';
 import { loadFromCookie, saveToCookie } from '../../../features/cookie/CookieUtil';
 import logoImage from './logo.png';
+import ActivityBar from '../../sidebar/presentations/ActivityBar';
 
 const {
   Sider, Header, Footer,
@@ -79,6 +80,8 @@ const DefaultTemplate = ({
   return (
     // Main layout covering the entire viewport height
     <Layout hasSider style={{ minHeight: '100vh' }}>
+      {/* ACTIVITY BAR (leftmost) */}
+      <ActivityBar />
 
       {/* SIDEBAR */}
       <Sider
@@ -86,7 +89,7 @@ const DefaultTemplate = ({
         style={{
           height: '100vh',
           position: 'fixed',
-          left: 0,
+          left: 60,
         }}
       >
         <div
@@ -116,13 +119,14 @@ const DefaultTemplate = ({
       {/* CONTENTS */}
       <Layout
         style={{
-          marginLeft: '33vw',
+          marginLeft: 'calc(33vw + 60px)',
           // Ensure the content layout stretches to fill the available height
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
         }}
       >
+
         <Contents style={{ flex: 1 }} />
 
         <Footer
