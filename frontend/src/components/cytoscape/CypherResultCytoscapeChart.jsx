@@ -38,6 +38,7 @@ import {
   faLockOpen,
   faProjectDiagram,
   faWindowClose,
+  faDownload,
 } from '@fortawesome/free-solid-svg-icons';
 import cxtmenu from '../../lib/cytoscape-cxtmenu-bitnine';
 import { initLocation, seletableLayouts } from './CytoscapeLayouts';
@@ -152,7 +153,6 @@ const CypherResultCytoscapeCharts = ({
     addLegendData(generatedData.legend);
     rerenderTargets.removeClass('new');
   };
-
   const handleZoomIn = () => {
     if (cytoscapeObject) {
       const currentZoom = cytoscapeObject.zoom();
@@ -291,6 +291,28 @@ const CypherResultCytoscapeCharts = ({
       cyRef.current.fit(undefined, 50);
     }
   };
+  const handleExportGraph = () => {
+    const cy = cyRef.current;
+    if (cy) {
+      cy.fit();
+      setTimeout(() => {
+        const pngData = cy.png({
+          fit: true,
+          bg: '#ffffff', // background color used in exported image
+          scale: 2,
+          output: { width: 1000, height: 1000 },
+        });
+
+        const link = document.createElement('a');
+        link.href = pngData;
+        link.download = 'graph-export.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 100);
+    }
+  };
+
   return (
     <div>
       <CytoscapeComponent
@@ -320,6 +342,9 @@ const CypherResultCytoscapeCharts = ({
         </Button>
         <Button className={styles.zoomButton} onClick={handleZoomOut}>
           -
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleExportGraph}>
+          <FontAwesomeIcon icon={faDownload} />
         </Button>
       </div>
     </div>
