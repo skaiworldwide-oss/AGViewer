@@ -153,7 +153,41 @@ const CypherResultCytoscapeCharts = ({
     addLegendData(generatedData.legend);
     rerenderTargets.removeClass('new');
   };
+  const handleZoomIn = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      const newZoom = currentZoom * 1.3;
 
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
+        },
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      const newZoom = currentZoom * 0.7;
+
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
+        },
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
+    }
+  };
   useEffect(() => {
     if (cytoscapeMenu === null && cytoscapeObject !== null) {
       const cxtMenuConf = {
@@ -252,6 +286,11 @@ const CypherResultCytoscapeCharts = ({
       setCytoscapeObject(cy);
     }
   }, [cytoscapeObject]);
+  const handleFitView = () => {
+    if (cyRef.current) {
+      cyRef.current.fit(undefined, 50);
+    }
+  };
   const handleExportGraph = () => {
     const cy = cyRef.current;
     if (cy) {
@@ -295,6 +334,15 @@ const CypherResultCytoscapeCharts = ({
         </Modal.Footer>
       </Modal>
       <div className={styles.zoomControls}>
+        <Button className={styles.zoomButton} onClick={handleFitView}>
+          ⛶
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleZoomIn}>
+          +
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleZoomOut}>
+          -
+        </Button>
         <Button className={styles.zoomButton} onClick={handleExportGraph}>
           <FontAwesomeIcon icon={faDownload} />
         </Button>
