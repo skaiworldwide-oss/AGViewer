@@ -1,0 +1,75 @@
+/* Split pane styles */
+.SplitPane {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  margin-left: 60px;
+}
+
+.SplitPane.vertical {
+  flex-direction: row;
+}
+
+.Pane1 {
+  position: relative;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.Pane2 {
+  position: relative;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.Resizer {
+  width: 6px;
+  cursor: col-resize;
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.Resizer.vertical {
+  height: 100%;
+  margin: 0 -3px;
+}
+
+.Resizer::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 40%;
+  background-color: rgba(100, 100, 100, 0.4); /* Light in dark mode */
+  transform: translate(-50%, -50%);
+  border-radius: 1px;
+  transition: background-color 0.3s ease, height 0.3s ease;
+}
+
+.Resizer:hover::before {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 60%;
+}
+
+.Resizer:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Disabled state */
+.Resizer.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.Resizer.disabled:hover::before {
+  background-color: rgba(100, 100, 100, 0.2);
+}

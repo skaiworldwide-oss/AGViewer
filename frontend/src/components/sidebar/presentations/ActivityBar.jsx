@@ -1,20 +1,18 @@
 import React from 'react';
-import { Layout } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faCog } from '@fortawesome/free-solid-svg-icons';
 
-const { Sider } = Layout;
-
 const ActivityBar = () => (
-  <Sider
-    width={60}
+  <div
     style={{
+      width: 60,
       height: '100vh',
       position: 'fixed',
       left: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.03)',
+      // background-Color: 'rgba(0, 0, 0, 0.03)',
+      backgroundColor: '#e4e4e4ff',
       textAlign: 'center',
-      paddingBottom: '12px',
+      paddingBottom: 12,
     }}
   >
     <div
@@ -24,8 +22,8 @@ const ActivityBar = () => (
         flexDirection: 'column',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        gap: '20px',
-        paddingBottom: '20px',
+        gap: 20,
+        paddingBottom: 20,
       }}
     >
       {/* Theme toggle button */}
@@ -34,8 +32,8 @@ const ActivityBar = () => (
         onClick={() => {}}
         style={{
           borderRadius: '50%',
-          width: '40px',
-          height: '40px',
+          width: 40,
+          height: 40,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -60,8 +58,8 @@ const ActivityBar = () => (
           background: '#fff',
           color: '#001529',
           border: '1px solid #001529',
-          borderRadius: '4px',
-          padding: '2px',
+          borderRadius: 4,
+          padding: 2,
           fontSize: '0.8rem',
           cursor: 'pointer',
         }}
@@ -89,7 +87,7 @@ const ActivityBar = () => (
         <FontAwesomeIcon icon={faCog} />
       </button>
     </div>
-  </Sider>
+  </div>
 );
 
 export default ActivityBar;
