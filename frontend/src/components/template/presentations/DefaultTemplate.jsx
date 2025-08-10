@@ -17,7 +17,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Layout } from 'antd';
+// import { Layout } from 'antd';
 
 import EditorContainer from '../../contents/containers/Editor';
 import Sidebar from '../../sidebar/containers/Sidebar';
@@ -25,11 +25,30 @@ import Contents from '../../contents/containers/Contents';
 import { loadFromCookie, saveToCookie } from '../../../features/cookie/CookieUtil';
 import logoImage from './logo.png';
 import ActivityBar from '../../sidebar/presentations/ActivityBar';
+import ResizableSplitLayout from '../../splitlayout/ResizableSplitLayout';
+import '../../splitlayout/split-pane.css';
 
-const {
-  Sider, Header, Footer,
-} = Layout;
-
+const HeaderStyles = {
+  height: '64px',
+  color: 'rgba(0, 0, 0, 0.85)',
+  lineHeight: '64px',
+  background: '#001529',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+const FooterStyles = {
+  color: 'var(--primary-color)',
+  backgroundColor: 'var(--footer-bg-color)',
+  fontSize: '14px',
+  textAlign: 'center',
+  position: 'fixed',
+  bottom: 0,
+  right: 0,
+  width: '67%',
+  padding: '5px 5px',
+  zIndex: 1000,
+};
 const DefaultTemplate = ({
   theme,
   maxNumOfFrames,
@@ -78,84 +97,65 @@ const DefaultTemplate = ({
   });
 
   return (
-    // Main layout covering the entire viewport height
-    <Layout hasSider style={{ minHeight: '100vh' }}>
-      {/* ACTIVITY BAR (leftmost) */}
-      <ActivityBar />
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+      {/* Fixed Activity Bar */}
+      <div style={{ width: '60px', flexShrink: 0 }}>
+        <ActivityBar />
+      </div>
 
-      {/* SIDEBAR */}
-      <Sider
-        width="33vw"
-        style={{
-          height: '100vh',
-          position: 'fixed',
-          left: 60,
-        }}
+      {/* Resizable Split Pane between Sidebar and Main Content */}
+      <ResizableSplitLayout
+        minSize={330}
+        defaultSize="calc(33% - 30px)"
+        maxSize={900}
+        primary="first"
+        style={{ flex: 1, marginLeft: '60px' }}
       >
+        {/* SIDEBAR */}
         <div
           className="editor-division"
-          style={{ height: '100vh', minWidth: '33vw', padding: '0' }}
+          style={{
+            height: '100vh',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
-          <Header
-            style={{
-              margin: '5px 10px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <header style={HeaderStyles}>
             <img
               src={logoImage}
               alt="AgensGraph Logo"
               style={{ maxHeight: '100%', maxWidth: '100%', height: 'auto' }}
             />
-          </Header>
+          </header>
           <EditorContainer />
           <Sidebar />
         </div>
-      </Sider>
-      {/* END SIDEBAR */}
 
-      {/* CONTENTS */}
-      <Layout
-        style={{
-          marginLeft: 'calc(33vw + 60px)',
-          // Ensure the content layout stretches to fill the available height
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-        }}
-      >
-
-        <Contents style={{ flex: 1 }} />
-
-        <Footer
-          className="flex-end"
+        {/* MAIN CONTENT */}
+        <div
           style={{
-            textAlign: 'center',
-            position: 'fixed',
-            bottom: 0,
-            width: 'calc(100% - 33vw)',
-            padding: '5px 5px',
-            color: 'var(--primary-color)',
-            backgroundColor: 'var(--footer-bg-color)',
+            height: '100vh',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
-          Copyright © 2025 SKAI Worldwide Co., Ltd. All Rights Reserved.
-          <br />
-          <a
-            href="https://www.skaiworldwide.com/en-US/resources?filterKey=manual"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Check AgensGraph Documentation
-          </a>
-        </Footer>
-
-      </Layout>
-      {/* END CONTENTS */}
-
-    </Layout>
+          <Contents style={{ flex: 1 }} />
+          <footer className="flex-end" style={FooterStyles}>
+            Copyright © 2025 SKAI Worldwide Co., Ltd. All Rights Reserved.
+            <br />
+            <a
+              href="https://www.skaiworldwide.com/en-US/resources?filterKey=manual"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Check AgensGraph Documentation
+            </a>
+          </footer>
+        </div>
+      </ResizableSplitLayout>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@
     --sidebar-active-border: #C4C4C4;
     --sidebar-text-color: #495057;
     --editor-wrapper-bg: #ffffff;
-    --editor-bg: #142B80;
+    --editor-bg: #001529;
     --editor-border-color: rgba(0, 0, 0, 0.125);
     --editor-scroll-border: #ccc;
     --editor-icon-color: #B0B0B0;
@@ -121,7 +121,7 @@ body.dark {
     --sidebar-active-border: #555555;
     --sidebar-text-color: #dddddd;
     --editor-wrapper-bg: #1e1e1e;
-    --editor-bg: #2f3c70;
+    --editor-bg: #001529;
     --editor-border-color: rgba(255, 255, 255, 0.2);
     --editor-scroll-border: #444;
     --editor-icon-color: #cccccc;
@@ -334,7 +334,7 @@ a[data-toggle="collapse"] {
     height: auto;    
     word-wrap: break-word;    
     background-clip: border-box;
-    /* background: var(--editor-bg) 0% 0% no-repeat padding-box; */
+    background: var(--editor-bg) 0% 0% no-repeat padding-box;
     border: 1px solid var(--editor-border-color);
     border-radius: .25rem;
     border-radius: 5px;
