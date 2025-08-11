@@ -11,7 +11,7 @@ const ActivityBar = () => (
       position: 'fixed',
       left: 0,
       // background-Color: 'rgba(0, 0, 0, 0.03)',
-      backgroundColor: '#e4e4e4ff',
+      backgroundColor: 'var(--activitybar-bg-color)',
       textAlign: 'center',
       paddingBottom: 12,
     }}
@@ -57,9 +57,9 @@ const ActivityBar = () => (
         onChange={() => {}}
         defaultValue="en"
         style={{
-          background: '#fff',
-          color: '#001529',
-          border: '1px solid #001529',
+          background: 'var(--activitybar-select-bg)',
+          color: 'var(--activitybar-text-color)',
+          border: '1px solid var(--activitybar-text-color)',
           borderRadius: 4,
           padding: 2,
           fontSize: '0.8rem',
@@ -79,7 +79,7 @@ const ActivityBar = () => (
         style={{
           background: 'none',
           border: 'none',
-          color: '#001529',
+          color: 'var(--activitybar-text-color)',
           fontSize: '1.2rem',
           cursor: 'pointer',
         }}
