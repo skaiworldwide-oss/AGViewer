@@ -93,7 +93,10 @@
     --disabled-text-color: #999;
     --disabled-bg-color: #f0f0f0;
     --footer-bg-color: #f0f2f5;
-
+    --activitybar-bg-color: #e4e4e4;
+    --activitybar-text-color: #001529;
+    --activitybar-select-bg: #ffffff;
+    --activitybar-button-bg: rgba(0, 0, 0, 0.03);
     /* Dark mode */
     --dark-text: #ffffff;
     --dark-bg: #222430;
@@ -200,6 +203,10 @@ body.dark {
     --disabled-text-color: #666;
     --disabled-bg-color: #2c2c2c;
     --footer-bg-color: #1f1f1f;
+    --activitybar-bg-color: #333333;
+    --activitybar-text-color: #ffffff;
+    --activitybar-select-bg: #444444;
+    --activitybar-button-bg: rgba(255, 255, 255, 0.1);
 }
 body {    
     font-family: 'Poppins', sans-serif;
