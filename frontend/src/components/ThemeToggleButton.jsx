@@ -9,9 +9,9 @@ const ThemeToggleButton = ({ className, style }) => {
   const { toggleTheme, theme } = useTheme();
 
   const buttonStyle = {
-    position: 'fixed',
-    top: 10,
-    right: 10,
+    // position: 'fixed',
+    // top: 10,
+    // right: 10,
     zIndex: 2000,
     borderRadius: '50%',
     width: '45px',

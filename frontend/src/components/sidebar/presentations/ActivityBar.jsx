@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import ThemeToggleButton from '../../ThemeToggleButton';
 
 const ActivityBar = () => (
   <div
@@ -27,7 +28,7 @@ const ActivityBar = () => (
       }}
     >
       {/* Theme toggle button */}
-      <button
+      {/* <button
         type="button"
         onClick={() => {}}
         style={{
@@ -48,7 +49,8 @@ const ActivityBar = () => (
         aria-label="Toggle Theme"
       >
         <FontAwesomeIcon icon={faSun} />
-      </button>
+      </button> */}
+      <ThemeToggleButton />
 
       {/* Language switcher */}
       <select

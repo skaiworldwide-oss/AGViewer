@@ -23,7 +23,7 @@ import ServerConnect from '../../frame/containers/ServerConnectContainer';
 import ServerDisconnect from '../../frame/containers/ServerDisconnectContainer';
 import CypherGraphResult from '../../frame/containers/CypherGraphResultContainers';
 import CypherResult from '../../frame/containers/CypherResultContainers';
-import ThemeToggleButton from '../../ThemeToggleButton';
+// import ThemeToggleButton from '../../ThemeToggleButton';
 import CSV from '../../csv';
 import { setting } from '../../../conf/config';
 import styles from './Frames.module.scss';
@@ -140,7 +140,7 @@ const Frames = ({
 
   return (
     <div className={`container-fluid frame-area pt-3 ${styles.frameScroll}`}>
-      <ThemeToggleButton />
+      {/* <ThemeToggleButton /> */}
       {frames}
     </div>
   );
