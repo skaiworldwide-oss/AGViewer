@@ -387,9 +387,12 @@ const SidebarHome = ({
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            width: '30vw',
+            width: '33%',
             position: 'fixed',
+            backgroundColor: 'var(--footer-bg-color)',
             bottom: 0,
+            left: 60,
+            height: '54px',
           }}
           >
             <button
