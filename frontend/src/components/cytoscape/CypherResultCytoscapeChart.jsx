@@ -39,6 +39,7 @@ import {
   faProjectDiagram,
   faWindowClose,
   faDownload,
+  faExpand,
 } from '@fortawesome/free-solid-svg-icons';
 import cxtmenu from '../../lib/cytoscape-cxtmenu-bitnine';
 import { initLocation, seletableLayouts } from './CytoscapeLayouts';
@@ -335,7 +336,7 @@ const CypherResultCytoscapeCharts = ({
       </Modal>
       <div className={styles.zoomControls}>
         <Button className={styles.zoomButton} onClick={handleFitView}>
-          ⛶
+          <FontAwesomeIcon icon={faExpand} />
         </Button>
         <Button className={styles.zoomButton} onClick={handleZoomIn}>
           +
