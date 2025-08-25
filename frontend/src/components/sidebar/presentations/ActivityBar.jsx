@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import ThemeToggleButton from '../../ThemeToggleButton';
+import LanguageSwitcher from '../../localization/LanguageSwitcher';
 
 const ActivityBar = () => (
   <div
@@ -27,6 +28,10 @@ const ActivityBar = () => (
         paddingBottom: 20,
       }}
     >
+
+      {/* Language switcher */}
+      <LanguageSwitcher />
+
       {/* Theme toggle button */}
       {/* <button
         type="button"
@@ -51,26 +56,6 @@ const ActivityBar = () => (
         <FontAwesomeIcon icon={faSun} />
       </button> */}
       <ThemeToggleButton />
-
-      {/* Language switcher */}
-      <select
-        onChange={() => {}}
-        defaultValue="en"
-        style={{
-          background: 'var(--activitybar-select-bg)',
-          color: 'var(--activitybar-text-color)',
-          border: '1px solid var(--activitybar-text-color)',
-          borderRadius: 4,
-          padding: 2,
-          fontSize: '0.8rem',
-          cursor: 'pointer',
-        }}
-        title="Change Language"
-        aria-label="Change Language"
-      >
-        <option value="en">🇺🇸</option>
-        <option value="ko">🇰🇷</option>
-      </select>
 
       {/* Settings button */}
       <button

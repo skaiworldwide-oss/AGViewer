@@ -25,7 +25,6 @@ import { useTranslation } from 'react-i18next';
 import { SubLabelLeft, SubLabelRight } from './SidebarComponents';
 import { NewNodeModal } from '../../modals/presentations/NewNodeModal';
 import { NewEdgeModal } from '../../modals/presentations/NewEdgeModal';
-import LanguageSwitcher from '../../localization/LanguageSwitcher';
 
 const genLabelQuery = (eleType, labelName, database) => {
   function age() {
@@ -408,10 +407,6 @@ const SidebarHome = ({
               <i className="icon-refresh" />
             </button>
             <b>{t('serverConnect.refresh')}</b>
-            {/* Language Switcher */}
-            <div style={{ marginLeft: '1rem' }}>
-              <LanguageSwitcher />
-            </div>
             <button
               className="frame-head-button btn btn-link"
               type="button"

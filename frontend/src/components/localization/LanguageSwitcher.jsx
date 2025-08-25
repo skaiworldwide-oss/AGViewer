@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const languages = [
-  { code: 'en', label: '🇺🇸 English' },
-  { code: 'ko', label: '🇰🇷 한국어' },
-  { code: 'zh', label: '🇨🇳 中文' },
-  { code: 'es', label: '🇪🇸 Español' },
-  { code: 'ar', label: '🇸🇦 العربية' },
+  { code: 'en', label: 'EN' },
+  { code: 'ko', label: 'KO' },
+  { code: 'zh', label: 'ZH' },
+  { code: 'es', label: 'ES' },
+  { code: 'ar', label: 'AR' },
 ];
 
 const LanguageSwitcher = () => {
@@ -53,13 +53,13 @@ const LanguageSwitcher = () => {
         aria-expanded={open}
         style={{
           background: 'transparent',
-          border: '1px solid #ccc',
+          border: '0px solid #ccc',
           borderRadius: '4px',
           padding: '0.3rem 0.8rem',
           cursor: 'pointer',
-          minWidth: '120px',
+          minWidth: '40px',
           textAlign: 'left',
-          color: '#444',
+          color: 'var(--activitybar-text-color)',
           fontWeight: '500',
           display: 'flex',
           justifyContent: 'space-between',
@@ -80,12 +80,12 @@ const LanguageSwitcher = () => {
             padding: '0.25rem 0',
             position: 'absolute',
             bottom: 'calc(100% + 4px)',
-            left: 0,
-            background: '#fff',
-            border: '1px solid #ccc',
+            left: 1,
+            background: 'transparent',
+            border: '0px solid #ccc',
             borderRadius: '4px',
             boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-            minWidth: '120px',
+            minWidth: '60px',
             zIndex: 10,
           }}
         >
@@ -106,7 +106,7 @@ const LanguageSwitcher = () => {
                 style={{
                   padding: '0.4rem 0.8rem',
                   cursor: 'pointer',
-                  color: '#444',
+                  color: 'var(--activitybar-text-color)',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#f0f0f0';
