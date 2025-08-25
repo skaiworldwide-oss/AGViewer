@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
 import ThemeToggleButton from '../../ThemeToggleButton';
 import LanguageSwitcher from '../../localization/LanguageSwitcher';
 
@@ -56,23 +54,6 @@ const ActivityBar = () => (
         <FontAwesomeIcon icon={faSun} />
       </button> */}
       <ThemeToggleButton />
-
-      {/* Settings button */}
-      <button
-        type="button"
-        onClick={() => {}}
-        style={{
-          background: 'none',
-          border: 'none',
-          color: 'var(--activitybar-text-color)',
-          fontSize: '1.2rem',
-          cursor: 'pointer',
-        }}
-        title="Settings"
-        aria-label="Settings"
-      >
-        <FontAwesomeIcon icon={faCog} />
-      </button>
     </div>
   </div>
 );
