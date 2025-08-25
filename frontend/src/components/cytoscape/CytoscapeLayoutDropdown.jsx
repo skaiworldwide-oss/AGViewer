@@ -6,23 +6,75 @@ import {
   faLink, faBrain, faSitemap, faLayerGroup,
   faRetweet, faCircleNotch, faWifi,
 } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
-export const layoutOptions = [
-  { label: 'Random', value: 'random', icon: faDice },
-  { label: 'Grid', value: 'grid', icon: faTable },
-  { label: 'Breadth-First', value: 'breadthFirst', icon: faTree },
-  { label: 'Concentric', value: 'concentric', icon: faBullseye },
-  { label: 'Cola', value: 'cola', icon: faAtom },
-  { label: 'Cose', value: 'cose', icon: faLink },
-  { label: 'Cose-Bilkent', value: 'coseBilkent', icon: faBrain },
-  { label: 'Dagre', value: 'dagre', icon: faSitemap },
-  { label: 'Klay', value: 'klay', icon: faLayerGroup },
-  { label: 'Euler', value: 'euler', icon: faRetweet },
-  {
-    label: 'Avsdf', value: 'avsdf', icon: faCircleNotch, spin: true,
-  },
-  { label: 'Spread', value: 'spread', icon: faWifi },
-];
+export const useLayoutOptions = () => {
+  const { t } = useTranslation('cytoscape');
+
+  return [
+    {
+      label: t('footer.layouts.random'),
+      value: 'random',
+      icon: faDice,
+    },
+    {
+      label: t('footer.layouts.grid'),
+      value: 'grid',
+      icon: faTable,
+    },
+    {
+      label: t('footer.layouts.breadthFirst'),
+      value: 'breadthFirst',
+      icon: faTree,
+    },
+    {
+      label: t('footer.layouts.concentric'),
+      value: 'concentric',
+      icon: faBullseye,
+    },
+    {
+      label: t('footer.layouts.cola'),
+      value: 'cola',
+      icon: faAtom,
+    },
+    {
+      label: t('footer.layouts.cose'),
+      value: 'cose',
+      icon: faLink,
+    },
+    {
+      label: t('footer.layouts.coseBilkent'),
+      value: 'coseBilkent',
+      icon: faBrain,
+    },
+    {
+      label: t('footer.layouts.dagre'),
+      value: 'dagre',
+      icon: faSitemap,
+    },
+    {
+      label: t('footer.layouts.klay'),
+      value: 'klay',
+      icon: faLayerGroup,
+    },
+    {
+      label: t('footer.layouts.euler'),
+      value: 'euler',
+      icon: faRetweet,
+    },
+    {
+      label: t('footer.layouts.avsdf'),
+      value: 'avsdf',
+      icon: faCircleNotch,
+      spin: true,
+    },
+    {
+      label: t('footer.layouts.spread'),
+      value: 'spread',
+      icon: faWifi,
+    },
+  ];
+};
 
 const CytoscapeLayoutDropdown = ({
   selectedLayout,
@@ -32,7 +84,7 @@ const CytoscapeLayoutDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-
+  const layoutOptions = useLayoutOptions();
   const selectedOption = layoutOptions.find((option) => option.value === selectedLayout);
 
   useEffect(() => {
