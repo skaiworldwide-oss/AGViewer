@@ -10,12 +10,12 @@
     }
   ],
   "main": "electronApp.js",
- "scripts": {
-  "clean": "rimraf resources/backend/build resources/frontend/build",
-  "prebuild": "cd .. && npm run build-back && npm run build-front",
-  "prebundle": "mkdirp resources/backend resources/frontend && cp -r ../backend/build resources/backend/ && cp -r ../frontend/build resources/frontend/",
-  "bundle:test": "yarn run clean && yarn run prebuild && yarn run prebundle && electron electronApp.js",
-   "bundle:osx": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --mac",
+  "scripts": {
+    "clean": "rimraf resources/backend/build resources/frontend/build",
+    "prebuild": "cd .. && npm run build-back && npm run build-front",
+    "prebundle": "mkdirp resources/backend resources/frontend && cp -r ../backend/build resources/backend/ && cp -r ../frontend/build resources/frontend/",
+    "bundle:test": "yarn run clean && yarn run prebuild && yarn run prebundle && electron electronApp.js",
+    "bundle:osx": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --mac",
     "bundle:linux": "yarn run clean && yarn run prebuild && yarn run prebundle && yarn run build:linux32 && yarn run build:linux64",
     "bundle:linux32": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --linux --ia32",
     "bundle:linux64": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --linux --x64",
@@ -24,8 +24,8 @@
     "bundle:win64": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --win --x64"
   },
   "dependencies": {
-    "@bitnine-oss/ag-driver": "^0.1.0",
     "@babel/runtime": "^7.19.0",
+    "@bitnine-oss/ag-driver": "^0.1.0",
     "antlr4": "4.9.3",
     "cookie-parser": "~1.4.5",
     "cors": "^2.8.5",
@@ -33,6 +33,7 @@
     "debug": "~4.3.1",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.6",
+    "electron": "^37.3.1",
     "express": "~4.17.1",
     "express-session": "^1.17.1",
     "http-status": "^1.5.0",
@@ -48,7 +49,6 @@
   "devDependencies": {
     "cpy": "^11.1.0",
     "cpy-cli": "^5.0.0",
-    "electron": "^20.1.4",
     "electron-builder": "^23.6.0",
     "mkdirp": "^3.0.1",
     "npm-run-all": "^4.1.5",
