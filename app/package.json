@@ -11,9 +11,9 @@
   ],
   "main": "electronApp.js",
   "scripts": {
-    "clean": "rimraf resources/backend/build resources/frontend/build",
+    "clean": "rimraf resources/backend/ resources/frontend/build",
     "prebuild": "cd .. && npm run build-back && npm run build-front",
-    "prebundle": "mkdirp resources/backend resources/frontend && cp -r ../backend/build resources/backend/ && cp -r ../frontend/build resources/frontend/",
+    "prebundle": "mkdirp resources/backend resources/frontend && cp -r ../backend/build resources/backend/ && cp -r ../backend/sql resources/backend/ && cp -r ../frontend/build resources/frontend/",
     "bundle:test": "yarn run clean && yarn run prebuild && yarn run prebundle && electron electronApp.js",
     "bundle:osx": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --mac",
     "bundle:linux": "yarn run clean && yarn run prebuild && yarn run prebundle && yarn run build:linux32 && yarn run build:linux64",
@@ -58,6 +58,12 @@
     "productName": "age-viewer-desktop",
     "appId": "age.viewer.apache.org",
     "asar": true,
+    "extraResources": [
+      {
+        "from": "resources/backend/sql/",
+        "to": "resources/backend/sql/"
+      }
+    ],
     "protocols": {
       "name": "age-viewer-desktop",
       "schemes": [
