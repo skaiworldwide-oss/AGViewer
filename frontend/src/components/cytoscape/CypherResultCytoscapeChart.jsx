@@ -20,7 +20,7 @@ import React, {
   useRef,
 } from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap styles are imported
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
@@ -277,6 +277,12 @@ const CypherResultCytoscapeCharts = ({
       }
     }
   }, [cytoscapeObject, cytoscapeLayout]);
+  const [showFilenameModal, setShowFilenameModal] = useState(false);
+  const [filename, setFilename] = useState('graph-export');
+  const handleOpenExportModal = () => {
+    setFilename('graph-export'); // reset default name each time
+    setShowFilenameModal(true);
+  };
 
   const cyRef = useRef(null);
   const cyCallback = useCallback((cy) => {
@@ -292,7 +298,7 @@ const CypherResultCytoscapeCharts = ({
       cyRef.current.fit(undefined, 50);
     }
   };
-  const handleExportGraph = () => {
+  const handleExportGraph = (customFilename = 'graph-export') => {
     const cy = cyRef.current;
     if (cy) {
       cy.fit();
@@ -306,12 +312,16 @@ const CypherResultCytoscapeCharts = ({
 
         const link = document.createElement('a');
         link.href = pngData;
-        link.download = 'graph-export.png';
+        link.download = `${customFilename}.png`; // use passed filename
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       }, 100);
     }
+  };
+  const handleConfirmExport = () => {
+    handleExportGraph(filename); // call original function with filename
+    setShowFilenameModal(false);
   };
 
   return (
@@ -334,6 +344,35 @@ const CypherResultCytoscapeCharts = ({
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Export Setting Modal */}
+      <Modal show={showFilenameModal} onHide={() => setShowFilenameModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Save Graph as Image</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group>
+            <Form.Label>Enter Filename:</Form.Label>
+            <Form.Control
+              type="text"
+              value={filename}
+              onChange={(e) => setFilename(e.target.value)}
+              placeholder="graph-export"
+              onKeyDown={(e) => e.key === 'Enter' && handleConfirmExport()}
+            />
+          </Form.Group>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowFilenameModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleConfirmExport}>
+            Download
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <div className={styles.zoomControls}>
         <Button className={styles.zoomButton} onClick={handleFitView}>
           <FontAwesomeIcon icon={faExpand} />
@@ -344,7 +383,7 @@ const CypherResultCytoscapeCharts = ({
         <Button className={styles.zoomButton} onClick={handleZoomOut}>
           -
         </Button>
-        <Button className={styles.zoomButton} onClick={handleExportGraph}>
+        <Button className={styles.zoomButton} onClick={handleOpenExportModal}>
           <FontAwesomeIcon icon={faDownload} />
         </Button>
       </div>
