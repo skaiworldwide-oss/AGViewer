@@ -74,7 +74,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1001;   //hiding the footer |  footer z-index is 1000
+  z-index: 12;
   display: flex;
   flex-direction: column;
 }
@@ -85,8 +85,6 @@
 
 .FullScreen .NormalChart, .FullScreen .MetaChart {
   flex: 1;
-  height: calc(100vh - 200px) !important;
-  min-height: 0;        /* prevent overflow */
 }
 
 .Chart {
