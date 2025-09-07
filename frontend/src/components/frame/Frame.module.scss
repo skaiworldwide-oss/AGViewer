@@ -85,6 +85,8 @@
 
 .FullScreen .NormalChart, .FullScreen .MetaChart {
   flex: 1;
+  height: calc(100vh - 254px) !important;
+  min-height: 0;        /* prevent overflow */
 }
 
 .Chart {
@@ -116,7 +118,9 @@
 .FullScreen .FlexContentWrapper {
   height: 100% !important;
 }
-
+.FullScreen .zoomControls{
+  bottom:120px;
+}
 .zoomControls {
   position: absolute;
   bottom: 60px;
