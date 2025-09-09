@@ -74,7 +74,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 12;
+  z-index: 1001;   //hiding the footer |  footer z-index is 1000
   display: flex;
   flex-direction: column;
 }
