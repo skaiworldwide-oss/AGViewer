@@ -12,6 +12,13 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme);
+
+  const [fullScreenFrameId, setFullScreenFrameId] = useState(null);
+  const setFrameFullScreen = (frameId, isFullScreen) => {
+    setFullScreenFrameId(isFullScreen ? frameId : null);
+  };
+  const isFrameFullScreen = (frameId) => fullScreenFrameId === frameId;
+
   const toggleTheme = () => {
     const newTheme = theme.name === 'light' ? darkTheme : lightTheme;
     setTheme(newTheme);
@@ -21,7 +28,15 @@ export const ThemeProvider = ({ children }) => {
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+        fullScreenFrameId,
+        setFrameFullScreen,
+        isFrameFullScreen,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

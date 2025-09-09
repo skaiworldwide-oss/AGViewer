@@ -28,28 +28,8 @@ import logoImage from './logo.png';
 import ActivityBar from '../../sidebar/presentations/ActivityBar';
 import ResizableSplitLayout from '../../splitlayout/ResizableSplitLayout';
 import '../../splitlayout/split-pane.css';
+import { useTheme } from '../../../contexts/ThemeContext';
 
-const HeaderStyles = {
-  height: '64px',
-  color: 'rgba(0, 0, 0, 0.85)',
-  lineHeight: '64px',
-  background: '#001529',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
-const FooterStyles = {
-  color: 'var(--primary-color)',
-  backgroundColor: 'var(--footer-bg-color)',
-  fontSize: '14px',
-  textAlign: 'center',
-  position: 'fixed',
-  bottom: 0,
-  right: 0,
-  width: '67%',
-  padding: '5px 5px',
-  zIndex: 1000,
-};
 const DefaultTemplate = ({
   theme,
   maxNumOfFrames,
@@ -59,6 +39,31 @@ const DefaultTemplate = ({
   changeSettings,
 }) => {
   const dispatch = useDispatch();
+  const { fullScreenFrameId } = useTheme();
+  const isFullScreen = fullScreenFrameId != null;
+  console.log('fullScreenFrameId:', fullScreenFrameId, 'isFullScreen:', isFullScreen);
+
+  const HeaderStyles = {
+    height: '64px',
+    color: 'rgba(0, 0, 0, 0.85)',
+    lineHeight: '64px',
+    background: '#001529',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+  const FooterStyles = {
+    color: 'var(--primary-color)',
+    backgroundColor: 'var(--footer-bg-color)',
+    fontSize: '14px',
+    textAlign: 'center',
+    position: 'fixed',
+    bottom: 0,
+    right: 0,
+    width: isFullScreen ? '100%' : '67%',
+    padding: '5px 5px',
+    zIndex: 1000,
+  };
   const [stateValues] = useState({
     theme,
     maxNumOfFrames,
@@ -116,7 +121,7 @@ const DefaultTemplate = ({
         <div
           className="editor-division"
           style={{
-            height: '100vh',
+            height: 'calc(100vh - 60px)',
             width: '100%',
             display: 'flex',
             flexDirection: 'column',

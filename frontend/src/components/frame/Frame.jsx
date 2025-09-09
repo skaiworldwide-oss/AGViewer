@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styles from './Frame.module.scss';
 import { removeFrame } from '../../features/frame/FrameSlice';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Frame = ({
   reqString, children, refKey,
@@ -17,7 +18,10 @@ const Frame = ({
   bodyNoPadding,
 }) => {
   const dispatch = useDispatch();
-  const [isFullScreen, setFullScreen] = useState(false);
+
+  const { setFrameFullScreen, isFrameFullScreen } = useTheme();
+  const isFullScreen = isFrameFullScreen(refKey);
+
   const [isExpand, setExpand] = useState(true);
   const { t } = useTranslation('frame');
 
@@ -104,7 +108,7 @@ const Frame = ({
             size="large"
             type="link"
             className={`${styles.FrameButton} ${isFullScreen ? styles.activate : ''}`}
-            onClick={() => setFullScreen(!isFullScreen)}
+            onClick={() => setFrameFullScreen(refKey, !isFullScreen)}
             title={t('expand')}
           >
             <FontAwesomeIcon
