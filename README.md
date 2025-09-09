@@ -95,3 +95,9 @@ npm run setup
 npm run start
 ```
 
+## Documentation
+Comprehensive documentation is available to help you get started with AGViewer and make the most of its features.
+- [Quick Start Guide](http://tech.skaiworldwide.com/docs/en/agviewer/1/index.html)
+
+## License
+- [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
