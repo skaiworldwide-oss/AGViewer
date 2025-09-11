@@ -1,0 +1,12 @@
+{
+  "frame": {
+    "edgeWeight": "边权重",
+    "cancelSearch": "取消搜索",
+    "filterSearch": "筛选/搜索",
+    "expand": "展开",
+    "refresh": "刷新",
+    "hide": "隐藏",
+    "show": "显示",
+    "closeWindow": "关闭窗口"
+  }
+}

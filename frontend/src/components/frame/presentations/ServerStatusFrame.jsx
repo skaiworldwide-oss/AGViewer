@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Col, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 // import MetadataCytoscapeChart from '../../cytoscape/MetadataCytoscapeChart';
 import Frame from '../Frame';
 import FrameStyles from '../Frame.module.scss';
@@ -36,23 +37,25 @@ const ServerStatusFrame = ({
       setElements(data.elements);
     }
   });
-
+  const { t } = useTranslation();
   const setContent = () => {
     if (status === 'connected') {
       return (
         <div className={FrameStyles.FlexContentWrapper}>
           <Row>
             <Col span={6}>
-              <h3>Connection Status</h3>
-              <p>This is your current connection information.</p>
+              <h3>{t('serverConnect.connectionTitle')}</h3>
+              <p>{t('serverConnect.connectedMessage')}</p>
             </Col>
             <Col span={18}>
               <p>
-                You are connected as user&nbsp;
+                {t('serverConnect.connectedUser')}
+                &nbsp;
                 <strong>{user}</strong>
               </p>
               <p>
-                to&nbsp;
+                {t('serverConnect.connectedTo')}
+                &nbsp;
                 <strong>
                   {host}
                   :
@@ -62,7 +65,8 @@ const ServerStatusFrame = ({
                 </strong>
               </p>
               <p>
-                Graph path has been set to&nbsp;
+                {t('serverConnect.graphPathSet')}
+                &nbsp;
                 <strong>{graph}</strong>
               </p>
             </Col>
@@ -77,12 +81,13 @@ const ServerStatusFrame = ({
         <>
           <Row>
             <Col span={6}>
-              <h3>Connection Status</h3>
-              <p>You are currently not connected to AgensGraph</p>
+              <h3>{t('serverConnect.connectionTitle')}</h3>
+              <p>{t('serverConnect.disconnectedMessage')}</p>
             </Col>
             <Col span={18}>
               <p>
-                You may run
+                {t('serverConnect.reconnectPrompt')}
+                &nbsp;
                 <a href="/#" className="badge badge-light">
                   <FontAwesomeIcon
                     icon={faPlayCircle}
@@ -91,7 +96,7 @@ const ServerStatusFrame = ({
                   :server connect
                 </a>
                 {' '}
-                to access to Agensgraph.
+                {t('serverConnect.reconnectCommand')}
               </p>
             </Col>
           </Row>

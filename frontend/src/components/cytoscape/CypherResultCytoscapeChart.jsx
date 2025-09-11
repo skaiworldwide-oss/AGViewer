@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap styles are imported
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
@@ -33,6 +38,8 @@ import {
   faLockOpen,
   faProjectDiagram,
   faWindowClose,
+  faDownload,
+  faExpand,
 } from '@fortawesome/free-solid-svg-icons';
 import cxtmenu from '../../lib/cytoscape-cxtmenu-bitnine';
 import { initLocation, seletableLayouts } from './CytoscapeLayouts';
@@ -147,7 +154,41 @@ const CypherResultCytoscapeCharts = ({
     addLegendData(generatedData.legend);
     rerenderTargets.removeClass('new');
   };
+  const handleZoomIn = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      const newZoom = currentZoom * 1.3;
 
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
+        },
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (cytoscapeObject) {
+      const currentZoom = cytoscapeObject.zoom();
+      const newZoom = currentZoom * 0.7;
+
+      cytoscapeObject.animate(
+        {
+          zoom: newZoom,
+          center: { eles: cytoscapeObject.elements() },
+        },
+        {
+          duration: 100,
+          easing: 'ease-in-out',
+        },
+      );
+    }
+  };
   useEffect(() => {
     if (cytoscapeMenu === null && cytoscapeObject !== null) {
       const cxtMenuConf = {
@@ -202,17 +243,17 @@ const CypherResultCytoscapeCharts = ({
             },
           },
         ],
-        fillColor: 'rgba(210, 213, 218, 1)',
-        activeFillColor: 'rgba(166, 166, 166, 1)',
+        fillColor: 'var(--menu-bg)',
+        activeFillColor: 'var(--menu-active-bg)',
         activePadding: 0,
         indicatorSize: 0,
-        separatorWidth: 4,
+        separatorWidth: 4, /* might cause conflict in theme switcher */
         spotlightPadding: 3,
         minSpotlightRadius: 11,
         maxSpotlightRadius: 99,
         openMenuEvents: 'cxttap',
-        itemColor: '#2A2C34',
-        itemTextShadowColor: 'transparent',
+        itemColor: 'var(--menu-item-color)',
+        itemTextShadowColor: 'transparent', /* might cause conflict in theme switcher */
         zIndex: 9999,
         atMouse: false,
       };
@@ -236,12 +277,52 @@ const CypherResultCytoscapeCharts = ({
       }
     }
   }, [cytoscapeObject, cytoscapeLayout]);
+  const [showFilenameModal, setShowFilenameModal] = useState(false);
+  const [filename, setFilename] = useState('graph-export');
+  const handleOpenExportModal = () => {
+    setFilename('graph-export'); // reset default name each time
+    setShowFilenameModal(true);
+  };
 
-  const cyCallback = useCallback((newCytoscapeObject) => {
-    if (cytoscapeObject) return;
-    setCytoscapeObject(newCytoscapeObject);
-  },
-  [cytoscapeObject]);
+  const cyRef = useRef(null);
+  const cyCallback = useCallback((cy) => {
+    if (!cyRef.current) {
+      cyRef.current = cy;
+    }
+    if (!cytoscapeObject) {
+      setCytoscapeObject(cy);
+    }
+  }, [cytoscapeObject]);
+  const handleFitView = () => {
+    if (cyRef.current) {
+      cyRef.current.fit(undefined, 50);
+    }
+  };
+  const handleExportGraph = (customFilename = 'graph-export') => {
+    const cy = cyRef.current;
+    if (cy) {
+      cy.fit();
+      setTimeout(() => {
+        const pngData = cy.png({
+          fit: true,
+          bg: '#ffffff', // background color used in exported image
+          scale: 2,
+          output: { width: 1000, height: 1000 },
+        });
+
+        const link = document.createElement('a');
+        link.href = pngData;
+        link.download = `${customFilename}.png`; // use passed filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 100);
+    }
+  };
+  const handleConfirmExport = () => {
+    handleExportGraph(filename); // call original function with filename
+    setShowFilenameModal(false);
+  };
 
   return (
     <div>
@@ -263,6 +344,49 @@ const CypherResultCytoscapeCharts = ({
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Export Setting Modal */}
+      <Modal show={showFilenameModal} onHide={() => setShowFilenameModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Save Graph as Image</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Group>
+            <Form.Label>Enter Filename:</Form.Label>
+            <Form.Control
+              type="text"
+              value={filename}
+              onChange={(e) => setFilename(e.target.value)}
+              placeholder="graph-export"
+              onKeyDown={(e) => e.key === 'Enter' && handleConfirmExport()}
+            />
+          </Form.Group>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowFilenameModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleConfirmExport}>
+            Download
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <div className={styles.zoomControls}>
+        <Button className={styles.zoomButton} onClick={handleFitView}>
+          <FontAwesomeIcon icon={faExpand} />
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleZoomIn}>
+          +
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleZoomOut}>
+          -
+        </Button>
+        <Button className={styles.zoomButton} onClick={handleOpenExportModal}>
+          <FontAwesomeIcon icon={faDownload} />
+        </Button>
+      </div>
     </div>
   );
 };

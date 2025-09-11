@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTable } from '@fortawesome/free-solid-svg-icons';
+import { withTranslation } from 'react-i18next';
 
 class CypherResultTab extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class CypherResultTab extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const activeTab = (refKey, tabType) => {
       if (tabType === 'graph') {
         document.getElementById(`${refKey}-${tabType}`).classList.add('selected-frame-tab');
@@ -49,12 +51,12 @@ class CypherResultTab extends Component {
         <button
           className="btn"
           type="button"
-          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'graph' ? '#142B80' : '#495057' }}
+          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'graph' ? 'var(--tab-active-color)' : 'var(--tab-color)' }}
           onClick={() => activeTab(this.refKey, 'graph')}
         >
           <i className="icon-graph" style={{ fontSize: '25px' }} />
           <br />
-          <b style={{ fontSize: '14px;' }}>Graph</b>
+          <b style={{ fontSize: '14px' }}>{t('tabs.graph')}</b>
         </button>
         <div
           style={{
@@ -67,12 +69,12 @@ class CypherResultTab extends Component {
         <button
           className="btn"
           type="button"
-          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'table' ? '#142B80' : '#495057' }}
+          style={{ width: '50%', fontSize: '14px', color: this.currentTab === 'table' ? 'var(--tab-active-color)' : 'var(--tab-color)' }}
           onClick={() => activeTab(this.refKey, 'table')}
         >
           <FontAwesomeIcon icon={faTable} style={{ fontSize: '25px' }} />
           <br />
-          <b style={{ fontSize: '14px;' }}>Table</b>
+          <b style={{ fontSize: '14px' }}>{t('tabs.table')}</b>
         </button>
       </div>
     );
@@ -82,6 +84,7 @@ class CypherResultTab extends Component {
 CypherResultTab.propTypes = {
   refKey: PropTypes.string.isRequired,
   currentTab: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default CypherResultTab;
+export default withTranslation('cytoscape')(CypherResultTab);

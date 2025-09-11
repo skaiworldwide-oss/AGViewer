@@ -1,0 +1,12 @@
+{
+    "frame": {
+    "edgeWeight": "Edge Weight",
+    "cancelSearch": "Cancel Search",
+    "filterSearch": "Filter/Search",
+    "expand": "Expand",
+    "refresh": "Refresh",
+    "hide": "Hide",
+    "show": "Show",
+    "closeWindow": "Close Window"
+  }
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,14 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 
 import App from './App';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root'),
 );

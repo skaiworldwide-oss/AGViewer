@@ -6,8 +6,10 @@ import {
 import { Button, Popover } from 'antd';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import styles from './Frame.module.scss';
 import { removeFrame } from '../../features/frame/FrameSlice';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Frame = ({
   reqString, children, refKey,
@@ -16,8 +18,12 @@ const Frame = ({
   bodyNoPadding,
 }) => {
   const dispatch = useDispatch();
-  const [isFullScreen, setFullScreen] = useState(false);
+
+  const { setFrameFullScreen, isFrameFullScreen } = useTheme();
+  const isFullScreen = isFrameFullScreen(refKey);
+
   const [isExpand, setExpand] = useState(true);
+  const { t } = useTranslation('frame');
 
   // const downloadMenu = () => (
   //   <Menu onClick={(e) => onDownload(e)}>
@@ -49,7 +55,7 @@ const Frame = ({
                 size="large"
                 type="link"
                 className={styles.FrameButton}
-                title="Edge Weight"
+                title={t('edgeWeight')}
                 onClick={() => onThick()}
               >
                 <i className="icon-edge-weight" />
@@ -62,7 +68,7 @@ const Frame = ({
               type="link"
               className={styles.FrameButton}
               onClick={() => onSearchCancel()}
-              title="Cancel Search"
+              title={t('cancelSearch')}
             >
               <i className="icon-search-cancel" />
             </Button>
@@ -73,7 +79,7 @@ const Frame = ({
               type="link"
               className={styles.FrameButton}
               onClick={() => onSearch()}
-              title="Filter/Search"
+              title={t('filterSearch')}
             >
               <i className="icon-filter" />
             </Button>
@@ -102,8 +108,8 @@ const Frame = ({
             size="large"
             type="link"
             className={`${styles.FrameButton} ${isFullScreen ? styles.activate : ''}`}
-            onClick={() => setFullScreen(!isFullScreen)}
-            title="Expand"
+            onClick={() => setFrameFullScreen(refKey, !isFullScreen)}
+            title={t('expand')}
           >
             <FontAwesomeIcon
               icon={isFullScreen ? faCompressAlt : faExpandAlt}
@@ -117,7 +123,7 @@ const Frame = ({
                 type="link"
                 className={`${styles.FrameButton}`}
                 onClick={() => onRefresh()}
-                title="Refresh"
+                title={t('refresh')}
               >
                 <FontAwesomeIcon
                   icon={faSync}
@@ -143,7 +149,7 @@ const Frame = ({
             type="link"
             className={`${styles.FrameButton}`}
             onClick={() => setExpand(!isExpand)}
-            title={isExpand ? 'Hide' : 'Show'}
+            title={isExpand ? t('hide') : t('show')}
           >
             <FontAwesomeIcon
               icon={isExpand ? faAngleUp : faAngleDown}
@@ -155,7 +161,7 @@ const Frame = ({
             type="link"
             className={`${styles.FrameButton}`}
             onClick={() => dispatch(removeFrame(refKey))}
-            title="Close Window"
+            title={t('closeWindow')}
           >
             <FontAwesomeIcon
               icon={faTimes}

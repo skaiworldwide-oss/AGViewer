@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,15 @@ import { Badge } from 'react-bootstrap';
 import uuid from 'react-uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+
 import {
   updateEdgeLabelSize,
   updateLabelCaption,
   updateLabelColor,
   updateNodeLabelSize,
 } from '../../features/cypher/CypherUtil';
+import CytoscapeLayoutDropdown from './CytoscapeLayoutDropdown';
 
 const CypherResultCytoscapeFooter = ({
   footerData,
@@ -42,7 +45,7 @@ const CypherResultCytoscapeFooter = ({
   cytoscapeLayout,
 }) => {
   const [footerExpanded, setFooterExpanded] = useState(false);
-
+  const { t } = useTranslation('cytoscape');
   const extractData = (d) => {
     const extractedData = [];
     for (let i = 0; i < Object.entries(d).length; i += 1) {
@@ -90,33 +93,21 @@ const CypherResultCytoscapeFooter = ({
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
-            aria-label="Expand Footer"
+            aria-label={t('footer.expandFooter')}
             onClick={() => setFooterExpanded(!footerExpanded)}
           >
             <FontAwesomeIcon
               icon={footerExpanded ? faAngleUp : faAngleDown}
+              style={{ color: 'gray' }}
             />
           </button>
           Layout :&nbsp;
-          <select
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">Random</option>
-            <option value="grid">Grid</option>
-            <option value="breadthFirst">Breadth-First</option>
-            <option value="concentric">Concentric</option>
-            <option value="cola">Cola</option>
-            <option value="cose">Cose</option>
-            <option value="coseBilkent">Cose-Bilkent</option>
-            <option value="dagre">Dagre</option>
-            <option value="klay">Klay</option>
-            <option value="euler">Euler</option>
-            <option value="avsdf">Avsdf</option>
-            <option value="spread">Spread</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
@@ -124,34 +115,23 @@ const CypherResultCytoscapeFooter = ({
       return (
         <div className="d-flex pl-3">
           <div className="mr-auto label pl-3">
-            Displaying&nbsp;
+            {t('footer.displaying')}
+            &nbsp;
             <strong>{footerData.data.nodeCount}</strong>
             &nbsp;
-            nodes,&nbsp;
+            {t('footer.nodes')}
+            ,&nbsp;
             <strong>{footerData.data.edgeCount}</strong>
             {' '}
-            edges
+            {t('footer.edges')}
           </div>
           Layout :&nbsp;
-          <select
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">Random</option>
-            <option value="grid">Grid</option>
-            <option value="breadthFirst">Breadth-First</option>
-            <option value="concentric">Concentric</option>
-            <option value="cola">Cola</option>
-            <option value="cose">Cose</option>
-            <option value="coseBilkent">Cose-Bilkent</option>
-            <option value="dagre">Dagre</option>
-            <option value="klay">Klay</option>
-            <option value="euler">Euler</option>
-            <option value="avsdf">Avsdf</option>
-            <option value="spread">Spread</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
@@ -168,7 +148,7 @@ const CypherResultCytoscapeFooter = ({
             type="button"
             className={`btn sizeSelector node ${footerData.data.size >= nodeSize ? ' selectedSize ' : ''}`}
             style={{ width: `${size}px`, height: `${size}px` }}
-            aria-label="Size selector"
+            aria-label={t('footer.aria.nodeSizeSelector')}
           >
             &nbsp;
           </button>
@@ -185,7 +165,7 @@ const CypherResultCytoscapeFooter = ({
             type="button"
             className={`btn sizeSelector edge ${footerData.data.size >= edgeSize ? ' selectedSize ' : ''}`}
             style={{ width: `${size + 18}px`, height: `${size}px` }}
-            aria-label="Change edge size"
+            aria-label={t('footer.aria.edgeSizeSelector')}
           >
             &nbsp;
           </button>
@@ -212,7 +192,7 @@ const CypherResultCytoscapeFooter = ({
               type="button"
               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
               style={{ backgroundColor: color.color }}
-              aria-label="Change node label color"
+              aria-label={t('footer.aria.changeNodeLabelColor')}
             >
               &nbsp;
             </button>
@@ -228,7 +208,7 @@ const CypherResultCytoscapeFooter = ({
               type="button"
               className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
               style={{ backgroundColor: color.color }}
-              aria-label="Change edge label color"
+              aria-label={t('footer.aria.changeEdgeLabelColor')}
             >
               &nbsp;
             </button>
@@ -251,15 +231,15 @@ const CypherResultCytoscapeFooter = ({
               {footerData.data.label}
             </Badge>
             <span className="label">
-              <span className="pl-3">Color : </span>
+              <span className="pl-3">{t('footer.color')}</span>
               {generateColors()}
             </span>
             <span className="label">
-              <span className="pl-3">Size : </span>
+              <span className="pl-3">{t('footer.size')}</span>
               {generateButton()}
             </span>
             <span className="label">
-              <span className="pl-3">Caption : </span>
+              <span className="pl-3">{t('footer.caption')}</span>
               {captions.map((caption) => (
                 <button
                   onClick={() => [
@@ -294,7 +274,7 @@ const CypherResultCytoscapeFooter = ({
           <button
             type="button"
             className="frame-head-button btn btn-link px-3"
-            aria-label="expand footer"
+            aria-label={t('footer.expandFooter')}
             onClick={() => setFooterExpanded(!footerExpanded)}
           >
             <FontAwesomeIcon
@@ -302,25 +282,12 @@ const CypherResultCytoscapeFooter = ({
             />
           </button>
           Layout :&nbsp;
-          <select
+          <CytoscapeLayoutDropdown
+            selectedLayout={cytoscapeLayout}
+            onChange={setCytoscapeLayout}
             id="selectLayout"
-            className="col-1 custom-select custom-select-sm layout-select"
-            defaultValue={cytoscapeLayout}
-            onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-          >
-            <option value="random">Random</option>
-            <option value="grid">Grid</option>
-            <option value="breadthFirst">Breadth-First</option>
-            <option value="concentric">Concentric</option>
-            <option value="cola">Cola</option>
-            <option value="cose">Cose</option>
-            <option value="coseBilkent">Cose-Bilkent</option>
-            <option value="dagre">Dagre</option>
-            <option value="klay">Klay</option>
-            <option value="euler">Euler</option>
-            <option value="avsdf">Avsdf</option>
-            <option value="spread">Spread</option>
-          </select>
+            className="col-2"
+          />
         </div>
       );
     }
@@ -328,25 +295,12 @@ const CypherResultCytoscapeFooter = ({
       <div className="d-flex pl-3">
         <div className="mr-auto label pl-3" />
         <div className="px-1">Layout : </div>
-        <select
+        <CytoscapeLayoutDropdown
+          selectedLayout={cytoscapeLayout}
+          onChange={setCytoscapeLayout}
           id="selectLayout"
-          className="col-1 custom-select custom-select-sm layout-select"
-          defaultValue={cytoscapeLayout}
-          onChange={(e) => [setCytoscapeLayout(e.target.value)]}
-        >
-          <option value="random">Random</option>
-          <option value="grid">Grid</option>
-          <option value="breadthFirst">Breadth-First</option>
-          <option value="concentric">Concentric</option>
-          <option value="cola">Cola</option>
-          <option value="cose">Cose</option>
-          <option value="coseBilkent">Cose-Bilkent</option>
-          <option value="dagre">Dagre</option>
-          <option value="klay">Klay</option>
-          <option value="euler">Euler</option>
-          <option value="avsdf">Avsdf</option>
-          <option value="spread">Spread</option>
-        </select>
+          className="col-2"
+        />
       </div>
     );
   };

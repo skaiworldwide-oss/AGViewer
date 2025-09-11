@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { Col, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import Frame from '../Frame';
 
 const ServerDisconnectFrame = ({
@@ -33,7 +34,7 @@ const ServerDisconnectFrame = ({
   resetMetaData,
 }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   useEffect(() => {
     dispatch(() => disconnectToAgensGraph().then((response) => {
       if (response.type === 'database/disconnectToAgensGraph/fulfilled') {
@@ -52,12 +53,12 @@ const ServerDisconnectFrame = ({
     >
       <Row>
         <Col span={6}>
-          <h3>Disconnected Succesfully</h3>
-          <p>You are successfully disconnected from Agensgraph.</p>
+          <h3>{t('serverConnect.disconnectedTitle')}</h3>
+          <p>{t('serverConnect.disconnectedSuccessMessage')}</p>
         </Col>
         <Col span={18}>
           <p>
-            You may run
+            {t('serverConnect.reconnectPrompt')}
             <a href="/#" className="badge badge-light" onClick={() => { setCommand(':server connect'); }}>
               <FontAwesomeIcon
                 icon={faPlayCircle}
@@ -66,7 +67,7 @@ const ServerDisconnectFrame = ({
               :server connection
             </a>
             {' '}
-            to establish new connection
+            {t('serverConnect.reconnectCommandAfterDisconnect')}
           </p>
         </Col>
       </Row>

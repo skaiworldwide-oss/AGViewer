@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,10 @@ import ServerConnect from '../../frame/containers/ServerConnectContainer';
 import ServerDisconnect from '../../frame/containers/ServerDisconnectContainer';
 import CypherGraphResult from '../../frame/containers/CypherGraphResultContainers';
 import CypherResult from '../../frame/containers/CypherResultContainers';
+// import ThemeToggleButton from '../../ThemeToggleButton';
 import CSV from '../../csv';
 import { setting } from '../../../conf/config';
+import styles from './Frames.module.scss';
 
 const Frames = ({
   database,
@@ -137,7 +139,8 @@ const Frames = ({
   }, [frameList]);
 
   return (
-    <div className="container-fluid frame-area pt-3">
+    <div className={`container-fluid frame-area pt-3 ${styles.frameScroll}`}>
+      {/* <ThemeToggleButton /> */}
       {frames}
     </div>
   );

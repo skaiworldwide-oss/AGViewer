@@ -1,0 +1,18 @@
+{
+  "applyEdgeWeight": {
+    "title": "应用边权重",
+    "selectEdge": "选择边",
+    "selectProperty": "选择属性",
+    "minValue": "最小值",
+    "maxValue": "最大值",
+    "reset": "重置",
+    "apply": "应用"
+  },
+  "filterModal": {
+    "title": "在图上筛选",
+    "selectPlaceholder": "选择",
+    "error": {
+      "emptyProperty": "属性不能为空。"
+    }
+  }
+}

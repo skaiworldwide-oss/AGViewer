@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import {
   Button, Col, Form, Input, InputNumber, Row, Select,
 } from 'antd';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Frame from '../Frame';
 
 import styles from './ServerConnectFrame.module.scss';
@@ -29,12 +30,12 @@ import { addFrame, trimFrame } from '../../../features/frame/FrameSlice';
 import { getMetaChartData, getMetaData } from '../../../features/database/MetadataSlice';
 
 const FormInitialValue = {
-  database: '',
-  flavor: null,
+  database: 'postgres',
+  flavor: 'AGENS',
   graph: '',
-  host: '',
+  host: '127.0.0.1',
   password: '',
-  port: null,
+  port: 5432,
   user: '',
 };
 
@@ -62,7 +63,7 @@ const ServerConnectFrame = ({
       dispatch(addAlert('ErrorServerConnectFail', response.error.message));
     }
   });
-
+  const { t } = useTranslation();
   return (
     <Frame
       reqString={reqString}
@@ -71,8 +72,8 @@ const ServerConnectFrame = ({
     >
       <Row>
         <Col span={6}>
-          <h3>Connect to Database</h3>
-          <p>Database access might require and authenticated connection.</p>
+          <h3>{t('serverConnect.title')}</h3>
+          <p>{t('serverConnect.description')}</p>
         </Col>
         <Col span={18}>
           <div className={styles.FrameWrapper}>
@@ -81,35 +82,34 @@ const ServerConnectFrame = ({
               layout="vertical"
               onFinish={(values) => connectToDatabase(values)}
             >
-              <Form.Item name="flavor" label="Database Type" rules={[{ required: true }]}>
+              <Form.Item name="flavor" label={t('serverConnect.DataSourceType')} rules={[{ required: true }]}>
                 <Select
                   placeholder="Select a flavor of Database"
-                  allowClear
                 >
-                  <Select.Option value="AGE">Apache AGE</Select.Option>
                   <Select.Option value="AGENS">AgensGraph</Select.Option>
+                  <Select.Option value="AGE">Apache AGE</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item name="host" label="Connect URL" rules={[{ required: true }]}>
+              <Form.Item name="host" label={t('serverConnect.ConnectionURL')} rules={[{ required: true }]}>
                 <Input placeholder="192.168.0.1" />
               </Form.Item>
-              <Form.Item name="port" label="Connect Port" rules={[{ required: true }]}>
+              <Form.Item name="port" label={t('serverConnect.ConnectionPort')} rules={[{ required: true }]}>
                 <InputNumber placeholder="5432" className={styles.FullWidth} />
               </Form.Item>
-              <Form.Item name="database" label="Database Name" rules={[{ required: true }]}>
+              <Form.Item name="database" label={t('serverConnect.DatabaseName')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="graph" label="Graph Path" rules={[{ required: true }]}>
+              <Form.Item name="graph" label={t('serverConnect.GraphPath')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="user" label="User Name" rules={[{ required: true }]}>
+              <Form.Item name="user" label={t('serverConnect.UserName')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+              <Form.Item name="password" label={t('serverConnect.Password')}>
                 <Input.Password placeholder="postgres" />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit">Connect</Button>
+                <Button type="primary" htmlType="submit">{t('serverConnect.connectButton')}</Button>
               </Form.Item>
             </Form>
           </div>

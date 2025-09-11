@@ -1,0 +1,44 @@
+{
+  "footer": {
+    "expandFooter": "Expandir pie de página",
+    "layout": "Diseño",
+    "displaying": "Mostrando",
+    "nodes": "nodos",
+    "edges": "aristas",
+    "color": "Color: ",
+    "size": "Tamaño: ",
+    "caption": "Leyenda: ",
+    "layouts": {
+      "random": "Aleatorio",
+      "grid": "Cuadrícula",
+      "breadthFirst": "Anchura primero",
+      "concentric": "Concéntrico",
+      "cola": "Cola",
+      "cose": "Cose",
+      "coseBilkent": "Cose-Bilkent",
+      "dagre": "Dagre",
+      "klay": "Klay",
+      "euler": "Euler",
+      "avsdf": "Avsdf",
+      "spread": "Distribuir"
+    },
+    "aria": {
+      "nodeSizeSelector": "Selector de tamaño para etiquetas de nodos",
+      "edgeSizeSelector": "Cambiar tamaño de aristas",
+      "changeNodeLabelColor": "Cambiar color de la etiqueta del nodo",
+      "changeEdgeLabelColor": "Cambiar color de la etiqueta de la arista"
+    }
+  },
+  "legend": {
+    "node": "Nodo:",
+    "edge": "Arista:",
+    "aria": {
+      "expandNodeLegend": "Expandir leyenda de nodos",
+      "expandEdgeLegend": "Expandir leyenda de aristas"
+    }
+  },
+  "tabs": {
+    "graph": "Gráfico",
+    "table": "Tabla"
+  }
+}

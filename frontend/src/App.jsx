@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import './static/navbar-fixed-left.css';
 import './static/google-Poppins.css';
 import './static/icons/css/fontello.css';
 import MainPage from './pages/Main/MainPage';
+import './localization/i18n';
 
 const App = () => (
   <React.StrictMode>

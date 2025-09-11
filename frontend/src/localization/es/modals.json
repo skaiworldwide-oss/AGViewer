@@ -1,0 +1,38 @@
+{
+  "newEdgeModal": {
+    "title": "Crear una nueva arista",
+    "okText": "Enviar consulta",
+    "cancelText": "Cancelar",
+    "fields": {
+      "edgeLabel": "Etiqueta de la arista",
+      "originId": "ID del nodo de origen",
+      "targetId": "ID del nodo de destino",
+      "propertyKey": "Clave de propiedad",
+      "propertyValue": "Valor de propiedad",
+      "addField": "Agregar campo"
+    },
+    "validation": {
+      "missingEdgeLabel": "Falta la etiqueta de la arista",
+      "missingOriginId": "Falta el ID del nodo de origen",
+      "missingTargetId": "Falta el ID del nodo de destino",
+      "missingPropertyKey": "Falta la clave de propiedad",
+      "missingPropertyValue": "Falta el valor de propiedad"
+    }
+  },
+  "newNodeModal": {
+    "title": "Crear un nuevo nodo",
+    "okText": "Enviar consulta",
+    "cancelText": "Cancelar",
+    "fields": {
+      "nodeLabel": "Etiqueta del nodo",
+      "propertyKey": "Clave de propiedad",
+      "propertyValue": "Valor de propiedad",
+      "addField": "Agregar campo"
+    },
+    "validation": {
+      "missingNodeLabel": "Falta la etiqueta del nodo",
+      "missingPropertyKey": "Falta la clave de propiedad",
+      "missingPropertyValue": "Falta el valor de propiedad"
+    }
+  }
+}

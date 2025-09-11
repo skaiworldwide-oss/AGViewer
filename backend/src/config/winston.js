@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,42 @@
 const fs = require('fs');
 const winston = require('winston');
 const winstonDaily = require('winston-daily-rotate-file');
+const path = require('path');
+const { platform, homedir } = require('os');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const logDir = process.env.LOG_DIR || 'logs';
+const createDir = (dirName) => {
+    if (!fs.existsSync(dirName)) {
+        fs.mkdirSync(dirName, { recursive: true });
+    }
+};
+
+const getAppDataPath = () => {
+    let appDataPath;
+    switch (platform()) {
+        case 'win32':
+            appDataPath = path.join(homedir(), '.Ageviewer');
+            break;
+        case 'darwin':
+            appDataPath = path.join(homedir(), 'Library', 'Preferences', 'Ageviewer');
+            break;
+        case 'linux':
+            appDataPath = path.join(homedir(), '.config', '.Ageviewer');
+            break;
+        default:
+            if (platform().startsWith('win')) {
+                appDataPath = path.join(homedir(), '.Ageviewer');
+            } else {
+                appDataPath = path.join(homedir(), '.config', '.Ageviewer');
+            }
+    }
+    // Create directory if not exists
+    createDir(appDataPath);
+    return appDataPath;
+};
+
+const logDir = process.env.LOG_DIR || getAppDataPath();
 const { combine, timestamp, printf } = winston.format;
 
 const logFormat = printf((info) => {

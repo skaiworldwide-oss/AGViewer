@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Bitnine Co., Ltd.
+ * Copyright 2025 SKAI Worldwide Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ const CypherResultTable = ({ data, ...props }) => {
         title: key,
         dataIndex: isKey ? randKeyName : key,
         key: isKey ? randKeyName : key,
-        render: (text) => <>{JSON.stringify(text)}</>,
+        render: (text) => <>{JSON.stringify(text, null, ' ')}</>,
       });
     });
     setLocalColumns(columnsForFTable);
@@ -71,12 +71,11 @@ const CypherResultTable = ({ data, ...props }) => {
   } if (data.command === null) {
     return <div style={{ margin: '25px' }}><span style={{ whiteSpace: 'pre-line' }}>Query not entered!</span></div>;
   }
-
   const { refKey } = props;
   return (
     <div className="legend-area">
       <div className="container-frame-tab">
-        <div style={{ width: '80%', color: '#C4C4C4' }}>
+        <div style={{ width: '80%', color: 'var(--cypher-table-text-color)' }}>
           <div className="d-flex nodeLegend">Node:</div>
           <div className="d-flex edgeLegend">Edge:</div>
         </div>

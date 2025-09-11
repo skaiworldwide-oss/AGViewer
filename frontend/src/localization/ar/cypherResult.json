@@ -1,0 +1,18 @@
+{
+  "applyEdgeWeight": {
+    "title": "تطبيق وزن الحافة",
+    "selectEdge": "اختر الحافة",
+    "selectProperty": "اختر الخاصية",
+    "minValue": "القيمة الدنيا",
+    "maxValue": "القيمة القصوى",
+    "reset": "إعادة تعيين",
+    "apply": "تطبيق"
+  },
+  "filterModal": {
+    "title": "تصفية على الرسم البياني",
+    "selectPlaceholder": "اختر",
+    "error": {
+      "emptyProperty": "لا يمكن ترك الخاصية فارغة."
+    }
+  }
+}

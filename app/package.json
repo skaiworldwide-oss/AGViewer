@@ -1,0 +1,106 @@
+{
+  "name": "ag-viewer-frontend",
+  "version": "2.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "main": "electronApp.js",
+  "scripts": {
+    "clean": "rimraf resources/backend/ resources/frontend/build",
+    "prebuild": "cd .. && npm run build-back && npm run build-front",
+    "prebundle": "mkdirp resources/backend resources/frontend && cp -r ../backend/build resources/backend/ && cp -r ../backend/sql resources/backend/ && cp -r ../frontend/build resources/frontend/",
+    "bundle:test": "yarn run clean && yarn run prebuild && yarn run prebundle && electron electronApp.js",
+    "bundle:osx": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --mac",
+    "bundle:linux": "yarn run clean && yarn run prebuild && yarn run prebundle && yarn run build:linux32 && yarn run build:linux64",
+    "bundle:linux32": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --linux --ia32",
+    "bundle:linux64": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --linux --x64",
+    "bundle:win": "yarn run clean && yarn run prebuild && yarn run prebundle && yarn run build:win32 && yarn run build:win64",
+    "bundle:win32": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --win --ia32",
+    "bundle:win64": "yarn run clean && yarn run prebuild && yarn run prebundle && electron-builder build --win --x64"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.19.0",
+    "@skaiworldwide/ag-driver": "^1.1.0",
+    "antlr4": "4.9.3",
+    "cookie-parser": "~1.4.5",
+    "cors": "^2.8.5",
+    "csv": "^5.5.0",
+    "debug": "~4.3.1",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.6",
+    "electron": "^37.3.1",
+    "express": "~4.17.1",
+    "express-session": "^1.17.1",
+    "http-status": "^1.5.0",
+    "morgan": "~1.10.0",
+    "multer": "^1.4.2",
+    "pegjs": "^0.10.0",
+    "pg": "^8.5.1",
+    "pg-types": "^2.2.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
+  },
+  "devDependencies": {
+    "cpy": "^11.1.0",
+    "cpy-cli": "^5.0.0",
+    "electron-builder": "^23.6.0",
+    "mkdirp": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1"
+  },
+  "build": {
+    "productName": "AGViewer Desktop",
+    "appId": "agviewer.skaiworldwide.com",
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "resources/backend/sql/",
+        "to": "resources/backend/sql/"
+      }
+    ],
+    "protocols": {
+      "name": "agviewer-desktop",
+      "schemes": [
+        "agviewer-desktop"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "agviewer"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "resources/installer/",
+      "output": "dist/",
+      "app": "."
+    }
+  }
+}

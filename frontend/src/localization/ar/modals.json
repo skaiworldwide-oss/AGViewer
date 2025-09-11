@@ -1,0 +1,38 @@
+{
+  "newEdgeModal": {
+    "title": "إنشاء حافة جديدة",
+    "okText": "إرسال الاستعلام",
+    "cancelText": "إلغاء",
+    "fields": {
+      "edgeLabel": "تسمية الحافة",
+      "originId": "معرّف العقدة الأصلية",
+      "targetId": "معرّف العقدة الوجهة",
+      "propertyKey": "مفتاح الخاصية",
+      "propertyValue": "قيمة الخاصية",
+      "addField": "إضافة حقل"
+    },
+    "validation": {
+      "missingEdgeLabel": "تسمية الحافة مفقودة",
+      "missingOriginId": "معرّف العقدة الأصلية مفقود",
+      "missingTargetId": "معرّف العقدة الوجهة مفقود",
+      "missingPropertyKey": "مفتاح الخاصية مفقود",
+      "missingPropertyValue": "قيمة الخاصية مفقودة"
+    }
+  },
+  "newNodeModal": {
+    "title": "إنشاء عقدة جديدة",
+    "okText": "إرسال الاستعلام",
+    "cancelText": "إلغاء",
+    "fields": {
+      "nodeLabel": "تسمية العقدة",
+      "propertyKey": "مفتاح الخاصية",
+      "propertyValue": "قيمة الخاصية",
+      "addField": "إضافة حقل"
+    },
+    "validation": {
+      "missingNodeLabel": "تسمية العقدة مفقودة",
+      "missingPropertyKey": "مفتاح الخاصية مفقود",
+      "missingPropertyValue": "قيمة الخاصية مفقودة"
+    }
+  }
+}
