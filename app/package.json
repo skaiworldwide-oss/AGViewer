@@ -55,8 +55,8 @@
     "rimraf": "^6.0.1"
   },
   "build": {
-    "productName": "age-viewer-desktop",
-    "appId": "age.viewer.apache.org",
+    "productName": "AGViewer Desktop",
+    "appId": "agviewer.skaiworldwide.com",
     "asar": true,
     "extraResources": [
       {
@@ -65,9 +65,9 @@
       }
     ],
     "protocols": {
-      "name": "age-viewer-desktop",
+      "name": "agviewer-desktop",
       "schemes": [
-        "age-viewer-desktop"
+        "agviewer-desktop"
       ]
     },
     "mac": {
@@ -76,7 +76,7 @@
       ]
     },
     "dmg": {
-      "title": "age-viewer"
+      "title": "agviewer"
     },
     "win": {
       "target": [
