@@ -11,6 +11,27 @@ Web-based user interface that provides visualization of graph data stored in an 
 
 This is a sub-project of [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph)
 
+# AGViewer via Docker image
+
+- Pulling the image:
+
+```bash
+docker pull skaiworldwide/agviewer
+```
+
+- Run the container:
+
+```bash
+docker run --name agviewer -p 3000:3000 -d skaiworldwide/agviewer
+```
+
+Then open the URL [127.0.0.1:3000](http://127.0.0.1:3000) on your browser.
+
+> Tip: if your AgensGraph server is running on your host machine or difference container, the URL to connect to it should be "host.docker.internal".
+
+> [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode.
+```
+
 ## Installation
 ### 1. Clone the Repository
 
