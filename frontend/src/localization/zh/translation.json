@@ -37,5 +37,12 @@
   "propertyList.heading": "查找具有属性的项目：",
   "modal.disconnectConfirmation.title": "您确定要关闭此窗口吗？",
   "serverConnect.refresh": "刷新",
-  "serverConnect.closeSession": "关闭会话"
+  "serverConnect.closeSession": "关闭会话",
+  "serverConnect.DataSourceType": "数据源类型",
+  "serverConnect.ConnectionURL": "连接 URL",
+  "serverConnect.ConnectionPort": "连接端口",
+  "serverConnect.DatabaseName": "数据库名称",
+  "serverConnect.GraphPath": "图路径",
+  "serverConnect.UserName": "用户名",
+  "serverConnect.Password": "密码"
 }
