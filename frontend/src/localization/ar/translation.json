@@ -37,5 +37,12 @@
   "propertyList.heading": "ابحث عن العناصر بالخصائص:",
   "modal.disconnectConfirmation.title": "هل أنت متأكد أنك تريد إغلاق هذه النافذة؟",
   "serverConnect.refresh": "تحديث",
-  "serverConnect.closeSession": "إغلاق الجلسة"
+  "serverConnect.closeSession": "إنهاء الجلسة",
+  "serverConnect.DataSourceType": "نوع مصدر البيانات",
+  "serverConnect.ConnectionURL": "رابط الاتصال",
+  "serverConnect.ConnectionPort": "منفذ الاتصال",
+  "serverConnect.DatabaseName": "اسم قاعدة البيانات",
+  "serverConnect.GraphPath": "مسار الرسم البياني",
+  "serverConnect.UserName": "اسم المستخدم",
+  "serverConnect.Password": "كلمة المرور"
 }
