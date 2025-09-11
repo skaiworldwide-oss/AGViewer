@@ -37,5 +37,12 @@
   "propertyList.heading": "다음 속성을 가진 항목 찾기:",
   "modal.disconnectConfirmation.title": "이 창을 닫으시겠습니까?",
   "serverConnect.refresh": "새로고침",
-  "serverConnect.closeSession": "세션 종료"
+  "serverConnect.closeSession": "세션 종료",
+  "serverConnect.DataSourceType": "데이터 소스 유형",
+  "serverConnect.ConnectionURL": "연결 URL",
+  "serverConnect.ConnectionPort": "연결 포트",
+  "serverConnect.DatabaseName": "데이터베이스 이름",
+  "serverConnect.GraphPath": "그래프 경로",
+  "serverConnect.UserName": "사용자 이름",
+  "serverConnect.Password": "비밀번호"
 }

@@ -82,7 +82,7 @@ const ServerConnectFrame = ({
               layout="vertical"
               onFinish={(values) => connectToDatabase(values)}
             >
-              <Form.Item name="flavor" label="Data Source Type" rules={[{ required: true }]}>
+              <Form.Item name="flavor" label={t('serverConnect.DataSourceType')} rules={[{ required: true }]}>
                 <Select
                   placeholder="Select a flavor of Database"
                 >
@@ -90,22 +90,22 @@ const ServerConnectFrame = ({
                   <Select.Option value="AGE">Apache AGE</Select.Option>
                 </Select>
               </Form.Item>
-              <Form.Item name="host" label="Connection URL" rules={[{ required: true }]}>
+              <Form.Item name="host" label={t('serverConnect.ConnectionURL')} rules={[{ required: true }]}>
                 <Input placeholder="192.168.0.1" />
               </Form.Item>
-              <Form.Item name="port" label="Connection Port" rules={[{ required: true }]}>
+              <Form.Item name="port" label={t('serverConnect.ConnectionPort')} rules={[{ required: true }]}>
                 <InputNumber placeholder="5432" className={styles.FullWidth} />
               </Form.Item>
-              <Form.Item name="database" label="Database Name" rules={[{ required: true }]}>
+              <Form.Item name="database" label={t('serverConnect.DatabaseName')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="graph" label="Graph Path" rules={[{ required: true }]}>
+              <Form.Item name="graph" label={t('serverConnect.GraphPath')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="user" label="User Name" rules={[{ required: true }]}>
+              <Form.Item name="user" label={t('serverConnect.UserName')} rules={[{ required: true }]}>
                 <Input placeholder="postgres" />
               </Form.Item>
-              <Form.Item name="password" label="Password">
+              <Form.Item name="password" label={t('serverConnect.Password')}>
                 <Input.Password placeholder="postgres" />
               </Form.Item>
               <Form.Item>

@@ -37,5 +37,12 @@
   "propertyList.heading": "Find items with properties:",
   "modal.disconnectConfirmation.title": "Are you sure you want to close this window?",
   "serverConnect.refresh": "Refresh",
-  "serverConnect.closeSession": "Close Session"
+  "serverConnect.closeSession": "Close Session",
+  "serverConnect.DataSourceType": "Data Source Type",
+  "serverConnect.ConnectionURL": "Connection URL",
+  "serverConnect.ConnectionPort": "Connection Port",
+  "serverConnect.DatabaseName": "Database Name",
+  "serverConnect.GraphPath" : "Graph Path",
+  "serverConnect.UserName" : "User Name",
+  "serverConnect.Password" : "Password"
 }

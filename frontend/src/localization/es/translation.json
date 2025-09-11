@@ -37,5 +37,12 @@
   "propertyList.heading": "Buscar elementos con propiedades:",
   "modal.disconnectConfirmation.title": "¿Estás seguro de que deseas cerrar esta ventana?",
   "serverConnect.refresh": "Actualizar",
-  "serverConnect.closeSession": "Cerrar sesión"
+  "serverConnect.closeSession": "Cerrar sesión",
+  "serverConnect.DataSourceType": "Tipo de fuente de datos",
+  "serverConnect.ConnectionURL": "URL de conexión",
+  "serverConnect.ConnectionPort": "Puerto de conexión",
+  "serverConnect.DatabaseName": "Nombre de la base de datos",
+  "serverConnect.GraphPath": "Ruta del gráfico",
+  "serverConnect.UserName": "Nombre de usuario",
+  "serverConnect.Password": "Contraseña"
 }
