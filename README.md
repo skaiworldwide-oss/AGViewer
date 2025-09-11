@@ -1,14 +1,13 @@
-AGViewer
-========
+# AGViewer
 
 Web-based user interface that provides visualization of graph data stored in an AgensGraph database. It can render complex nodes, relationships, and properties in a clear and dynamic way. AGViewer helps developers, data analysts, and researchers gain deeper insights into graph data.
 
 ## Features
+
 - **Web-Based Interface:** Accessible through any web browser.
 - **Graph Visualization:** Provides interactive visualization tools for graph data.
 - **User-Friendly:** Intuitive interface designed for ease of use.
 - **Real-Time Interaction:** Allows for real-time data updates and interaction with graph data.
-
 
 This is a sub-project of [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph)
 
@@ -31,67 +30,99 @@ Then open the URL [127.0.0.1:3000](http://127.0.0.1:3000) on your browser.
 > Tip: if your AgensGraph server is running on your host machine or difference container, the URL to connect to it should be "host.docker.internal".
 
 > [pm2](https://www.npmjs.com/package/pm2) is an NPM module to run the project in production mode.
-
-# AGViewer vai Source Code
-
-### Recommended Node Version & install module
-
-- Node version - 14.16.0
-- Node Module - pm2 
-
-Install latest **pm2** with :
-
-```bash
-npm i pm2
 ```
 
-###  Get the source code
-Extract the release .zip or .tar.gz package into your desired directory.
+## Installation
+### 1. Clone the Repository
 
-From the commandline, navigate to the directory agv-package.
-
-### Install dependencies
-- Install the required node modules using following command:  
+Clone the AGViewer repository to your local machine:
 
 ```bash
-npm run setup
+git clone https://github.com/skaiworldwide-oss/AGViewer.git
 ```
 
-### Start/Stop AGViewer
+### 2. Navigate to the Project Directory
 
-- Run AgViewer in production environment using : 
+Move into the cloned project directory:
 
 ```bash
-pm2 start ecosystem.config.js --env release
+cd AGViewer
 ```
 
-> This will start AgViewer on http://localhost:3000 if port 3000 is free.
+### 3. Install Root Dependencies
 
-To stop the process use the commands:
+Install the required Node.js dependencies for the root project:
 
 ```bash
-pm2 stop ag-viewer-release 
-pm2 delete ag-viewer-release
+npm install
 ```
 
-### Connect AgViewer to AgensGraph Database
+### 4. Install Frontend Dependencies
 
-**Standard Connection Settings**
-
-- Data Source Type: `AgensGraph`
-- Connection URL  : `127.0.0.1`
-- Connection Port :  `5432`
-
-See [AgensGraph](https://github.com/skaiworldwide-oss/agensgraph) ReadMe file or Manual to setup AgensGraph
-
-## For developers:
-
-Fork this repository, then clone your fork
+Navigate into the frontend folder and install its dependencies:
 
 ```bash
-# install node modules
-npm run setup
-# start the development environment
+cd frontend
+npm install
+```
+
+If you encounter dependency errors during installation, try reinstalling Node.js and use the following command:
+```bash
+npm install --legacy-peer-deps
+```
+
+This command forces npm to ignore strict peer dependency checks and install all required packages.
+
+### 5. Install Backend Dependencies
+Install backend dependencies:
+```bash
+cd backend
+npm install
+```
+## Running the Application
+1. Return to the project root directory:
+
+```bash
+cd ..
+```
+
+2. Start the application:
+
+```bash
 npm run start
 ```
 
+3. Open your browser and navigate to: http://localhost:3000
+
+## Connecting to AgensGraph
+
+For AGViewer to function correctly, ensure that **AgensGraph** is running on your system.
+
+Refer to this guide for help with setting up AgensGraph:  
+[Setting up AgensGraph and AGViewer with Docker](https://medium.com/@agensgraph/setting-up-agensgraph-and-agviewer-with-docker-efb1140f40bc)
+
+---
+
+## Troubleshooting
+
+- If you face errors during `npm install`, reinstall Node.js, delete node_modules and package-lock.json 
+
+```bash
+  npm install --legacy-peer-deps
+```
+
+- Ensure that AgensGraph is running and accessible before starting AGViewer.
+
+- Make sure no other application is using port 3000.
+
+
+## For Windows Desktop Application:
+- Run this inside app folder
+```bash
+yarn install
+```
+
+- Run this for the application to launch
+```bash
+yarn run bundle:test
+```
