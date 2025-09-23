@@ -19,8 +19,9 @@ import PropTypes from 'prop-types';
 import { Badge } from 'react-bootstrap';
 import uuid from 'react-uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
+import { HexColorPicker } from 'react-colorful';
 
 import {
   updateEdgeLabelSize,
@@ -28,12 +29,14 @@ import {
   updateLabelColor,
   updateNodeLabelSize,
 } from '../../features/cypher/CypherUtil';
+import useDynamicColors from '../../features/cypher/DynamicColorUtils';
 import CytoscapeLayoutDropdown from './CytoscapeLayoutDropdown';
+import '../../features/cypher/ColorPicker.css';
 
 const CypherResultCytoscapeFooter = ({
   footerData,
-  edgeLabelColors,
-  nodeLabelColors,
+  // edgeLabelColors,
+  // nodeLabelColors,
   nodeLabelSizes,
   edgeLabelSizes,
   colorChange,
@@ -46,6 +49,22 @@ const CypherResultCytoscapeFooter = ({
 }) => {
   const [footerExpanded, setFooterExpanded] = useState(false);
   const { t } = useTranslation('cytoscape');
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [newColor, setNewColor] = useState('#ffffff');
+
+  // local state to hold dynamic colors separately
+  const nodeColorsHook = useDynamicColors('node');
+  const edgeColorsHook = useDynamicColors('edge');
+
+  const addColor = (type) => {
+    if (type === 'node') {
+      nodeColorsHook.addColor(newColor); // pass the selected color
+    } else {
+      edgeColorsHook.addColor(newColor);
+    }
+    setShowColorPicker(false);
+  };
+
   const extractData = (d) => {
     const extractedData = [];
     for (let i = 0; i < Object.entries(d).length; i += 1) {
@@ -183,36 +202,101 @@ const CypherResultCytoscapeFooter = ({
       };
       const generateColors = () => {
         if (footerData.data.type === 'node') {
-          return nodeLabelColors.map((color) => (
-            <button
-              onClick={() => [
-                updateLabelColor(footerData.data.type, footerData.data.label, color),
-                colorChange(footerData.data.type, footerData.data.label, color)]}
-              key={uuid()}
-              type="button"
-              className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
-              style={{ backgroundColor: color.color }}
-              aria-label={t('footer.aria.changeNodeLabelColor')}
-            >
-              &nbsp;
-            </button>
-          ));
+          return (
+            <>
+              {nodeColorsHook.colors.map((color) => (
+                <button
+                  onClick={() => [
+                    updateLabelColor(
+                      footerData.data.type,
+                      footerData.data.label,
+                      color,
+                    ),
+                    colorChange(footerData.data.type, footerData.data.label, color)]}
+                  key={uuid()}
+                  type="button"
+                  className={`btn colorSelector ${
+                    footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''
+                  }`}
+                  style={{ backgroundColor: color.color }}
+                  aria-label={t('footer.aria.changeNodeLabelColor')}
+                />
+              ))}
+
+              {/* + Button */}
+              <button
+                type="button"
+                className="btn colorSelector addColorBtn"
+                onClick={() => {
+                  const nextState = !showColorPicker;
+                  setShowColorPicker(nextState);
+                  if (nextState) setFooterExpanded(true);
+                }}
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+
+              {showColorPicker && (
+                <div className="colorPickerWrapper">
+                  <HexColorPicker color={newColor} onChange={setNewColor} />
+                  <button
+                    type="button"
+                    onClick={() => addColor('node')}
+                    className="btn btn-sm btn-primary mt-2"
+                  >
+                    Add
+                  </button>
+                </div>
+              )}
+            </>
+          );
         }
+
         if (footerData.data.type === 'edge') {
-          return edgeLabelColors.map((color) => (
-            <button
-              onClick={() => [
-                updateLabelColor(footerData.data.type, footerData.data.label, color),
-                colorChange(footerData.data.type, footerData.data.label, color)]}
-              key={uuid()}
-              type="button"
-              className={`btn colorSelector ${footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''}`}
-              style={{ backgroundColor: color.color }}
-              aria-label={t('footer.aria.changeEdgeLabelColor')}
-            >
-              &nbsp;
-            </button>
-          ));
+          return (
+            <>
+              {edgeColorsHook.colors.map((color) => (
+                <button
+                  onClick={() => [
+                    updateLabelColor(footerData.data.type, footerData.data.label, color),
+                    colorChange(footerData.data.type, footerData.data.label, color)]}
+                  key={uuid()}
+                  type="button"
+                  className={`btn colorSelector ${
+                    footerData.data.backgroundColor === color.color ? ' selectedColor ' : ''
+                  }`}
+                  style={{ backgroundColor: color.color }}
+                  aria-label={t('footer.aria.changeEdgeLabelColor')}
+                />
+              ))}
+
+              {/* + Button */}
+              <button
+                type="button"
+                className="btn colorSelector addColorBtn"
+                onClick={() => {
+                  const nextState = !showColorPicker;
+                  setShowColorPicker(nextState);
+                  if (nextState) setFooterExpanded(true);
+                }}
+              >
+                +
+              </button>
+
+              {showColorPicker && (
+                <div className="colorPickerWrapper">
+                  <HexColorPicker color={newColor} onChange={setNewColor} />
+                  <button
+                    type="button"
+                    onClick={() => addColor('edge')}
+                    className="btn btn-sm btn-primary mt-2"
+                  >
+                    Add
+                  </button>
+                </div>
+              )}
+            </>
+          );
         }
         return null;
       };
@@ -319,22 +403,22 @@ CypherResultCytoscapeFooter.defaultProps = {
 CypherResultCytoscapeFooter.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   footerData: PropTypes.any.isRequired,
-  edgeLabelColors: PropTypes.arrayOf(PropTypes.shape({
-    color: PropTypes.string,
-    borderColor: PropTypes.string,
-    fontColor: PropTypes.string,
-    // eslint-disable-next-line react/forbid-prop-types
-    edgeLabels: PropTypes.any,
-    index: PropTypes.number,
-  })).isRequired,
-  nodeLabelColors: PropTypes.arrayOf(PropTypes.shape({
-    color: PropTypes.string,
-    borderColor: PropTypes.string,
-    fontColor: PropTypes.string,
-    // eslint-disable-next-line react/forbid-prop-types
-    nodeLabels: PropTypes.any,
-    index: PropTypes.number,
-  })).isRequired,
+  // edgeLabelColors: PropTypes.arrayOf(PropTypes.shape({
+  //   color: PropTypes.string,
+  //   borderColor: PropTypes.string,
+  //   fontColor: PropTypes.string,
+  //   // eslint-disable-next-line react/forbid-prop-types
+  //   edgeLabels: PropTypes.any,
+  //   index: PropTypes.number,
+  // })).isRequired,
+  // nodeLabelColors: PropTypes.arrayOf(PropTypes.shape({
+  //   color: PropTypes.string,
+  //   borderColor: PropTypes.string,
+  //   fontColor: PropTypes.string,
+  //   // eslint-disable-next-line react/forbid-prop-types
+  //   nodeLabels: PropTypes.any,
+  //   index: PropTypes.number,
+  // })).isRequired,
   nodeLabelSizes: PropTypes.arrayOf(PropTypes.shape({
     size: PropTypes.number,
     // eslint-disable-next-line react/forbid-prop-types

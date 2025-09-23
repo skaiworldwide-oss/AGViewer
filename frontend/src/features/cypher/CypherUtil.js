@@ -14,84 +14,120 @@
  * limitations under the License.
  */
 
-export const nodeLabelColors = [
-  {
-    color: '#604A0E', borderColor: '#423204', fontColor: '#FFF', nodeLabels: new Set([]), index: 0,
-  },
-  {
-    color: '#C990C0', borderColor: '#B261A5', fontColor: '#FFF', nodeLabels: new Set([]), index: 1,
-  },
-  {
-    color: '#F79767', borderColor: '#F36924', fontColor: '#FFF', nodeLabels: new Set([]), index: 2,
-  },
-  {
-    color: '#57C7E3', borderColor: '#23B3D7', fontColor: '#2A2C34', nodeLabels: new Set([]), index: 3,
-  },
-  {
-    color: '#F16667', borderColor: '#EB2728', fontColor: '#FFF', nodeLabels: new Set([]), index: 4,
-  },
-  {
-    color: '#D9C8AE', borderColor: '#C0A378', fontColor: '#2A2C34', nodeLabels: new Set([]), index: 5,
-  },
-  {
-    color: '#8DCC93', borderColor: '#5DB665', fontColor: '#2A2C34', nodeLabels: new Set([]), index: 6,
-  },
-  {
-    color: '#ECB5C9', borderColor: '#DA7298', fontColor: '#2A2C34', nodeLabels: new Set([]), index: 7,
-  },
-  {
-    color: '#498EDA', borderColor: '#2870C2', fontColor: '#FFF', nodeLabels: new Set([]), index: 8,
-  },
-  {
-    color: '#FFC454', borderColor: '#D7A013', fontColor: '#2A2C34', nodeLabels: new Set([]), index: 9,
-  },
-  {
-    color: '#DA7194', borderColor: '#CC3C6C', fontColor: '#FFF', nodeLabels: new Set([]), index: 10,
-  },
-  {
-    color: '#569480', borderColor: '#447666', fontColor: '#FFF', nodeLabels: new Set([]), index: 11,
-  },
-];
+// export const nodeLabelColors = [
+//   {
+//     color: '#604A0E', borderColor: '#423204', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 0,
+//   },
+//   {
+//     color: '#C990C0', borderColor: '#B261A5', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 1,
+//   },
+//   {
+//     color: '#F79767', borderColor: '#F36924', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 2,
+//   },
+//   {
+//     color: '#57C7E3', borderColor: '#23B3D7', fontColor: '#2A2C34', nodeLabels: new Set([]),
+// index: 3,
+//   },
+//   {
+//     color: '#F16667', borderColor: '#EB2728', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 4,
+//   },
+//   {
+//     color: '#D9C8AE', borderColor: '#C0A378', fontColor: '#2A2C34', nodeLabels: new Set([]),
+// index: 5,
+//   },
+//   {
+//     color: '#8DCC93', borderColor: '#5DB665', fontColor: '#2A2C34', nodeLabels: new Set([]),
+// index: 6,
+//   },
+//   {
+//     color: '#ECB5C9', borderColor: '#DA7298', fontColor: '#2A2C34', nodeLabels: new Set([]),
+// index: 7,
+//   },
+//   {
+//     color: '#498EDA', borderColor: '#2870C2', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 8,
+//   },
+//   {
+//     color: '#FFC454', borderColor: '#D7A013', fontColor: '#2A2C34', nodeLabels: new Set([]),
+// index: 9,
+//   },
+//   {
+//     color: '#DA7194', borderColor: '#CC3C6C', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 10,
+//   },
+//   {
+//     color: '#569480', borderColor: '#447666', fontColor: '#FFF', nodeLabels: new Set([]),
+// index: 11,
+//   },
+// ];
 
-export const edgeLabelColors = [
-  {
-    color: '#CCA63D', borderColor: '#997000', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 0,
-  },
-  {
-    color: '#C990C0', borderColor: '#B261A5', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 1,
-  },
-  {
-    color: '#F79767', borderColor: '#F36924', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 2,
-  },
-  {
-    color: '#57C7E3', borderColor: '#23B3D7', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 3,
-  },
-  {
-    color: '#F16667', borderColor: '#EB2728', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 4,
-  },
-  {
-    color: '#D9C8AE', borderColor: '#C0A378', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 5,
-  },
-  {
-    color: '#8DCC93', borderColor: '#5DB665', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 6,
-  },
-  {
-    color: '#ECB5C9', borderColor: '#DA7298', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 7,
-  },
-  {
-    color: '#498EDA', borderColor: '#2870C2', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 8,
-  },
-  {
-    color: '#FFC454', borderColor: '#D7A013', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 9,
-  },
-  {
-    color: '#DA7194', borderColor: '#CC3C6C', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 10,
-  },
-  {
-    color: '#569480', borderColor: '#447666', fontColor: '#2A2C34', edgeLabels: new Set([]), index: 11,
-  },
-];
+// export const edgeLabelColors = [
+//   {
+//     color: '#CCA63D', borderColor: '#997000', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 0,
+//   },
+//   {
+//     color: '#C990C0', borderColor: '#B261A5', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 1,
+//   },
+//   {
+//     color: '#F79767', borderColor: '#F36924', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 2,
+//   },
+//   {
+//     color: '#57C7E3', borderColor: '#23B3D7', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 3,
+//   },
+//   {
+//     color: '#F16667', borderColor: '#EB2728', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 4,
+//   },
+//   {
+//     color: '#D9C8AE', borderColor: '#C0A378', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 5,
+//   },
+//   {
+//     color: '#8DCC93', borderColor: '#5DB665', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 6,
+//   },
+//   {
+//     color: '#ECB5C9', borderColor: '#DA7298', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 7,
+//   },
+//   {
+//     color: '#498EDA', borderColor: '#2870C2', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 8,
+//   },
+//   {
+//     color: '#FFC454', borderColor: '#D7A013', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 9,
+//   },
+//   {
+//     color: '#DA7194', borderColor: '#CC3C6C', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 10,
+//   },
+//   {
+//     color: '#569480', borderColor: '#447666', fontColor: '#2A2C34', edgeLabels: new Set([]),
+// index: 11,
+//   },
+// ];
 
+// above is the previous implementation that is now in separate file
+
+import colorsJson from './LabelColors.json';
+
+export const nodeLabelColors = colorsJson.nodeLabelColors.map((c) => ({
+  ...c,
+  nodeLabels: new Set(c.nodeLabels), // restore Set
+}));
+export const edgeLabelColors = colorsJson.edgeLabelColors.map((c) => ({
+  ...c,
+  edgeLabels: new Set(c.edgeLabels), // restore Set
+}));
 export const nodeLabelSizes = [
   { size: 11, labels: new Set([]), index: 0 },
   { size: 33, labels: new Set([]), index: 0 },
