@@ -1,7 +1,7 @@
 {
   "applyEdgeWeight": {
-    "title": "에지 가중치 적용",
-    "selectEdge": "에지 선택",
+    "title": "엣지 가중치 적용",
+    "selectEdge": "엣지 선택",
     "selectProperty": "속성 선택",
     "minValue": "최소 값",
     "maxValue": "최대 값",
